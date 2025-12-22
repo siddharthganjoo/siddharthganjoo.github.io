@@ -1,4 +1,4 @@
-/* Ultra-Smooth Portfolio - Fixed so content is ALWAYS visible */
+/* Clean Portfolio - No Animations, Always Visible */
 
 * {
   margin: 0;
@@ -22,11 +22,6 @@
   --spacing-lg: 4rem;
   --spacing-xl: 6rem;
   --spacing-2xl: 8rem;
-  
-  /* Transitions */
-  --ease-smooth: cubic-bezier(0.65, 0, 0.35, 1);
-  --transition-base: 0.6s var(--ease-smooth);
-  --transition-slow: 1.2s var(--ease-smooth);
 }
 
 [data-theme="dark"] {
@@ -51,81 +46,6 @@ body {
   -webkit-font-smoothing: antialiased;
   overflow-x: hidden;
 }
-
-/* ========================================
-   ANIMATION CLASSES - Start visible!
-   ======================================== */
-
-/* Default: Everything is VISIBLE */
-.reveal,
-.fade-in,
-.slide-left,
-.slide-right,
-.scale-in {
-  opacity: 1 !important;
-  transform: none !important;
-}
-
-/* Only hide if JS adds "will-animate" class */
-.will-animate.reveal {
-  opacity: 0;
-  transform: translateY(60px);
-  transition: opacity var(--transition-slow), transform var(--transition-slow);
-}
-
-.will-animate.reveal.active {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-.will-animate.fade-in {
-  opacity: 0;
-  transition: opacity var(--transition-slow);
-}
-
-.will-animate.fade-in.active {
-  opacity: 1;
-}
-
-.will-animate.slide-left {
-  opacity: 0;
-  transform: translateX(-60px);
-  transition: opacity var(--transition-slow), transform var(--transition-slow);
-}
-
-.will-animate.slide-left.active {
-  opacity: 1;
-  transform: translateX(0);
-}
-
-.will-animate.slide-right {
-  opacity: 0;
-  transform: translateX(60px);
-  transition: opacity var(--transition-slow), transform var(--transition-slow);
-}
-
-.will-animate.slide-right.active {
-  opacity: 1;
-  transform: translateX(0);
-}
-
-.will-animate.scale-in {
-  opacity: 0;
-  transform: scale(0.9);
-  transition: opacity var(--transition-slow), transform var(--transition-slow);
-}
-
-.will-animate.scale-in.active {
-  opacity: 1;
-  transform: scale(1);
-}
-
-/* Delays */
-.reveal-delay-1 { transition-delay: 0.1s; }
-.reveal-delay-2 { transition-delay: 0.2s; }
-.reveal-delay-3 { transition-delay: 0.3s; }
-.reveal-delay-4 { transition-delay: 0.4s; }
-.reveal-delay-5 { transition-delay: 0.5s; }
 
 /* ========================================
    NAVIGATION
@@ -164,23 +84,10 @@ body {
   color: var(--text);
   text-decoration: none;
   transition: opacity 0.3s;
-  display: flex;
-  align-items: center;
 }
 
 .nav-logo:hover {
   opacity: 0.7;
-}
-
-.logo-img {
-  height: 32px;
-  width: auto;
-  display: block;
-}
-
-.logo-text {
-  font-size: 1.5rem;
-  font-weight: 700;
 }
 
 .nav-menu {
@@ -207,7 +114,7 @@ body {
   width: 0;
   height: 2px;
   background: var(--accent);
-  transition: width 0.3s var(--ease-smooth);
+  transition: width 0.3s;
 }
 
 .nav-link:hover::after {
@@ -219,7 +126,7 @@ body {
   background: var(--text);
   color: var(--bg);
   border-radius: 50px;
-  transition: transform 0.3s, opacity 0.3s;
+  transition: transform 0.3s;
 }
 
 .nav-cta:hover {
@@ -357,18 +264,6 @@ body {
   border-radius: 50px;
   font-size: 0.85rem;
   margin-bottom: var(--spacing-md);
-  animation: fadeInUp 0.8s var(--ease-smooth);
-}
-
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
 }
 
 .hero-title {
@@ -377,7 +272,6 @@ body {
   letter-spacing: -0.03em;
   margin-bottom: var(--spacing-sm);
   line-height: 1.1;
-  animation: fadeInUp 0.8s var(--ease-smooth) 0.1s backwards;
 }
 
 .hero-subtitle {
@@ -385,7 +279,6 @@ body {
   color: var(--text-secondary);
   font-weight: 500;
   margin-bottom: var(--spacing-md);
-  animation: fadeInUp 0.8s var(--ease-smooth) 0.2s backwards;
 }
 
 .hero-description {
@@ -394,7 +287,6 @@ body {
   max-width: 700px;
   margin: 0 auto var(--spacing-lg);
   line-height: 1.7;
-  animation: fadeInUp 0.8s var(--ease-smooth) 0.3s backwards;
 }
 
 .hero-stats {
@@ -402,7 +294,6 @@ body {
   grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
   gap: var(--spacing-lg);
   margin: var(--spacing-lg) 0;
-  animation: fadeInUp 0.8s var(--ease-smooth) 0.4s backwards;
 }
 
 .stat-item {
@@ -426,7 +317,6 @@ body {
   gap: var(--spacing-md);
   justify-content: center;
   flex-wrap: wrap;
-  animation: fadeInUp 0.8s var(--ease-smooth) 0.5s backwards;
 }
 
 .scroll-indicator {
@@ -440,12 +330,6 @@ body {
   gap: 0.5rem;
   color: var(--text-secondary);
   font-size: 0.85rem;
-  animation: bounce 2s infinite;
-}
-
-@keyframes bounce {
-  0%, 100% { transform: translateX(-50%) translateY(0); }
-  50% { transform: translateX(-50%) translateY(-10px); }
 }
 
 /* ========================================
@@ -459,7 +343,7 @@ body {
   font-size: 1rem;
   font-weight: 600;
   text-decoration: none;
-  transition: all 0.3s var(--ease-smooth);
+  transition: all 0.3s;
   cursor: pointer;
   border: none;
 }
