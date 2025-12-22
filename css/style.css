@@ -1,4 +1,4 @@
-/* Ultra-Smooth Portfolio - Inspired by Premium Portfolios */
+/* Ultra-Smooth Portfolio - Fixed so content is ALWAYS visible */
 
 * {
   margin: 0;
@@ -23,9 +23,8 @@
   --spacing-xl: 6rem;
   --spacing-2xl: 8rem;
   
-  /* Transitions - CRITICAL FOR SMOOTHNESS */
+  /* Transitions */
   --ease-smooth: cubic-bezier(0.65, 0, 0.35, 1);
-  --ease-in-out: cubic-bezier(0.76, 0, 0.24, 1);
   --transition-base: 0.6s var(--ease-smooth);
   --transition-slow: 1.2s var(--ease-smooth);
 }
@@ -45,7 +44,7 @@ html {
 }
 
 body {
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Inter', sans-serif;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
   background: var(--bg);
   color: var(--text);
   line-height: 1.6;
@@ -53,71 +52,85 @@ body {
   overflow-x: hidden;
 }
 
-/* Smooth Scroll Reveal Classes - THE MAGIC */
-.reveal {
+/* ========================================
+   ANIMATION CLASSES - Start visible!
+   ======================================== */
+
+/* Default: Everything is VISIBLE */
+.reveal,
+.fade-in,
+.slide-left,
+.slide-right,
+.scale-in {
+  opacity: 1 !important;
+  transform: none !important;
+}
+
+/* Only hide if JS adds "will-animate" class */
+.will-animate.reveal {
   opacity: 0;
   transform: translateY(60px);
   transition: opacity var(--transition-slow), transform var(--transition-slow);
 }
 
-.reveal.active {
+.will-animate.reveal.active {
   opacity: 1;
   transform: translateY(0);
 }
 
+.will-animate.fade-in {
+  opacity: 0;
+  transition: opacity var(--transition-slow);
+}
+
+.will-animate.fade-in.active {
+  opacity: 1;
+}
+
+.will-animate.slide-left {
+  opacity: 0;
+  transform: translateX(-60px);
+  transition: opacity var(--transition-slow), transform var(--transition-slow);
+}
+
+.will-animate.slide-left.active {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.will-animate.slide-right {
+  opacity: 0;
+  transform: translateX(60px);
+  transition: opacity var(--transition-slow), transform var(--transition-slow);
+}
+
+.will-animate.slide-right.active {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.will-animate.scale-in {
+  opacity: 0;
+  transform: scale(0.9);
+  transition: opacity var(--transition-slow), transform var(--transition-slow);
+}
+
+.will-animate.scale-in.active {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* Delays */
 .reveal-delay-1 { transition-delay: 0.1s; }
 .reveal-delay-2 { transition-delay: 0.2s; }
 .reveal-delay-3 { transition-delay: 0.3s; }
 .reveal-delay-4 { transition-delay: 0.4s; }
 .reveal-delay-5 { transition-delay: 0.5s; }
 
-/* Fade in (no movement) */
-.fade-in {
-  opacity: 0;
-  transition: opacity var(--transition-slow);
-}
+/* ========================================
+   NAVIGATION
+   ======================================== */
 
-.fade-in.active {
-  opacity: 1;
-}
-
-/* Slide from left */
-.slide-left {
-  opacity: 0;
-  transform: translateX(-60px);
-  transition: opacity var(--transition-slow), transform var(--transition-slow);
-}
-
-.slide-left.active {
-  opacity: 1;
-  transform: translateX(0);
-}
-
-/* Slide from right */
-.slide-right {
-  opacity: 0;
-  transform: translateX(60px);
-  transition: opacity var(--transition-slow), transform var(--transition-slow);
-}
-
-.slide-right.active {
-  opacity: 1;
-  transform: translateX(0);
-}
-
-/* Scale in */
-.scale-in {
-  opacity: 0;
-  transform: scale(0.9);
-  transition: opacity var(--transition-slow), transform var(--transition-slow);
-}
-
-.scale-in.active {
-  opacity: 1;
-  transform: scale(1);
-}
-
-/* Navigation */
 .nav {
   position: fixed;
   top: 0;
@@ -151,10 +164,23 @@ body {
   color: var(--text);
   text-decoration: none;
   transition: opacity 0.3s;
+  display: flex;
+  align-items: center;
 }
 
 .nav-logo:hover {
   opacity: 0.7;
+}
+
+.logo-img {
+  height: 32px;
+  width: auto;
+  display: block;
+}
+
+.logo-text {
+  font-size: 1.5rem;
+  font-weight: 700;
 }
 
 .nav-menu {
@@ -198,7 +224,6 @@ body {
 
 .nav-cta:hover {
   transform: scale(1.05);
-  opacity: 0.9;
 }
 
 .nav-cta::after {
@@ -258,6 +283,7 @@ body {
   cursor: pointer;
   color: var(--text);
   transition: background 0.3s;
+  position: relative;
 }
 
 .theme-toggle:hover {
@@ -265,8 +291,7 @@ body {
 }
 
 .theme-icon {
-  width: 20px;
-  height: 20px;
+  font-size: 16px;
   transition: opacity 0.3s, transform 0.3s;
 }
 
@@ -284,6 +309,7 @@ body {
 [data-theme="dark"] .theme-icon.moon {
   opacity: 1;
   transform: rotate(0);
+  position: static;
 }
 
 /* Hamburger */
@@ -304,7 +330,10 @@ body {
   transition: all 0.3s;
 }
 
-/* Hero Section */
+/* ========================================
+   HERO
+   ======================================== */
+
 .hero {
   min-height: 100vh;
   display: flex;
@@ -419,7 +448,10 @@ body {
   50% { transform: translateX(-50%) translateY(-10px); }
 }
 
-/* Buttons */
+/* ========================================
+   BUTTONS
+   ======================================== */
+
 .btn {
   display: inline-block;
   padding: 1rem 2rem;
@@ -453,7 +485,10 @@ body {
   transform: translateY(-2px);
 }
 
-/* Sections */
+/* ========================================
+   SECTIONS
+   ======================================== */
+
 .section {
   padding: var(--spacing-2xl) var(--spacing-md);
   position: relative;
@@ -503,7 +538,10 @@ body {
   margin: 0 auto;
 }
 
-/* About Section */
+/* ========================================
+   ABOUT
+   ======================================== */
+
 .about-grid {
   display: grid;
   grid-template-columns: 1.2fr 1fr;
@@ -550,7 +588,10 @@ body {
   transform: translateY(-2px);
 }
 
-/* Experience Carousel - HORIZONTAL SCROLL */
+/* ========================================
+   EXPERIENCE CAROUSEL
+   ======================================== */
+
 .experience-carousel {
   position: relative;
   overflow: hidden;
@@ -676,6 +717,7 @@ body {
   justify-content: center;
   cursor: pointer;
   transition: all 0.3s;
+  color: var(--text);
 }
 
 .carousel-btn:hover {
@@ -684,7 +726,10 @@ body {
   transform: scale(1.1);
 }
 
-/* Projects Grid */
+/* ========================================
+   PROJECTS
+   ======================================== */
+
 .projects-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
@@ -781,7 +826,10 @@ body {
   opacity: 0.7;
 }
 
-/* Timeline - VERTICAL */
+/* ========================================
+   TIMELINE
+   ======================================== */
+
 .timeline {
   position: relative;
   padding-left: 80px;
@@ -842,26 +890,6 @@ body {
   box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
 }
 
-.timeline-image {
-  width: 100%;
-  height: 200px;
-  border-radius: 12px;
-  overflow: hidden;
-  margin-bottom: var(--spacing-md);
-  background: var(--border);
-}
-
-.timeline-image img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: transform 0.6s;
-}
-
-.timeline-content:hover .timeline-image img {
-  transform: scale(1.05);
-}
-
 .timeline-tag {
   display: inline-block;
   padding: 0.4rem 0.8rem;
@@ -887,18 +915,52 @@ body {
 .timeline-content p {
   color: var(--text-secondary);
   line-height: 1.7;
+}
+
+/* ========================================
+   CONTACT & FOOTER
+   ======================================== */
+
+.contact-section {
+  text-align: center;
+  padding: var(--spacing-2xl) var(--spacing-md);
+}
+
+.contact-title {
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-weight: 700;
   margin-bottom: var(--spacing-sm);
 }
 
-.timeline-link {
-  color: var(--accent);
-  text-decoration: none;
-  font-weight: 600;
-  transition: opacity 0.3s;
+.contact-description {
+  font-size: 1.25rem;
+  color: var(--text-secondary);
+  margin-bottom: var(--spacing-lg);
 }
 
-.timeline-link:hover {
-  opacity: 0.7;
+.contact-actions {
+  display: flex;
+  gap: var(--spacing-md);
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-bottom: var(--spacing-md);
+}
+
+.contact-location {
+  font-size: 1rem;
+  color: var(--text-secondary);
+}
+
+.footer {
+  text-align: center;
+  padding: var(--spacing-lg) var(--spacing-md);
+  border-top: 1px solid var(--border);
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+}
+
+.footer p {
+  margin: 0.25rem 0;
 }
 
 .section-footer {
@@ -906,7 +968,10 @@ body {
   margin-top: var(--spacing-xl);
 }
 
-/* Responsive */
+/* ========================================
+   RESPONSIVE
+   ======================================== */
+
 @media (max-width: 1024px) {
   .about-grid {
     grid-template-columns: 1fr;
