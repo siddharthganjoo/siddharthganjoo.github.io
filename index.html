@@ -5,6 +5,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Siddharth Ganjoo - Data Scientist & ML Engineer</title>
   
+  <!-- Favicons -->
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/favicon/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon/favicon-16x16.png">
+  
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -15,25 +20,15 @@
   
   <!-- Styles -->
   <link rel="stylesheet" href="css/style.css">
-  
-  <style>
-    /* Inline critical CSS to ensure page is never blank */
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body { 
-      font-family: 'Inter', -apple-system, sans-serif; 
-      background: #ffffff;
-      color: #000000;
-      line-height: 1.6;
-    }
-  </style>
 </head>
 <body>
   
   <!-- Navigation -->
   <nav class="nav">
     <div class="nav-container">
-      <!-- Logo - Can be image or text -->
-      <a href="#hero" class="nav-logo">SG</a>
+      <a href="#hero" class="nav-logo">
+        <img src="assets/logo.png" alt="SG" class="logo-img">
+      </a>
       
       <ul class="nav-menu">
         <li class="nav-item"><a href="#about" class="nav-link">About</a></li>
@@ -45,7 +40,7 @@
           </div>
         </li>
         <li class="nav-item"><a href="#news" class="nav-link">News</a></li>
-        <li class="nav-item"><a href="assets/resume.pdf" class="nav-link nav-cta">Resume</a></li>
+        <li class="nav-item"><a href="assets/resume.pdf" class="nav-link nav-cta" target="_blank">Resume</a></li>
         <li class="nav-item">
           <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme">
             <i class="fas fa-sun theme-icon sun"></i>
@@ -66,14 +61,14 @@
   <section id="hero" class="hero">
     <div class="hero-container">
       <div class="hero-badge">Available for opportunities</div>
-      <h1 class="hero-title-delay-1">Siddharth Ganjoo</h1>
-      <p class="hero-subtitle-delay-2">Data Scientist & ML Engineer</p>
-      <p class="hero-description-delay-3">
+      <h1 class="hero-title">Siddharth Ganjoo</h1>
+      <p class="hero-subtitle">Data Scientist & ML Engineer</p>
+      <p class="hero-description">
         Building production-ready AI systems at the intersection of agriculture, 
         manufacturing, and automotive. MSc Computer Science @ TU/e.
       </p>
       
-      <div class="hero-stats-delay-4">
+      <div class="hero-stats">
         <div class="stat-item">
           <div class="stat-value">€25K+</div>
           <div class="stat-label">Annual Savings</div>
@@ -88,7 +83,7 @@
         </div>
       </div>
       
-      <div class="hero-actions-delay-5">
+      <div class="hero-actions">
         <a href="mailto:sganjoo2000@gmail.com" class="btn btn-primary">Get in touch</a>
         <a href="#projects" class="btn btn-secondary">View work</a>
       </div>
@@ -172,7 +167,7 @@
           <div class="experience-card">
             <div class="experience-period">Nov 2025 - Present</div>
             <div class="experience-company">
-              <div class="company-logo-placeholder">VG</div>
+              <img src="assets/logos/vencomatic.png" alt="Vencomatic" class="company-logo-large">
               <div>
                 <h3>Junior Data Scientist</h3>
                 <p class="company-name">Vencomatic Group</p>
@@ -217,7 +212,7 @@
           <div class="experience-card">
             <div class="experience-period">Dec 2024 - Aug 2025</div>
             <div class="experience-company">
-              <div class="company-logo-placeholder">VG</div>
+              <img src="assets/logos/vencomatic.png" alt="Vencomatic" class="company-logo-large">
               <div>
                 <h3>Master's Thesis Intern</h3>
                 <p class="company-name">Vencomatic Group</p>
@@ -238,7 +233,7 @@
           <div class="experience-card">
             <div class="experience-period">Sep 2024 - Dec 2024</div>
             <div class="experience-company">
-              <div class="company-logo-placeholder">WM</div>
+              <img src="assets/logos/wm.png" alt="William & Mary" class="company-logo-large">
               <div>
                 <h3>Research Intern</h3>
                 <p class="company-name">William & Mary</p>
@@ -252,6 +247,26 @@
             <div class="tech-tags">
               <span>LLMs</span>
               <span>CodeT5</span>
+            </div>
+          </div>
+          
+          <!-- Card 5 -->
+          <div class="experience-card">
+            <div class="experience-period">Oct 2021 - Mar 2022</div>
+            <div class="experience-company">
+              <img src="assets/logos/ingersoll.png" alt="Ingersoll Rand" class="company-logo-large">
+              <div>
+                <h3>Software Engineering Intern</h3>
+                <p class="company-name">Ingersoll Rand</p>
+                <span class="location">India</span>
+              </div>
+            </div>
+            <p class="experience-description">
+              Developed Python-based dashboard with real-time data integration for machine monitoring.
+            </p>
+            <div class="tech-tags">
+              <span>Python</span>
+              <span>Heroku</span>
             </div>
           </div>
         </div>
@@ -281,7 +296,7 @@
         <!-- Featured -->
         <div class="project-card featured">
           <div class="project-image">
-            <div class="project-image-placeholder">🚗</div>
+            <img src="assets/project/project-one.png" alt="Loopit.ai">
           </div>
           <div class="project-content">
             <span class="project-tag">Startup</span>
@@ -299,7 +314,10 @@
         </div>
         
         <!-- Project 2 -->
-        <div class="project-card-delay-1">
+        <div class="project-card">
+          <div class="project-image">
+            <img src="assets/project/project-two.png" alt="RL Egg Sorting">
+          </div>
           <div class="project-content">
             <span class="project-tag">Research</span>
             <h3>RL-Based Egg Sorting</h3>
@@ -312,7 +330,10 @@
         </div>
         
         <!-- Project 3 -->
-        <div class="project-card-delay-2">
+        <div class="project-card">
+          <div class="project-image">
+            <img src="assets/project/project-three.png" alt="LLM Optimization">
+          </div>
           <div class="project-content">
             <span class="project-tag">Research</span>
             <h3>LLM Code Optimization</h3>
@@ -321,7 +342,10 @@
         </div>
         
         <!-- Project 4 -->
-        <div class="project-card-delay-3">
+        <div class="project-card">
+          <div class="project-image">
+            <img src="assets/project/project-four.png" alt="Graph Database">
+          </div>
           <div class="project-content">
             <span class="project-tag">Academic</span>
             <h3>Graph Database Optimization</h3>
@@ -330,7 +354,10 @@
         </div>
         
         <!-- Project 5 -->
-        <div class="project-card-delay-4">
+        <div class="project-card">
+          <div class="project-image">
+            <img src="assets/project/project-five.png" alt="Vehicle Alert">
+          </div>
           <div class="project-content">
             <span class="project-tag">Application</span>
             <h3>Vehicle Proximity Alert</h3>
@@ -339,7 +366,10 @@
         </div>
         
         <!-- Project 6 -->
-        <div class="project-card-delay-5">
+        <div class="project-card">
+          <div class="project-image">
+            <img src="assets/project/project-six.png" alt="CNN Analysis">
+          </div>
           <div class="project-content">
             <span class="project-tag">Academic</span>
             <h3>CNN Texture-Shape Analysis</h3>
@@ -369,6 +399,9 @@
         <div class="timeline-item">
           <div class="timeline-date">Dec 2024</div>
           <div class="timeline-content">
+            <div class="timeline-image">
+              <img src="assets/news/loopit-ai-summit.jpg" alt="AI Summit">
+            </div>
             <span class="timeline-tag">Event</span>
             <h3>AI Summit Brainport 2024</h3>
             <p>Showcased Loopit.ai's AI-powered solutions at the Evoluon to key stakeholders across insurance and automotive industries.</p>
@@ -378,6 +411,9 @@
         <div class="timeline-item">
           <div class="timeline-date">Aug 2025</div>
           <div class="timeline-content">
+            <div class="timeline-image">
+              <img src="assets/news/graduation.jpg" alt="Graduation">
+            </div>
             <span class="timeline-tag">Milestone</span>
             <h3>MSc Computer Science Graduation</h3>
             <p>Graduated from TU/e with thesis on reinforcement learning for adaptive egg-sorting in collaboration with Vencomatic Group.</p>
@@ -387,6 +423,9 @@
         <div class="timeline-item">
           <div class="timeline-date">Jul 2024</div>
           <div class="timeline-content">
+            <div class="timeline-image">
+              <img src="assets/news/iese-bootcamp.jpg" alt="IESE Bootcamp">
+            </div>
             <span class="timeline-tag">Entrepreneurship</span>
             <h3>IESE Ignite Bootcamp Barcelona</h3>
             <p>Represented TU/e in EuroTeQ cohort, accelerating Loopit.ai through mentorship and VC presentations.</p>
@@ -396,6 +435,9 @@
         <div class="timeline-item">
           <div class="timeline-date">Apr 2024</div>
           <div class="timeline-content">
+            <div class="timeline-image">
+              <img src="assets/news/eaisi-award.jpg" alt="Award">
+            </div>
             <span class="timeline-tag highlight">Award</span>
             <h3>EAISI AI Incentive Award Winner</h3>
             <p>Won €1,000 for Loopit.ai's promising AI solution with clear practical applications.</p>
@@ -405,9 +447,60 @@
         <div class="timeline-item">
           <div class="timeline-date">Sep 2023</div>
           <div class="timeline-content">
+            <div class="timeline-image">
+              <img src="assets/news/eindhovens-dagblad.jpg" alt="Press">
+            </div>
             <span class="timeline-tag">Media</span>
             <h3>Featured in Eindhovens Dagblad</h3>
             <p>Cashless festival bar system featured in local newspaper.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Recommendations -->
+  <section class="section recommendations-section">
+    <div class="section-container">
+      <div class="section-header">
+        <span class="section-eyebrow">Testimonials</span>
+        <h2 class="section-title">Recommendations</h2>
+      </div>
+      
+      <div class="recommendations-grid">
+        <div class="recommendation-card">
+          <img src="assets/recommendations/yanja.jpg" alt="Yanja Dajsuren" class="recommender-photo">
+          <div class="recommendation-content">
+            <p class="recommendation-text">"Siddharth is amazing. He's smart, humble and he gets things done."</p>
+            <h4>Yanja Dajsuren</h4>
+            <p class="recommender-title">Assistant Professor, TU/e</p>
+          </div>
+        </div>
+        
+        <div class="recommendation-card">
+          <img src="assets/recommendations/gert.jpg" alt="Gert Guri" class="recommender-photo">
+          <div class="recommendation-content">
+            <p class="recommendation-text">"Siddharth combines technical excellence with practical business acumen."</p>
+            <h4>Gert Guri</h4>
+            <p class="recommender-title">CTO, Loopit.ai</p>
+          </div>
+        </div>
+        
+        <div class="recommendation-card">
+          <img src="assets/recommendations/bert.jpg" alt="Bert Sadowski" class="recommender-photo">
+          <div class="recommendation-content">
+            <p class="recommendation-text">"A talented researcher with strong analytical and problem-solving skills."</p>
+            <h4>Bert Sadowski</h4>
+            <p class="recommender-title">Associate Professor, TU/e</p>
+          </div>
+        </div>
+        
+        <div class="recommendation-card">
+          <img src="assets/recommendations/alexander.jpg" alt="Alexander Serebrenik" class="recommender-photo">
+          <div class="recommendation-content">
+            <p class="recommendation-text">"Siddharth's dedication to quality and innovation is exceptional."</p>
+            <h4>Alexander Serebrenik</h4>
+            <p class="recommender-title">Full Professor, TU/e</p>
           </div>
         </div>
       </div>
