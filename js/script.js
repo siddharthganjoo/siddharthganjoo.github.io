@@ -1,67 +1,90 @@
-const hamburger = document.querySelector(".hamburger");
-const navMenu = document.querySelector(".nav-menu");
+// Simple, bulletproof JavaScript for portfolio
 
-hamburger.addEventListener("click", mobileMenu);
-
-function mobileMenu() {
-  hamburger.classList.toggle("active");
-  navMenu.classList.toggle("active");
-}
-
-// Close navbar when link is clicked
-const navLink = document.querySelectorAll(".nav-link");
-
-navLink.forEach((n) => n.addEventListener("click", closeMenu));
-
-function closeMenu() {
-  hamburger.classList.remove("active");
-  navMenu.classList.remove("active");
-}
-
-// Event Listeners: Handling toggle event
-const toggleSwitch = document.querySelector(
-  '.theme-switch input[type="checkbox"]'
-);
-
-function switchTheme(e) {
-  if (e.target.checked) {
-    document.documentElement.setAttribute("data-theme", "dark");
-  } else {
-    document.documentElement.setAttribute("data-theme", "light");
+(function() {
+  'use strict';
+  
+  // 1. Theme Toggle
+  const toggleSwitch = document.querySelector('.theme-switch input[type="checkbox"]');
+  const currentTheme = localStorage.getItem('theme');
+  
+  if (toggleSwitch) {
+    // Load saved theme
+    if (currentTheme === 'dark') {
+      document.documentElement.setAttribute('data-theme', 'dark');
+      toggleSwitch.checked = true;
+    }
+    
+    // Toggle theme
+    toggleSwitch.addEventListener('change', function(e) {
+      if (e.target.checked) {
+        document.documentElement.setAttribute('data-theme', 'dark');
+        localStorage.setItem('theme', 'dark');
+      } else {
+        document.documentElement.setAttribute('data-theme', 'light');
+        localStorage.setItem('theme', 'light');
+      }
+    });
   }
-}
-
-toggleSwitch.addEventListener("change", switchTheme, false);
-
-//  Store color theme for future visits
-
-function switchTheme(e) {
-  if (e.target.checked) {
-    document.documentElement.setAttribute("data-theme", "dark");
-    localStorage.setItem("theme", "dark"); //add this
-  } else {
-    document.documentElement.setAttribute("data-theme", "light");
-    localStorage.setItem("theme", "light"); //add this
+  
+  // 2. Mobile Menu
+  const hamburger = document.querySelector('.hamburger');
+  const navMenu = document.querySelector('.nav-menu');
+  
+  if (hamburger && navMenu) {
+    hamburger.addEventListener('click', function() {
+      hamburger.classList.toggle('active');
+      navMenu.classList.toggle('active');
+    });
+    
+    // Close menu on link click
+    const navLinks = document.querySelectorAll('.nav-link');
+    navLinks.forEach(function(link) {
+      link.addEventListener('click', function() {
+        hamburger.classList.remove('active');
+        navMenu.classList.remove('active');
+      });
+    });
   }
-}
-
-// Save user preference on load
-
-const currentTheme = localStorage.getItem("theme")
-  ? localStorage.getItem("theme")
-  : null;
-
-if (currentTheme) {
-  document.documentElement.setAttribute("data-theme", currentTheme);
-
-  if (currentTheme === "dark") {
-    toggleSwitch.checked = true;
+  
+  // 3. Optional: Smooth Scroll Reveal (only if supported)
+  if ('IntersectionObserver' in window) {
+    const observer = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          entry.target.style.opacity = '1';
+          entry.target.style.transform = 'translateY(0)';
+        }
+      });
+    }, {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    });
+    
+    // Wait for DOM to load
+    document.addEventListener('DOMContentLoaded', function() {
+      const elements = document.querySelectorAll('.card, .timeline-item, .recommendation-card, .award-card, .news-card');
+      
+      elements.forEach(function(el, index) {
+        el.style.opacity = '0';
+        el.style.transform = 'translateY(40px)';
+        el.style.transition = 'opacity 0.8s ease-out ' + (index * 0.05) + 's, transform 0.8s ease-out ' + (index * 0.05) + 's';
+        observer.observe(el);
+      });
+    });
   }
-}
+  
+  // 4. Optional: Navbar shadow on scroll
+  const navbar = document.querySelector('.navbar');
+  if (navbar) {
+    window.addEventListener('scroll', function() {
+      if (window.pageYOffset > 50) {
+        navbar.classList.add('scrolled');
+      } else {
+        navbar.classList.remove('scrolled');
+      }
+    });
+  }
+  
+})();
 
-//Adding date
-
-let myDate = document.querySelector("#datee");
-
-const yes = new Date().getFullYear();
-myDate.innerHTML = yes;
+console.log('✅ Portfolio script loaded');
