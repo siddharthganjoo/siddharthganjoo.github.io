@@ -1,866 +1,307 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <!-- Primary Meta Tags -->
-    <title>Siddharth Ganjoo - Data Scientist & ML Engineer</title>
-    <meta name="title" content="Siddharth Ganjoo - Data Scientist & ML Engineer" />
-    <meta
-      name="description"
-      content="Data Scientist @ Vencomatic Group | Co-Founder @ Loopit.ai | MSc CS @ TU/e. Specializing in production-ready AI systems for agriculture, manufacturing, and automotive sectors."
-    />
-
-    <!-- Link -->
-    <link
-      rel="apple-touch-icon"
-      sizes="180x180"
-      href="assets/favicon/apple-touch-icon.png"
-    />
-    <link
-      rel="icon"
-      type="image/png"
-      sizes="16x16"
-      href="/assets/favicon/favicon-16x16.png"
-    />
-    <link
-      rel="icon"
-      type="image/png"
-      sizes="32x32"
-      href="assets/favicon/favicon-32x32.png"
-    />
-    <link
-      rel="icon"
-      type="image/png"
-      sizes="192x192"
-      href="assets/favicon/android-chrome-192x192.png"
-    />
-    <link
-      rel="icon"
-      type="image/png"
-      sizes="512x512"
-      href="assets/favicon/android-chrome-512x512.png"
-    />
-    <link rel="icon" type="image/x-icon" href="assets/favicon/favicon.ico" />
-    <link rel="manifest" href="assets/favicon/site.webmanifest" />
-    <link
-      rel="stylesheet"
-      href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"
-      integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm"
-      crossorigin="anonymous"
-    />
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/style.css" />
-    <link rel="stylesheet" href="css/utilities.css" />
-  </head>
-  <body>
-    <header id="hero">
-      <!-- Navbar -->
-      <nav class="navbar">
-        <div class="container">
-          <!-- Logo -->
-          <h1 id="logo">
-            <a href="#"><img src="./assets/logo.png" alt="Siddharth Ganjoo" /></a>
-          </h1>
-          <!-- Navbar links -->
-          <ul class="nav-menu">
-            <li><a class="nav-link" href="#about">ABOUT</a></li>
-            <li><a class="nav-link" href="#experience">EXPERIENCE</a></li>
-            <li><a class="nav-link" href="#projects">PROJECTS</a></li>
-            <li><a class="nav-link" href="#contact">CONTACT</a></li>
-            <li>
-              <a class="nav-link btn btn-primary" href="assets/resume.pdf" target="_blank"
-                >RESUME <i class="fas fa-arrow-right"></i></a
-              >
-            </li>
-
-            <!-- Toggle switch -->
-            <div class="theme-switch">
-              <input type="checkbox" id="switch" />
-              <label class="toggle-icons" for="switch">
-                <img class="moon" src="assets/moon.svg" />
-                <img class="sun" src="assets/sun.svg" />
-              </label>
-            </div>
-            <!-- Hamburger menu -->
-          </ul>
-          <div class="hamburger">
-            <span class="bar"></span>
-            <span class="bar"></span>
-            <span class="bar"></span>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Siddharth Ganjoo - Data Scientist & ML Engineer</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" />
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  
+  <!-- Navigation -->
+  <nav class="nav">
+    <div class="nav-container">
+      <a href="#hero" class="nav-logo">SG</a>
+      
+      <ul class="nav-menu">
+        <li class="nav-item"><a href="#about" class="nav-link">About</a></li>
+        <li class="nav-item dropdown">
+          <a href="#experience" class="nav-link">Work</a>
+          <div class="dropdown-content">
+            <a href="#experience">Experience</a>
+            <a href="#projects">Projects</a>
           </div>
+        </li>
+        <li class="nav-item"><a href="#news" class="nav-link">News</a></li>
+        <li class="nav-item"><a href="assets/resume.pdf" class="nav-link nav-cta">Resume</a></li>
+        <li class="nav-item">
+          <button class="theme-toggle" id="theme-toggle">
+            <svg class="theme-icon sun" width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
+              <path d="M10 3a1 1 0 011 1v1a1 1 0 11-2 0V4a1 1 0 011-1zm0 10a3 3 0 100-6 3 3 0 000 6zm0 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM3 10a1 1 0 011-1h1a1 1 0 110 2H4a1 1 0 01-1-1zm12 0a1 1 0 011-1h1a1 1 0 110 2h-1a1 1 0 01-1-1z"/>
+            </svg>
+            <svg class="theme-icon moon" width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
+              <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"/>
+            </svg>
+          </button>
+        </li>
+      </ul>
+      
+      <button class="nav-hamburger" id="nav-hamburger">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <section id="hero" class="hero">
+    <div class="hero-container">
+      <div class="hero-badge reveal">Available for opportunities</div>
+      <h1 class="hero-title reveal reveal-delay-1">Siddharth Ganjoo</h1>
+      <p class="hero-subtitle reveal reveal-delay-2">Data Scientist & ML Engineer</p>
+      <p class="hero-description reveal reveal-delay-3">
+        Building production-ready AI systems at the intersection of agriculture, manufacturing, and automotive. 
+        MSc Computer Science @ TU/e.
+      </p>
+      
+      <div class="hero-stats reveal reveal-delay-4">
+        <div class="stat-item">
+          <div class="stat-value">€25K+</div>
+          <div class="stat-label">Annual Savings</div>
         </div>
-      </nav>
-
-      <section class="header-container">
-        <img class="profile-image" src="assets/pp.JPG" alt="Siddharth Ganjoo" />
-        <h1 class="hero-name">Hi, I'm Siddharth Ganjoo</h1>
-
-        <div class="content-text">
-          <h2 class="hero-title">Data Scientist & ML Engineer</h2>
-          
-          <p class="hero-description">
-            Specializing in production-ready AI systems for agriculture, manufacturing, and automotive sectors. 
-            MSc Computer Science @ TU/e | Currently @ Vencomatic Group | Co-Founder @ Loopit.ai
-          </p>
-          
-          <div class="hero-stats">
-            <div class="stat">
-              <span class="stat-number">€25K+</span>
-              <span class="stat-label">Annual Savings Delivered</span>
-            </div>
-            <div class="stat">
-              <span class="stat-number">50%</span>
-              <span class="stat-label">False Negative Reduction</span>
-            </div>
-            <div class="stat">
-              <span class="stat-number">15K+</span>
-              <span class="stat-label">Eggs Saved Annually</span>
-            </div>
-          </div>
+        <div class="stat-item">
+          <div class="stat-value">50%</div>
+          <div class="stat-label">Error Reduction</div>
         </div>
-        <a href="mailto:sganjoo2000@gmail.com" class="btn btn-secondary">Connect With Me</a>
-      </section>
-    </header>
-
-    <!-- About Section -->
-    <section id="about" class="about-container container">
-      <div class="division"></div>
-      <div class="content-text">
-        <h2>About Me</h2>
-        <p class="about-lead">Building intelligent systems that solve real-world problems</p>
+        <div class="stat-item">
+          <div class="stat-value">15K+</div>
+          <div class="stat-label">Eggs Saved</div>
+        </div>
       </div>
       
-      <div class="about-content">
-        <div class="about-text">
-          <p>
-            I'm a Data Scientist and ML Engineer with a Master's in Computer Science from TU/e, 
-            currently working at Vencomatic Group where I build production-ready AI systems for the poultry industry.
-          </p>
-          <p>
-            My expertise spans deep learning (YOLO, CodeT5), reinforcement learning, and full-stack data pipelines 
-            (Python, SQL Server, Azure, Streamlit). I've led the development of Loopit.ai, an AI-driven vehicle 
-            damage detection platform, and deployed RL-based calibration systems that save thousands of euros annually.
-          </p>
-          <p>
-            I'm passionate about translating complex ML research into scalable, impactful solutions that drive 
-            real business value. Whether it's optimizing agricultural processes or automating insurance claims, 
-            I thrive on building systems that make a measurable difference.
-          </p>
+      <div class="hero-actions reveal reveal-delay-5">
+        <a href="mailto:sganjoo2000@gmail.com" class="btn btn-primary">Get in touch</a>
+        <a href="#projects" class="btn btn-secondary">View work</a>
+      </div>
+    </div>
+    
+    <div class="scroll-indicator">
+      <span>Scroll to explore</span>
+      <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+        <path d="M6 1L6 11M6 11L1 6M6 11L11 6" stroke="currentColor" stroke-width="1.5"/>
+      </svg>
+    </div>
+  </section>
+
+  <!-- About -->
+  <section id="about" class="section">
+    <div class="section-container">
+      <div class="section-header reveal">
+        <span class="section-eyebrow">Introduction</span>
+        <h2 class="section-title">About Me</h2>
+        <p class="section-description">Turning complex data into intelligent systems</p>
+      </div>
+      
+      <div class="about-grid">
+        <div class="about-content slide-right">
+          <p>I'm a Data Scientist and ML Engineer with a Master's in Computer Science from TU/e, specializing in production-ready AI systems for agriculture, manufacturing, and automotive sectors.</p>
+          <p>My expertise spans deep learning (YOLO, CodeT5), reinforcement learning, and full-stack data pipelines. I've led the development of Loopit.ai and deployed RL-based systems saving thousands of euros annually.</p>
         </div>
         
-        <div class="skills-grid">
-          <div class="skill-category">
-            <h3>Programming</h3>
-            <div class="skill-tags">
-              <span>Python</span>
-              <span>SQL</span>
-              <span>C/C++</span>
-              <span>Java</span>
-              <span>JavaScript</span>
-              <span>R</span>
-            </div>
-          </div>
-          
-          <div class="skill-category">
-            <h3>AI/ML</h3>
-            <div class="skill-tags">
+        <div class="skills-showcase slide-left">
+          <div class="skill-group">
+            <h3>AI & Machine Learning</h3>
+            <div class="skill-pills">
               <span>TensorFlow</span>
               <span>PyTorch</span>
-              <span>Scikit-learn</span>
-              <span>OpenCV</span>
               <span>YOLO</span>
-              <span>Reinforcement Learning</span>
-              <span>LangChain</span>
-              <span>RAG</span>
+              <span>RL</span>
+              <span>LLMs</span>
+            </div>
+          </div>
+          <div class="skill-group">
+            <h3>Data Engineering</h3>
+            <div class="skill-pills">
+              <span>Python</span>
+              <span>SQL Server</span>
+              <span>Azure</span>
+              <span>Streamlit</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Experience - Horizontal Scroll -->
+  <section id="experience" class="section">
+    <div class="section-container-full">
+      <div class="section-header reveal">
+        <span class="section-eyebrow">Career</span>
+        <h2 class="section-title">Experience</h2>
+      </div>
+      
+      <div class="experience-carousel">
+        <div class="experience-track">
+          <div class="experience-card scale-in">
+            <div class="experience-period">Nov 2025 - Present</div>
+            <div class="experience-company">
+              <div class="company-logo-placeholder">VG</div>
+              <div>
+                <h3>Junior Data Scientist</h3>
+                <p class="company-name">Vencomatic Group</p>
+              </div>
+            </div>
+            <p class="experience-description">Building data pipelines and interactive dashboards using Python, SQL Server, and Streamlit.</p>
+            <div class="tech-tags">
+              <span>Python</span>
+              <span>SQL</span>
+              <span>Streamlit</span>
             </div>
           </div>
           
-          <div class="skill-category">
-            <h3>Technologies</h3>
-            <div class="skill-tags">
-              <span>Azure</span>
-              <span>AWS</span>
-              <span>Docker</span>
-              <span>Kubernetes</span>
-              <span>Streamlit</span>
-              <span>SQL Server</span>
-              <span>PostgreSQL</span>
-              <span>Git</span>
+          <div class="experience-card scale-in">
+            <div class="experience-period">Feb 2024 - Present</div>
+            <div class="experience-company">
+              <div class="company-logo-placeholder">LA</div>
+              <div>
+                <h3>Co-Founder & CTO</h3>
+                <p class="company-name">Loopit.ai</p>
+              </div>
             </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Experience Section -->
-    <section id="experience" class="experience-container container">
-      <div class="division"></div>
-      <div class="content-text">
-        <h2>Experience</h2>
-        <p>Building impactful AI solutions across industries</p>
-      </div>
-
-      <div class="timeline">
-        <div class="timeline-item">
-          <div class="timeline-dot"></div>
-          <div class="timeline-content">
-            <div class="timeline-header">
-              <h3>Junior Data Scientist</h3>
-              <span class="timeline-date">Nov 2025 - Present</span>
-            </div>
-            <h4>Vencomatic Group</h4>
-            <p>
-              Building data pipelines and interactive dashboards using Python, SQL Server, and Streamlit 
-              to analyze poultry production data. Performing time-series analysis and anomaly detection 
-              on Azure databases to enhance egg weight monitoring and operational insights.
-            </p>
-            <div class="tech-stack">
-              <span>Python</span>
-              <span>SQL Server</span>
-              <span>Streamlit</span>
-              <span>Azure</span>
-              <span>Pandas</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="timeline-item">
-          <div class="timeline-dot"></div>
-          <div class="timeline-content">
-            <div class="timeline-header">
-              <h3>Co-Founder & CTO</h3>
-              <span class="timeline-date">Feb 2024 - Present</span>
-            </div>
-            <h4>Loopit.ai</h4>
-            <p>
-              Led end-to-end development of an AI-driven platform automating vehicle damage detection, 
-              localization, and cost estimation. Designed system architecture including image preprocessing, 
-              YOLO-based models, and license plate recognition. Managed a 12-member team across ML training, 
-              backend integration, and UI deployment.
-            </p>
-            <div class="tech-stack">
+            <p class="experience-description">Led AI-driven platform for vehicle damage detection. Won €1,000 EAISI Award.</p>
+            <div class="tech-tags">
               <span>YOLO</span>
-              <span>Computer Vision</span>
-              <span>Deep Learning</span>
-              <span>Team Management</span>
+              <span>Leadership</span>
             </div>
           </div>
-        </div>
-
-        <div class="timeline-item">
-          <div class="timeline-dot"></div>
-          <div class="timeline-content">
-            <div class="timeline-header">
-              <h3>Master's Thesis Intern</h3>
-              <span class="timeline-date">Dec 2024 - Aug 2025</span>
+          
+          <div class="experience-card scale-in">
+            <div class="experience-period">Dec 2024 - Aug 2025</div>
+            <div class="experience-company">
+              <div class="company-logo-placeholder">VG</div>
+              <div>
+                <h3>Master's Thesis Intern</h3>
+                <p class="company-name">Vencomatic Group</p>
+              </div>
             </div>
-            <h4>Vencomatic Group</h4>
-            <p>
-              Developed and deployed a reinforcement learning-based calibration system for automated 
-              egg-sorting, reducing false negatives by 50% (~15,000 eggs saved, €25,000 annual savings, 
-              1,440kg CO₂e avoided). Integrated sensor data into real-time inspection pipelines with 
-              semantic knowledge graphs.
-            </p>
-            <div class="tech-stack">
-              <span>Reinforcement Learning</span>
+            <p class="experience-description">Developed RL-based calibration system reducing false negatives by 50%.</p>
+            <div class="tech-tags">
+              <span>RL</span>
               <span>Knowledge Graphs</span>
-              <span>Real-time Systems</span>
-              <span>Python</span>
             </div>
           </div>
         </div>
+      </div>
+      
+      <div class="carousel-nav">
+        <button class="carousel-btn prev" id="exp-prev">
+          <svg width="24" height="24" fill="none" stroke="currentColor">
+            <path d="M15 18l-6-6 6-6" stroke-width="2"/>
+          </svg>
+        </button>
+        <button class="carousel-btn next" id="exp-next">
+          <svg width="24" height="24" fill="none" stroke="currentColor">
+            <path d="M9 18l6-6-6-6" stroke-width="2"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </section>
 
-        <div class="timeline-item">
-          <div class="timeline-dot"></div>
+  <!-- Projects -->
+  <section id="projects" class="section">
+    <div class="section-container">
+      <div class="section-header reveal">
+        <span class="section-eyebrow">Portfolio</span>
+        <h2 class="section-title">Selected Projects</h2>
+      </div>
+      
+      <div class="projects-grid">
+        <div class="project-card featured reveal">
+          <div class="project-image">
+            <div class="project-image-placeholder">🚗</div>
+          </div>
+          <div class="project-content">
+            <span class="project-tag">Startup</span>
+            <h3>Loopit.ai</h3>
+            <p>AI-driven vehicle damage detection platform. Won €1,000 EAISI AI Incentive Award.</p>
+            <div class="project-links">
+              <a href="https://loopit.ai">Visit site →</a>
+            </div>
+          </div>
+        </div>
+        
+        <div class="project-card reveal reveal-delay-1">
+          <div class="project-content">
+            <span class="project-tag">Research</span>
+            <h3>RL Egg Sorting</h3>
+            <p>50% false negative reduction, €25K savings annually.</p>
+          </div>
+        </div>
+        
+        <div class="project-card reveal reveal-delay-2">
+          <div class="project-content">
+            <span class="project-tag">Research</span>
+            <h3>LLM Code Optimization</h3>
+            <p>Optimized prompt compression for CodeT5.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- News Timeline -->
+  <section id="news" class="section">
+    <div class="section-container-narrow">
+      <div class="section-header reveal">
+        <span class="section-eyebrow">Updates</span>
+        <h2 class="section-title">In The News</h2>
+      </div>
+      
+      <div class="timeline">
+        <div class="timeline-item reveal">
+          <div class="timeline-date">Dec 2024</div>
           <div class="timeline-content">
-            <div class="timeline-header">
-              <h3>Research Intern</h3>
-              <span class="timeline-date">Sep 2024 - Dec 2024</span>
-            </div>
-            <h4>William & Mary University</h4>
-            <p>
-              Optimized LLM prompts for code generation using gisting and prompt masking techniques 
-              with models like CodeT5. Benchmarked performance on CodexGlue datasets using 
-              Codereval, CrystalBLEU, and Pass@k metrics.
-            </p>
-            <div class="tech-stack">
-              <span>LLMs</span>
-              <span>CodeT5</span>
-              <span>Prompt Engineering</span>
-              <span>Benchmarking</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Projects -->
-    <section id="projects" class="project-container container">
-      <div class="division"></div>
-      <div class="content-text">
-        <h2>Featured Projects</h2>
-        <p>Research and applied ML projects making measurable impact</p>
-      </div>
-
-      <!-- Featured/Thesis Projects -->
-      <div class="project-category">
-        <h3 class="category-title">🎓 Master's Thesis & Research</h3>
-        <article class="project project-featured">
-          <div class="card">
-            <div class="project-info">
-              <div class="project-bio">
-                <div class="project-header">
-                  <h3>Meggsius Select Automatic Calibration</h3>
-                  <span class="project-date">Jan 2025 - Aug 2025</span>
-                </div>
-                <div class="company-badge">
-                  <img src="assets/logos/vencomatic.png" alt="Vencomatic" class="company-logo" />
-                  <span>Vencomatic Group</span>
-                </div>
-                <p>Designed a reinforcement learning (RL) framework that iteratively adjusts machine defect thresholds based on rejected eggs manually accepted by farmers.</p>
-                <ul class="project-highlights">
-                  <li>Leveraged XML batch data from real-time machine operations</li>
-                  <li>Implemented learning loop minimizing manual intervention</li>
-                  <li>Integrated farmer preferences via structured feedback mechanism</li>
-                  <li>50% reduction in false negatives • €25K annual savings • 15K eggs saved</li>
-                </ul>
-                <div class="tech-stack">
-                  <span>Reinforcement Learning</span>
-                  <span>Python</span>
-                  <span>Knowledge Graphs</span>
-                  <span>XML Processing</span>
-                  <span>Real-time Systems</span>
-                </div>
-              </div>
-              <div class="project-link">
-                <a href="https://github.com/siddharthganjoo" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
-              </div>
-            </div>
-          </div>
-
-          <div class="card">
-            <div class="project-info">
-              <div class="project-bio">
-                <div class="project-header">
-                  <h3>Optimizing Prompts for Code Related Tasks</h3>
-                  <span class="project-date">Sep 2024 - Dec 2024</span>
-                </div>
-                <div class="company-badge">
-                  <img src="assets/logos/wm.png" alt="William & Mary" class="company-logo" />
-                  <span>William & Mary University</span>
-                </div>
-                <p>In-depth study on optimizing prompt compression for LLMs in code-related tasks like generation and summarization.</p>
-                <ul class="project-highlights">
-                  <li>Adapted gisting technique to code with &lt;GIST&gt; tokens (20%-100%)</li>
-                  <li>Fine-tuned CodeT5 220M on CodexGlue datasets (Java & Python)</li>
-                  <li>Identified 20-40% gisting as optimal compression vs. performance trade-off</li>
-                  <li>Demonstrated sustainable AI through reduced computational efficiency</li>
-                </ul>
-                <div class="tech-stack">
-                  <span>LLMs</span>
-                  <span>CodeT5</span>
-                  <span>Prompt Engineering</span>
-                  <span>Pass@k</span>
-                  <span>CrystalBLEU</span>
-                </div>
-              </div>
-              <div class="project-link">
-                <a href="https://github.com/siddharthganjoo" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
-              </div>
-            </div>
-          </div>
-        </article>
-      </div>
-
-      <!-- Startup/Commercial Projects -->
-      <div class="project-category">
-        <h3 class="category-title">🚀 Startup & Commercial Projects</h3>
-        <article class="project">
-          <div class="card card-highlight">
-            <div class="project-info">
-              <div class="project-bio">
-                <div class="project-header">
-                  <h3>Loopit.ai - AI Vehicle Damage Detection</h3>
-                  <span class="project-date">Feb 2024 - Present</span>
-                </div>
-                <p>AI-driven platform automating vehicle damage detection, localization, and cost estimation for insurance companies and repair shops.</p>
-                <ul class="project-highlights">
-                  <li>Led 12-member team across ML, backend, and UI</li>
-                  <li>YOLO-based damage detection & license plate recognition</li>
-                  <li>Won €1,000 EAISI AI Incentive Award</li>
-                  <li>Presented at AI Summit Brainport & Philips Innovation Award</li>
-                </ul>
-                <div class="tech-stack">
-                  <span>YOLO</span>
-                  <span>Deep Learning</span>
-                  <span>Computer Vision</span>
-                  <span>Full-stack</span>
-                </div>
-              </div>
-              <div class="project-link">
-                <a href="https://github.com/siddharthganjoo" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
-                <a href="https://loopit.ai" target="_blank" aria-label="Website"><i class="fas fa-globe"></i></a>
-              </div>
-            </div>
-          </div>
-
-          <div class="card">
-            <div class="project-info">
-              <div class="project-bio">
-                <div class="project-header">
-                  <h3>Poultry Analytics Dashboards</h3>
-                  <span class="project-date">Nov 2025 - Present</span>
-                </div>
-                <div class="company-badge">
-                  <img src="assets/logos/vencomatic.png" alt="Vencomatic" class="company-logo" />
-                  <span>Vencomatic Group</span>
-                </div>
-                <p>Interactive dashboards using Streamlit and SQL Server to analyze poultry production data and monitor KPIs.</p>
-                <div class="tech-stack">
-                  <span>Streamlit</span>
-                  <span>SQL Server</span>
-                  <span>Azure</span>
-                  <span>Pandas</span>
-                  <span>Time-series</span>
-                </div>
-              </div>
-              <div class="project-link">
-                <a href="https://github.com/siddharthganjoo" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
-              </div>
-            </div>
-          </div>
-
-          <div class="card">
-            <div class="project-info">
-              <div class="project-bio">
-                <div class="project-header">
-                  <h3>Data Visualisation Web App</h3>
-                  <span class="project-date">Oct 2021 - Mar 2022</span>
-                </div>
-                <div class="company-badge">
-                  <img src="assets/logos/ingersoll.png" alt="Ingersoll Rand" class="company-logo" />
-                  <span>Ingersoll Rand</span>
-                </div>
-                <p>Python dashboard with real-time data integration and modular pipelines for machine usage monitoring.</p>
-                <div class="tech-stack">
-                  <span>Python</span>
-                  <span>Heroku</span>
-                  <span>Real-time ETL</span>
-                  <span>Data Viz</span>
-                </div>
-              </div>
-              <div class="project-link">
-                <a href="https://github.com/siddharthganjoo" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
-              </div>
-            </div>
-          </div>
-        </article>
-      </div>
-
-      <!-- Academic Research Projects -->
-      <div class="project-category">
-        <h3 class="category-title">📚 Academic Research</h3>
-        <article class="project">
-          <div class="card">
-            <div class="project-info">
-              <div class="project-bio">
-                <div class="project-header">
-                  <h3>Task Allocation in Software Development</h3>
-                  <span class="project-date">Apr 2024 - Jun 2024</span>
-                </div>
-                <div class="company-badge">
-                  <img src="assets/logos/tue.png" alt="TU/e" class="company-logo" />
-                  <span>TU/e</span>
-                </div>
-                <p>Comparative study on manual vs. automated task allocation methods analyzing team performance and fairness.</p>
-                <div class="tech-stack">
-                  <span>Graph Neural Networks</span>
-                  <span>ST-DGNN</span>
-                  <span>Literature Review</span>
-                </div>
-              </div>
-              <div class="project-link">
-                <a href="https://github.com/siddharthganjoo" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
-              </div>
-            </div>
-          </div>
-
-          <div class="card">
-            <div class="project-info">
-              <div class="project-bio">
-                <div class="project-header">
-                  <h3>Graph Database Query Optimization</h3>
-                  <span class="project-date">Dec 2023 - Feb 2024</span>
-                </div>
-                <div class="company-badge">
-                  <img src="assets/logos/tue.png" alt="TU/e" class="company-logo" />
-                  <span>TU/e</span>
-                </div>
-                <p>Redesigned Quicksilver's query pipeline with custom cardinality estimator and dynamic programming planner.</p>
-                <div class="tech-stack">
-                  <span>Graph Databases</span>
-                  <span>Query Optimization</span>
-                  <span>CSR</span>
-                </div>
-              </div>
-              <div class="project-link">
-                <a href="https://github.com/siddharthganjoo" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
-              </div>
-            </div>
-          </div>
-
-          <div class="card">
-            <div class="project-info">
-              <div class="project-bio">
-                <div class="project-header">
-                  <h3>CNN Texture-Shape Cue Conflicts</h3>
-                  <span class="project-date">Sep 2023 - Nov 2023</span>
-                </div>
-                <div class="company-badge">
-                  <img src="assets/logos/tue.png" alt="TU/e" class="company-logo" />
-                  <span>TU/e</span>
-                </div>
-                <p>Investigated ResNet-50's texture-shape bias using artistic style transfer across 5 genres.</p>
-                <div class="tech-stack">
-                  <span>ResNet-50</span>
-                  <span>Style Transfer</span>
-                  <span>PyTorch</span>
-                </div>
-              </div>
-              <div class="project-link">
-                <a href="https://github.com/siddharthganjoo" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
-              </div>
-            </div>
-          </div>
-        </article>
-      </div>
-
-      <!-- Applied ML/CV Projects -->
-      <div class="project-category">
-        <h3 class="category-title">💻 Applied ML & Computer Vision</h3>
-        <article class="project">
-          <div class="card">
-            <div class="project-info">
-              <div class="project-bio">
-                <div class="project-header">
-                  <h3>Vehicle Proximity Alert System</h3>
-                  <span class="project-date">Jan 2023 - May 2023</span>
-                </div>
-                <div class="company-badge">
-                  <img src="assets/logos/jmi.png" alt="JMI" class="company-logo" />
-                  <span>Jamia Millia Islamia</span>
-                </div>
-                <p>Real-time YOLOv4-tiny system detecting vehicles/pedestrians with audio warnings for driving safety.</p>
-                <div class="tech-stack">
-                  <span>YOLOv4-tiny</span>
-                  <span>OpenCV</span>
-                  <span>Real-time Detection</span>
-                </div>
-              </div>
-              <div class="project-link">
-                <a href="https://github.com/siddharthganjoo" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
-              </div>
-            </div>
-          </div>
-
-          <div class="card">
-            <div class="project-info">
-              <div class="project-bio">
-                <div class="project-header">
-                  <h3>Brain Tumor Classification</h3>
-                  <span class="project-date">Jul 2021</span>
-                </div>
-                <p>EfficientNet model trained on 3000+ Brain MRI scans across 4 tumor classes.</p>
-                <div class="tech-stack">
-                  <span>EfficientNet</span>
-                  <span>Medical Imaging</span>
-                  <span>Keras</span>
-                </div>
-              </div>
-              <div class="project-link">
-                <a href="https://github.com/siddharthganjoo" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
-              </div>
-            </div>
-          </div>
-
-          <div class="card">
-            <div class="project-info">
-              <div class="project-bio">
-                <div class="project-header">
-                  <h3>Object Localization with TensorFlow</h3>
-                  <span class="project-date">Jul 2021</span>
-                </div>
-                <p>CNN for emoji classification and localization with dual-output architecture.</p>
-                <div class="tech-stack">
-                  <span>TensorFlow</span>
-                  <span>Keras</span>
-                  <span>CNN</span>
-                </div>
-              </div>
-              <div class="project-link">
-                <a href="https://github.com/siddharthganjoo" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
-              </div>
-            </div>
-          </div>
-
-          <div class="card">
-            <div class="project-info">
-              <div class="project-bio">
-                <div class="project-header">
-                  <h3>AI Messenger Chatbot</h3>
-                  <span class="project-date">Jul 2021</span>
-                </div>
-                <p>Full-featured chatbot using IBM Watson for customer interaction and booking generation.</p>
-                <div class="tech-stack">
-                  <span>IBM Watson</span>
-                  <span>NLP</span>
-                  <span>Chatbot</span>
-                </div>
-              </div>
-              <div class="project-link">
-                <a href="https://github.com/siddharthganjoo" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
-              </div>
-            </div>
-          </div>
-        </article>
-      </div>
-
-      <a href="https://github.com/siddharthganjoo?tab=repositories" class="btn btn-secondary" target="_blank">
-        View All Projects on GitHub <i class="fas fa-arrow-right"></i>
-      </a>
-    </section>
-
-    <!-- Recommendations Section -->
-    <section id="recommendations" class="recommendations-container container">
-      <div class="division"></div>
-      <div class="content-text">
-        <h2>Recommendations</h2>
-        <p>What colleagues and mentors say about working with me</p>
-      </div>
-      
-      <div class="recommendations-grid">
-        <div class="recommendation-card">
-          <div class="recommendation-header">
-            <img src="assets/recommendations/yanja.jpg" alt="Yanja Dajsuren" class="recommender-photo" />
-            <div class="recommender-info">
-              <h3>Yanja Dajsuren</h3>
-              <p class="recommender-title">EngD ST Program Director, Assistant Professor</p>
-              <p class="recommender-org">Eindhoven University of Technology</p>
-              <span class="recommendation-date">November 2025 • Master's Thesis Supervisor</span>
-            </div>
-          </div>
-          <div class="recommendation-text">
-            <p>"I had the pleasure of supervising Siddharth Ganjoo during his MSc graduation project at TU/e, conducted in collaboration with Vencomatic Group. His research explored how machine learning can enhance the egg-sorting process through real-time operator feedback.</p>
-            <p>Siddharth demonstrated strong analytical thinking, technical depth, and a genuine passion for integrating human insight with intelligent systems. He also showed remarkable <strong>leadership, proactivity, and ownership</strong>, taking initiative in shaping the project and collaborating seamlessly with both academic and industry partners. His work stood out for its creativity, reliability, and real-world relevance. I am confident he will continue to make meaningful contributions at the intersection of AI, automation, and agricultural technology and beyond."</p>
-          </div>
-        </div>
-
-        <div class="recommendation-card">
-          <div class="recommendation-header">
-            <img src="assets/recommendations/gert.jpg" alt="Gert Guri" class="recommender-photo" />
-            <div class="recommender-info">
-              <h3>Dr. Gert Guri</h3>
-              <p class="recommender-title">Coordinator Education on Entrepreneurial Learning</p>
-              <p class="recommender-org">Eindhoven University of Technology</p>
-              <span class="recommendation-date">September 2025 • EuroTeQ & IESE Bootcamp Mentor</span>
-            </div>
-          </div>
-          <div class="recommendation-text">
-            <p>"I am pleased to recommend Siddharth, with whom I had the pleasure of teaching during the EuroTeQ course. Throughout the program, Siddharth consistently demonstrated initiative and creativity in developing innovative solutions. His ability to approach challenges with both critical thinking and originality helped his peers in the teamwork activities.</p>
-            <p>I coached Siddharth and his team during his participation in the IESE Entrepreneurship Bootcamp in Spain, where he demonstrated the capacity to work in collaborative environments and an <strong>entrepreneurial mindset</strong>. Siddharth is highly motivated, adaptable, and eager to take on new challenges. His combination of <strong>creativity, teamwork, and resilience</strong> makes him exceptionally well-prepared for future academic and professional endeavors."</p>
-          </div>
-        </div>
-
-        <div class="recommendation-card">
-          <div class="recommendation-header">
-            <img src="assets/recommendations/bert.jpg" alt="Bert Sadowski" class="recommender-photo" />
-            <div class="recommender-info">
-              <h3>Prof. Bert Sadowski</h3>
-              <p class="recommender-title">Professor & Head Task Force of AI in Education</p>
-              <p class="recommender-org">Eindhoven University of Technology</p>
-              <span class="recommendation-date">September 2024 • Direct Manager</span>
-            </div>
-          </div>
-          <div class="recommendation-text">
-            <p>"I had the pleasure of working with Siddharth Ganjoo during my Social Cost Benefit Analysis course, where he acted as a teaching assistant. During the course, he demonstrated excellent <strong>leadership and supervisory skills</strong>. Siddharth effectively guided student groups through complex economic analyses on a variety of topics, offering insightful feedback and ensuring high academic standards were maintained.</p>
-            <p>His excellent knowledge of the subject and his practical understanding of real-world applications were critical in helping students navigate challenging concepts. Siddharth's ability to engage with the students and foster collaborative learning environments was truly impressive. His contributions as a Teaching Assistant were invaluable."</p>
-          </div>
-        </div>
-
-        <div class="recommendation-card">
-          <div class="recommendation-header">
-            <img src="assets/recommendations/alexander.jpg" alt="Alexander Serebrenik" class="recommender-photo" />
-            <div class="recommender-info">
-              <h3>Prof. Alexander Serebrenik</h3>
-              <p class="recommender-title">Full Professor of Social Software Engineering</p>
-              <p class="recommender-org">Eindhoven University of Technology</p>
-              <span class="recommendation-date">September 2025 • Research Project Supervisor</span>
-            </div>
-          </div>
-          <div class="recommendation-text">
-            <p>"I had the pleasure of supervising Siddharth during his research project. He showed <strong>persistence and technical ability</strong> by setting up and running a large number of experiments. The project highlighted his hands-on approach to tackling complex problems, as well as areas for growth in structuring analysis and presenting research motivation clearly."</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- In The News / Media Section -->
-    <section id="news" class="news-container container">
-      <div class="division"></div>
-      <div class="content-text">
-        <h2>In The News</h2>
-        <p>Media features, achievements, and community highlights</p>
-      </div>
-      
-      <div class="news-grid">
-        <div class="news-card">
-          <div class="news-image-container">
-            <img src="assets/news/loopit-ai-summit.jpg" alt="Loopit.ai at AI Summit" class="news-image" />
-          </div>
-          <div class="news-content">
-            <span class="news-tag">Startup Showcase</span>
+            <span class="timeline-tag">Event</span>
             <h3>AI Summit Brainport 2024</h3>
-            <p>Showcased Loopit.ai's AI-powered damage assessment, policy checking, and fraud detection solutions to key stakeholders across insurance and automotive industries at the Evoluon.</p>
-            <div class="news-meta">
-              <span>December 2024</span>
-              <span>•</span>
-              <span>EAISI</span>
-            </div>
+            <p>Showcased Loopit.ai at the Evoluon to key stakeholders.</p>
           </div>
-        </div>
-
-        <div class="news-card">
-          <div class="news-image-container">
-            <img src="assets/news/graduation.jpg" alt="MSc Graduation" class="news-image" />
-          </div>
-          <div class="news-content">
-            <span class="news-tag">Milestone</span>
-            <h3>MSc Computer Science Graduation</h3>
-            <p>Graduated from TU/e with Master's thesis on reinforcement learning for adaptive egg-sorting and semantic knowledge graphs for traceability in collaboration with Vencomatic Group.</p>
-            <div class="news-meta">
-              <span>August 2025</span>
-              <span>•</span>
-              <span>TU/e</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="news-card">
-          <div class="news-image-container">
-            <img src="assets/news/eaisi-award.jpg" alt="EAISI AI Award" class="news-image" />
-          </div>
-          <div class="news-content">
-            <span class="news-tag">Award</span>
-            <h3>EAISI AI Incentive Award Winner</h3>
-            <p>Loopit.ai won €1,000 EAISI AI Incentive Award for the most promising AI solution with clear, practical applications for the automotive insurance and repair industries.</p>
-            <div class="news-meta">
-              <span>April 2024</span>
-              <span>•</span>
-              <span>EAISI • TU/e</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="news-card">
-          <div class="news-image-container">
-            <img src="assets/news/eindhovens-dagblad.jpg" alt="Newspaper Feature" class="news-image" />
-          </div>
-          <div class="news-content">
-            <span class="news-tag">Media Feature</span>
-            <h3>Featured in Eindhovens Dagblad</h3>
-            <p>Cashless festival bar system featured in local newspaper highlighting innovative payment solution designed during TU/e Challenge Week. Client This is Live Group expressed interest for implementation.</p>
-            <div class="news-meta">
-              <span>September 2023</span>
-              <span>•</span>
-              <span>Eindhovens Dagblad</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="news-card">
-          <div class="news-image-container">
-            <img src="assets/news/iese-bootcamp.jpg" alt="IESE Bootcamp" class="news-image" />
-          </div>
-          <div class="news-content">
-            <span class="news-tag">Entrepreneurship</span>
-            <h3>IESE Ignite Bootcamp Barcelona</h3>
-            <p>Represented TU/e in EuroTeQ cohort at IESE Business School's Ignite Bootcamp, presenting Loopit.ai to international VCs and industry experts. Accelerated startup development through mentorship.</p>
-            <div class="news-meta">
-              <span>July 2024</span>
-              <span>•</span>
-              <span>IESE • EuroTeQ</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="news-card">
-          <div class="news-image-container">
-            <img src="assets/news/philips-innovation.jpg" alt="Philips Innovation Award" class="news-image" />
-          </div>
-          <div class="news-content">
-            <span class="news-tag">Pitch Competition</span>
-            <h3>Philips Innovation Award Presentation</h3>
-            <p>Presented Loopit.ai solution at Philips Innovation Award with VCs and attendees expressing enthusiasm for AI-driven efficiency transformation in insurance and automotive sectors.</p>
-            <div class="news-meta">
-              <span>June 2024</span>
-              <span>•</span>
-              <span>Philips • TU/e</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Awards Section -->
-    <section id="awards" class="awards-container container">
-      <div class="division"></div>
-      <div class="content-text">
-        <h2>Recognition & Awards</h2>
-      </div>
-      
-      <div class="awards-grid">
-        <div class="award-card">
-          <div class="award-icon">🏆</div>
-          <h3>TU/e Innovation Challenge Winner</h3>
-          <p>Designed an RL-based EV fleet charging system for UPS</p>
-          <span class="award-date">May 2023</span>
         </div>
         
-        <div class="award-card">
-          <div class="award-icon">💡</div>
-          <h3>EAISI AI Incentive Award</h3>
-          <p>Built Loopit.ai, awarded €1,000 for AI innovation</p>
-          <span class="award-date">April 2022</span>
+        <div class="timeline-item reveal">
+          <div class="timeline-date">Aug 2025</div>
+          <div class="timeline-content">
+            <span class="timeline-tag">Milestone</span>
+            <h3>MSc Graduation</h3>
+            <p>Graduated from TU/e with thesis on RL for egg-sorting.</p>
+          </div>
         </div>
         
-        <div class="award-card">
-          <div class="award-icon">📰</div>
-          <h3>Media Feature - Eindhovens Dagblad</h3>
-          <p>Cashless festival bar system featured in city press</p>
-          <span class="award-date">August 2022</span>
+        <div class="timeline-item reveal">
+          <div class="timeline-date">Apr 2024</div>
+          <div class="timeline-content">
+            <span class="timeline-tag highlight">Award</span>
+            <h3>EAISI AI Incentive Award</h3>
+            <p>Won €1,000 for Loopit.ai's promising AI solution.</p>
+          </div>
         </div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <footer id="contact">
-      <div class="container">
-        <h2>Let's Connect</h2>
-        <p class="footer-tagline">Open to collaborations, consulting, and full-time opportunities</p>
-        <a href="mailto:sganjoo2000@gmail.com" class="footer-email">sganjoo2000@gmail.com</a>
-        <p class="footer-phone">+31 645117749</p>
-        <!-- Social links -->
-        <div class="social">
-          <a href="https://github.com/siddharthganjoo" target="_blank" aria-label="GitHub"><img src="./assets/github-icon.svg" alt="GitHub" /></a>
-          <a href="https://linkedin.com/in/siddharthganjoo" target="_blank" aria-label="LinkedIn"><img src="./assets/linkedin-icon.svg" alt="LinkedIn" /></a>
-        </div>
-        <p class="footer-copyright">© 2025 Siddharth Ganjoo. All rights reserved.</p>
-        <p class="footer-location">📍 Eindhoven, Netherlands</p>
+  <!-- Contact -->
+  <section class="section" style="text-align: center; padding: 6rem 2rem;">
+    <div class="reveal">
+      <h2 style="font-size: 3rem; margin-bottom: 1rem;">Let's work together</h2>
+      <p style="color: var(--text-secondary); font-size: 1.25rem; margin-bottom: 2rem;">
+        Open to full-time opportunities and collaborations
+      </p>
+      <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+        <a href="mailto:sganjoo2000@gmail.com" class="btn btn-primary">Get in touch</a>
+        <a href="https://linkedin.com/in/siddharthganjoo" class="btn btn-secondary" target="_blank">LinkedIn</a>
+        <a href="https://github.com/siddharthganjoo" class="btn btn-secondary" target="_blank">GitHub</a>
       </div>
-    </footer>
-    <script src="js/script.js"></script>
-  </body>
+    </div>
+  </section>
+
+  <footer style="text-align: center; padding: 2rem; color: var(--text-secondary); border-top: 1px solid var(--border);">
+    <p>© 2025 Siddharth Ganjoo. Built with attention to detail.</p>
+  </footer>
+
+  <script src="js/script.js"></script>
+</body>
 </html>
