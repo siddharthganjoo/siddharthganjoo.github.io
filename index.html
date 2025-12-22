@@ -4,16 +4,39 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Siddharth Ganjoo - Data Scientist & ML Engineer</title>
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" />
+  
+  <!-- Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- Styles -->
   <link rel="stylesheet" href="css/style.css">
+  
+  <style>
+    /* Inline critical CSS to ensure page is never blank */
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { 
+      font-family: 'Inter', -apple-system, sans-serif; 
+      background: #ffffff;
+      color: #000000;
+      line-height: 1.6;
+    }
+  </style>
 </head>
 <body>
   
   <!-- Navigation -->
   <nav class="nav">
     <div class="nav-container">
-      <a href="#hero" class="nav-logo">SG</a>
+      <!-- Logo - Can be image or text -->
+      <a href="#hero" class="nav-logo">
+        <img src="assets/logo.png" alt="SG" class="logo-img" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+        <span class="logo-text" style="display: none;">SG</span>
+      </a>
       
       <ul class="nav-menu">
         <li class="nav-item"><a href="#about" class="nav-link">About</a></li>
@@ -27,18 +50,14 @@
         <li class="nav-item"><a href="#news" class="nav-link">News</a></li>
         <li class="nav-item"><a href="assets/resume.pdf" class="nav-link nav-cta">Resume</a></li>
         <li class="nav-item">
-          <button class="theme-toggle" id="theme-toggle">
-            <svg class="theme-icon sun" width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
-              <path d="M10 3a1 1 0 011 1v1a1 1 0 11-2 0V4a1 1 0 011-1zm0 10a3 3 0 100-6 3 3 0 000 6zm0 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM3 10a1 1 0 011-1h1a1 1 0 110 2H4a1 1 0 01-1-1zm12 0a1 1 0 011-1h1a1 1 0 110 2h-1a1 1 0 01-1-1z"/>
-            </svg>
-            <svg class="theme-icon moon" width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
-              <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"/>
-            </svg>
+          <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme">
+            <i class="fas fa-sun theme-icon sun"></i>
+            <i class="fas fa-moon theme-icon moon"></i>
           </button>
         </li>
       </ul>
       
-      <button class="nav-hamburger" id="nav-hamburger">
+      <button class="nav-hamburger" id="nav-hamburger" aria-label="Menu">
         <span></span>
         <span></span>
         <span></span>
@@ -53,8 +72,8 @@
       <h1 class="hero-title reveal reveal-delay-1">Siddharth Ganjoo</h1>
       <p class="hero-subtitle reveal reveal-delay-2">Data Scientist & ML Engineer</p>
       <p class="hero-description reveal reveal-delay-3">
-        Building production-ready AI systems at the intersection of agriculture, manufacturing, and automotive. 
-        MSc Computer Science @ TU/e.
+        Building production-ready AI systems at the intersection of agriculture, 
+        manufacturing, and automotive. MSc Computer Science @ TU/e.
       </p>
       
       <div class="hero-stats reveal reveal-delay-4">
@@ -80,25 +99,26 @@
     
     <div class="scroll-indicator">
       <span>Scroll to explore</span>
-      <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
-        <path d="M6 1L6 11M6 11L1 6M6 11L11 6" stroke="currentColor" stroke-width="1.5"/>
-      </svg>
+      <i class="fas fa-arrow-down"></i>
     </div>
   </section>
 
   <!-- About -->
-  <section id="about" class="section">
+  <section id="about" class="section about-section">
     <div class="section-container">
       <div class="section-header reveal">
         <span class="section-eyebrow">Introduction</span>
         <h2 class="section-title">About Me</h2>
-        <p class="section-description">Turning complex data into intelligent systems</p>
+        <p class="section-description">Turning complex data into intelligent systems that drive real business impact</p>
       </div>
       
       <div class="about-grid">
         <div class="about-content slide-right">
           <p>I'm a Data Scientist and ML Engineer with a Master's in Computer Science from TU/e, specializing in production-ready AI systems for agriculture, manufacturing, and automotive sectors.</p>
-          <p>My expertise spans deep learning (YOLO, CodeT5), reinforcement learning, and full-stack data pipelines. I've led the development of Loopit.ai and deployed RL-based systems saving thousands of euros annually.</p>
+          
+          <p>My expertise spans deep learning (YOLO, CodeT5), reinforcement learning, and full-stack data pipelines. I've led the development of Loopit.ai, an AI-driven vehicle damage detection platform, and deployed RL-based calibration systems that save thousands of euros annually.</p>
+          
+          <p>Currently at Vencomatic Group, I build interactive dashboards and data pipelines that transform poultry production analytics. As co-founder of Loopit.ai, I'm revolutionizing insurance claims automation.</p>
         </div>
         
         <div class="skills-showcase slide-left">
@@ -107,11 +127,13 @@
             <div class="skill-pills">
               <span>TensorFlow</span>
               <span>PyTorch</span>
+              <span>Scikit-learn</span>
               <span>YOLO</span>
               <span>RL</span>
               <span>LLMs</span>
             </div>
           </div>
+          
           <div class="skill-group">
             <h3>Data Engineering</h3>
             <div class="skill-pills">
@@ -119,6 +141,18 @@
               <span>SQL Server</span>
               <span>Azure</span>
               <span>Streamlit</span>
+              <span>PostgreSQL</span>
+            </div>
+          </div>
+          
+          <div class="skill-group">
+            <h3>DevOps & Cloud</h3>
+            <div class="skill-pills">
+              <span>Docker</span>
+              <span>Kubernetes</span>
+              <span>AWS</span>
+              <span>Git</span>
+              <span>CI/CD</span>
             </div>
           </div>
         </div>
@@ -127,15 +161,17 @@
   </section>
 
   <!-- Experience - Horizontal Scroll -->
-  <section id="experience" class="section">
+  <section id="experience" class="section experience-section">
     <div class="section-container-full">
       <div class="section-header reveal">
         <span class="section-eyebrow">Career</span>
         <h2 class="section-title">Experience</h2>
+        <p class="section-description">Building AI solutions across industries</p>
       </div>
       
       <div class="experience-carousel">
         <div class="experience-track">
+          <!-- Card 1 -->
           <div class="experience-card scale-in">
             <div class="experience-period">Nov 2025 - Present</div>
             <div class="experience-company">
@@ -143,16 +179,22 @@
               <div>
                 <h3>Junior Data Scientist</h3>
                 <p class="company-name">Vencomatic Group</p>
+                <span class="location">Eersel, Netherlands</span>
               </div>
             </div>
-            <p class="experience-description">Building data pipelines and interactive dashboards using Python, SQL Server, and Streamlit.</p>
+            <p class="experience-description">
+              Building data pipelines and interactive dashboards using Python, SQL Server, and Streamlit 
+              to analyze poultry production data and monitor KPIs.
+            </p>
             <div class="tech-tags">
               <span>Python</span>
-              <span>SQL</span>
+              <span>SQL Server</span>
               <span>Streamlit</span>
+              <span>Azure</span>
             </div>
           </div>
           
+          <!-- Card 2 -->
           <div class="experience-card scale-in">
             <div class="experience-period">Feb 2024 - Present</div>
             <div class="experience-company">
@@ -160,15 +202,21 @@
               <div>
                 <h3>Co-Founder & CTO</h3>
                 <p class="company-name">Loopit.ai</p>
+                <span class="location">Eindhoven, Netherlands</span>
               </div>
             </div>
-            <p class="experience-description">Led AI-driven platform for vehicle damage detection. Won €1,000 EAISI Award.</p>
+            <p class="experience-description">
+              Led end-to-end development of AI-driven platform automating vehicle damage detection. 
+              Managed 12-member team. Won €1,000 EAISI AI Incentive Award.
+            </p>
             <div class="tech-tags">
               <span>YOLO</span>
+              <span>Deep Learning</span>
               <span>Leadership</span>
             </div>
           </div>
           
+          <!-- Card 3 -->
           <div class="experience-card scale-in">
             <div class="experience-period">Dec 2024 - Aug 2025</div>
             <div class="experience-company">
@@ -176,12 +224,37 @@
               <div>
                 <h3>Master's Thesis Intern</h3>
                 <p class="company-name">Vencomatic Group</p>
+                <span class="location">Eersel, Netherlands</span>
               </div>
             </div>
-            <p class="experience-description">Developed RL-based calibration system reducing false negatives by 50%.</p>
+            <p class="experience-description">
+              Developed RL-based calibration system reducing false negatives by 50% 
+              (~€25,000 savings, ~15,000 eggs saved annually).
+            </p>
             <div class="tech-tags">
-              <span>RL</span>
+              <span>Reinforcement Learning</span>
               <span>Knowledge Graphs</span>
+            </div>
+          </div>
+          
+          <!-- Card 4 -->
+          <div class="experience-card scale-in">
+            <div class="experience-period">Sep 2024 - Dec 2024</div>
+            <div class="experience-company">
+              <div class="company-logo-placeholder">WM</div>
+              <div>
+                <h3>Research Intern</h3>
+                <p class="company-name">William & Mary</p>
+                <span class="location">United States</span>
+              </div>
+            </div>
+            <p class="experience-description">
+              Optimized LLM prompts for code generation using CodeT5. 
+              Identified 20-40% gisting as optimal trade-off.
+            </p>
+            <div class="tech-tags">
+              <span>LLMs</span>
+              <span>CodeT5</span>
             </div>
           </div>
         </div>
@@ -189,67 +262,110 @@
       
       <div class="carousel-nav">
         <button class="carousel-btn prev" id="exp-prev">
-          <svg width="24" height="24" fill="none" stroke="currentColor">
-            <path d="M15 18l-6-6 6-6" stroke-width="2"/>
-          </svg>
+          <i class="fas fa-chevron-left"></i>
         </button>
         <button class="carousel-btn next" id="exp-next">
-          <svg width="24" height="24" fill="none" stroke="currentColor">
-            <path d="M9 18l6-6-6-6" stroke-width="2"/>
-          </svg>
+          <i class="fas fa-chevron-right"></i>
         </button>
       </div>
     </div>
   </section>
 
   <!-- Projects -->
-  <section id="projects" class="section">
+  <section id="projects" class="section projects-section">
     <div class="section-container">
       <div class="section-header reveal">
         <span class="section-eyebrow">Portfolio</span>
         <h2 class="section-title">Selected Projects</h2>
+        <p class="section-description">Research and commercial work driving measurable impact</p>
       </div>
       
       <div class="projects-grid">
+        <!-- Featured -->
         <div class="project-card featured reveal">
           <div class="project-image">
             <div class="project-image-placeholder">🚗</div>
           </div>
           <div class="project-content">
             <span class="project-tag">Startup</span>
-            <h3>Loopit.ai</h3>
-            <p>AI-driven vehicle damage detection platform. Won €1,000 EAISI AI Incentive Award.</p>
+            <h3>Loopit.ai - Vehicle Damage Detection</h3>
+            <p>AI-driven platform automating vehicle damage detection for insurance companies. Won €1,000 EAISI AI Incentive Award.</p>
+            <div class="project-impact">
+              <span>🏆 Award Winner</span>
+              <span>👥 12-person team</span>
+            </div>
             <div class="project-links">
-              <a href="https://loopit.ai">Visit site →</a>
+              <a href="https://loopit.ai" target="_blank">Visit site →</a>
+              <a href="https://github.com/siddharthganjoo" target="_blank">GitHub →</a>
             </div>
           </div>
         </div>
         
+        <!-- Project 2 -->
         <div class="project-card reveal reveal-delay-1">
           <div class="project-content">
             <span class="project-tag">Research</span>
-            <h3>RL Egg Sorting</h3>
-            <p>50% false negative reduction, €25K savings annually.</p>
+            <h3>RL-Based Egg Sorting</h3>
+            <p>Reinforcement learning framework reducing false negatives by 50%.</p>
+            <div class="project-impact">
+              <span>€25K savings</span>
+              <span>15K eggs saved</span>
+            </div>
           </div>
         </div>
         
+        <!-- Project 3 -->
         <div class="project-card reveal reveal-delay-2">
           <div class="project-content">
             <span class="project-tag">Research</span>
             <h3>LLM Code Optimization</h3>
-            <p>Optimized prompt compression for CodeT5.</p>
+            <p>Optimized prompt compression for code generation using CodeT5.</p>
           </div>
         </div>
+        
+        <!-- Project 4 -->
+        <div class="project-card reveal reveal-delay-3">
+          <div class="project-content">
+            <span class="project-tag">Academic</span>
+            <h3>Graph Database Optimization</h3>
+            <p>Redesigned Quicksilver's query pipeline with custom cardinality estimator.</p>
+          </div>
+        </div>
+        
+        <!-- Project 5 -->
+        <div class="project-card reveal reveal-delay-4">
+          <div class="project-content">
+            <span class="project-tag">Application</span>
+            <h3>Vehicle Proximity Alert</h3>
+            <p>Real-time YOLOv4-tiny system with audio warnings for driving safety.</p>
+          </div>
+        </div>
+        
+        <!-- Project 6 -->
+        <div class="project-card reveal reveal-delay-5">
+          <div class="project-content">
+            <span class="project-tag">Academic</span>
+            <h3>CNN Texture-Shape Analysis</h3>
+            <p>Investigated ResNet-50's texture-shape bias using style transfer.</p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="section-footer">
+        <a href="https://github.com/siddharthganjoo?tab=repositories" target="_blank" class="btn btn-secondary">
+          View all on GitHub →
+        </a>
       </div>
     </div>
   </section>
 
   <!-- News Timeline -->
-  <section id="news" class="section">
+  <section id="news" class="section news-section">
     <div class="section-container-narrow">
       <div class="section-header reveal">
         <span class="section-eyebrow">Updates</span>
         <h2 class="section-title">In The News</h2>
+        <p class="section-description">Recent achievements and media highlights</p>
       </div>
       
       <div class="timeline">
@@ -258,7 +374,7 @@
           <div class="timeline-content">
             <span class="timeline-tag">Event</span>
             <h3>AI Summit Brainport 2024</h3>
-            <p>Showcased Loopit.ai at the Evoluon to key stakeholders.</p>
+            <p>Showcased Loopit.ai's AI-powered solutions at the Evoluon to key stakeholders across insurance and automotive industries.</p>
           </div>
         </div>
         
@@ -266,8 +382,17 @@
           <div class="timeline-date">Aug 2025</div>
           <div class="timeline-content">
             <span class="timeline-tag">Milestone</span>
-            <h3>MSc Graduation</h3>
-            <p>Graduated from TU/e with thesis on RL for egg-sorting.</p>
+            <h3>MSc Computer Science Graduation</h3>
+            <p>Graduated from TU/e with thesis on reinforcement learning for adaptive egg-sorting in collaboration with Vencomatic Group.</p>
+          </div>
+        </div>
+        
+        <div class="timeline-item reveal">
+          <div class="timeline-date">Jul 2024</div>
+          <div class="timeline-content">
+            <span class="timeline-tag">Entrepreneurship</span>
+            <h3>IESE Ignite Bootcamp Barcelona</h3>
+            <p>Represented TU/e in EuroTeQ cohort, accelerating Loopit.ai through mentorship and VC presentations.</p>
           </div>
         </div>
         
@@ -275,8 +400,17 @@
           <div class="timeline-date">Apr 2024</div>
           <div class="timeline-content">
             <span class="timeline-tag highlight">Award</span>
-            <h3>EAISI AI Incentive Award</h3>
-            <p>Won €1,000 for Loopit.ai's promising AI solution.</p>
+            <h3>EAISI AI Incentive Award Winner</h3>
+            <p>Won €1,000 for Loopit.ai's promising AI solution with clear practical applications.</p>
+          </div>
+        </div>
+        
+        <div class="timeline-item reveal">
+          <div class="timeline-date">Sep 2023</div>
+          <div class="timeline-content">
+            <span class="timeline-tag">Media</span>
+            <h3>Featured in Eindhovens Dagblad</h3>
+            <p>Cashless festival bar system featured in local newspaper.</p>
           </div>
         </div>
       </div>
@@ -284,24 +418,32 @@
   </section>
 
   <!-- Contact -->
-  <section class="section" style="text-align: center; padding: 6rem 2rem;">
-    <div class="reveal">
-      <h2 style="font-size: 3rem; margin-bottom: 1rem;">Let's work together</h2>
-      <p style="color: var(--text-secondary); font-size: 1.25rem; margin-bottom: 2rem;">
-        Open to full-time opportunities and collaborations
+  <section id="contact" class="section contact-section">
+    <div class="section-container reveal">
+      <h2 class="contact-title">Let's work together</h2>
+      <p class="contact-description">
+        Open to full-time opportunities, collaborations, and consulting
       </p>
-      <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+      <div class="contact-actions">
         <a href="mailto:sganjoo2000@gmail.com" class="btn btn-primary">Get in touch</a>
-        <a href="https://linkedin.com/in/siddharthganjoo" class="btn btn-secondary" target="_blank">LinkedIn</a>
-        <a href="https://github.com/siddharthganjoo" class="btn btn-secondary" target="_blank">GitHub</a>
+        <a href="https://linkedin.com/in/siddharthganjoo" class="btn btn-secondary" target="_blank">
+          <i class="fab fa-linkedin"></i> LinkedIn
+        </a>
+        <a href="https://github.com/siddharthganjoo" class="btn btn-secondary" target="_blank">
+          <i class="fab fa-github"></i> GitHub
+        </a>
       </div>
+      <p class="contact-location">📍 Eindhoven, Netherlands</p>
     </div>
   </section>
 
-  <footer style="text-align: center; padding: 2rem; color: var(--text-secondary); border-top: 1px solid var(--border);">
-    <p>© 2025 Siddharth Ganjoo. Built with attention to detail.</p>
+  <!-- Footer -->
+  <footer class="footer">
+    <p>© 2025 Siddharth Ganjoo</p>
+    <p>Built with attention to detail</p>
   </footer>
 
+  <!-- JavaScript -->
   <script src="js/script.js"></script>
 </body>
 </html>
