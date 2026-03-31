@@ -161,6 +161,35 @@
   }
   
   // ========================================
+  // SCROLL ANIMATIONS
+  // ========================================
+
+  function initScrollAnimations() {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    });
+
+    // Observe section headers, cards, and timeline items
+    const targets = document.querySelectorAll(
+      '.section-header, .about-grid, .experience-card, .project-card, .timeline-item, .recommendation-card, .writing-card, .writing-placeholder, .fade-in'
+    );
+
+    targets.forEach(el => {
+      el.classList.add('fade-in');
+      observer.observe(el);
+    });
+
+    console.log('✨ Scroll animations initialized');
+  }
+
+  // ========================================
   // SMOOTH ANCHOR SCROLLING
   // ========================================
   
@@ -228,6 +257,7 @@
         initCarousel();
         initSmoothScroll();
         initNavbarScroll();
+        initScrollAnimations();
         console.log('✅ All features initialized!');
       });
     } else {
@@ -236,6 +266,7 @@
       initCarousel();
       initSmoothScroll();
       initNavbarScroll();
+      initScrollAnimations();
       console.log('✅ All features initialized!');
     }
   }

@@ -99,10 +99,11 @@ body {
   opacity: 0.7;
 }
 
-.logo-img {
-  height: 32px;
-  width: auto;
-  display: block;
+.logo-text {
+  font-size: 1.4rem;
+  font-weight: 800;
+  letter-spacing: -0.05em;
+  color: var(--text);
 }
 
 .nav-menu {
@@ -287,6 +288,27 @@ body {
   max-width: 900px;
 }
 
+.hero-profile {
+  margin-bottom: var(--spacing-md);
+  display: flex;
+  justify-content: center;
+}
+
+.profile-image {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid var(--border);
+  box-shadow: 0 8px 32px var(--shadow);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.profile-image:hover {
+  transform: scale(1.05);
+  box-shadow: 0 12px 40px var(--shadow);
+}
+
 .hero-badge {
   display: inline-block;
   padding: 0.5rem 1rem;
@@ -362,6 +384,45 @@ body {
   color: var(--text-secondary);
   font-size: 0.85rem;
 }
+
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(7px); }
+}
+
+.scroll-indicator i {
+  animation: bounce 2s ease-in-out infinite;
+}
+
+/* ========================================
+   SCROLL ANIMATIONS
+   ======================================== */
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-in {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.fade-in:nth-child(2) { transition-delay: 0.1s; }
+.fade-in:nth-child(3) { transition-delay: 0.2s; }
+.fade-in:nth-child(4) { transition-delay: 0.3s; }
 
 /* ========================================
    BUTTONS
@@ -986,6 +1047,97 @@ body {
 .section-footer {
   text-align: center;
   margin-top: var(--spacing-xl);
+}
+
+/* ========================================
+   WRITING SECTION
+   ======================================== */
+
+.writing-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: var(--spacing-lg);
+}
+
+.writing-card {
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  text-decoration: none;
+  display: block;
+}
+
+.writing-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 60px var(--shadow);
+}
+
+.writing-card-image {
+  height: 200px;
+  background: var(--border);
+  overflow: hidden;
+}
+
+.writing-card-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.writing-card:hover .writing-card-image img {
+  transform: scale(1.05);
+}
+
+.writing-card-content {
+  padding: var(--spacing-lg);
+}
+
+.writing-card-date {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  margin-bottom: var(--spacing-xs);
+}
+
+.writing-card-content h3 {
+  font-size: 1.25rem;
+  margin-bottom: var(--spacing-sm);
+  color: var(--text);
+}
+
+.writing-card-content p {
+  color: var(--text-secondary);
+  line-height: 1.7;
+  font-size: 0.95rem;
+}
+
+.writing-placeholder {
+  grid-column: 1 / -1;
+  text-align: center;
+  padding: var(--spacing-2xl) var(--spacing-lg);
+  border: 2px dashed var(--border);
+  border-radius: 20px;
+}
+
+.writing-placeholder-icon {
+  font-size: 2.5rem;
+  color: var(--text-secondary);
+  margin-bottom: var(--spacing-md);
+}
+
+.writing-placeholder h3 {
+  font-size: 1.5rem;
+  margin-bottom: var(--spacing-sm);
+  color: var(--text);
+}
+
+.writing-placeholder p {
+  color: var(--text-secondary);
+  max-width: 500px;
+  margin: 0 auto;
+  line-height: 1.7;
 }
 
 /* ========================================
