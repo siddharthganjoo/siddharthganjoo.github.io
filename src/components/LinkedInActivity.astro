@@ -1,0 +1,407 @@
+---
+import { siteConfig } from '../data/site';
+
+interface LinkedInPost {
+  id: string;
+  date: string;
+  content: string;
+  tags: string[];
+  likes: number;
+  comments: number;
+  postUrl: string;
+  embedUrl?: string;
+  mediaImg?: string;
+}
+
+const recentPosts: LinkedInPost[] = [
+  {
+    id: "post-1",
+    date: "Aug 2026",
+    content: "Thrilled to share that I have joined the TU/e Supercomputing Center as a Machine Learning Engineer working on Spike AI! We are building high-performance Spiking Neural Networks (SNNs) and neuromorphic computing pipelines to push the boundaries of energy-efficient AI. Excited for the journey ahead!",
+    tags: ["#MachineLearning", "#Supercomputing", "#SpikeAI", "#Neuromorphic", "#TUe"],
+    likes: 68,
+    comments: 14,
+    postUrl: "https://www.linkedin.com/in/siddharthganjoo/",
+    mediaImg: "assets/logos/tue.png"
+  },
+  {
+    id: "post-2",
+    date: "Jun 2026",
+    content: "Wrapping up an incredible chapter at Vencomatic Group as a Junior Data Scientist. Engineered automated telemetry data pipelines and Streamlit dashboards on Azure to optimize poultry systems, reducing false-negative sorting errors by over 50%. Grateful to the team for the mentorship and impact!",
+    tags: ["#DataScience", "#Vencomatic", "#ReinforcementLearning", "#Azure", "#Telemetry"],
+    likes: 84,
+    comments: 19,
+    postUrl: "https://www.linkedin.com/in/siddharthganjoo/",
+    mediaImg: "assets/logos/vencomatic.png"
+  },
+  {
+    id: "post-3",
+    date: "Apr 2024",
+    content: "Honored and proud to announce that Loopit.ai has won the €1,000 EAISI AI Incentive Award from the Eindhoven AI Systems Institute! Huge congratulations to our team for pushing automated vehicle damage detection to production-grade accuracy.",
+    tags: ["#LoopitAI", "#EAISI", "#Startup", "#ComputerVision", "#YOLOv8"],
+    likes: 125,
+    comments: 28,
+    postUrl: "https://www.linkedin.com/in/siddharthganjoo/",
+    mediaImg: "assets/news/eaisi-award.jpg"
+  }
+];
+---
+
+<section id="linkedin" class="section linkedin-section">
+  <div class="section-container">
+    <div class="section-header">
+      <span class="section-eyebrow"><i class="fab fa-linkedin"></i> Professional Network</span>
+      <h2 class="section-title">Live LinkedIn Activity</h2>
+      <p class="section-description">Latest career updates, research announcements, and industry milestones</p>
+    </div>
+
+    <div class="linkedin-container glass-card">
+      <!-- Profile Header Bar -->
+      <div class="linkedin-profile-bar">
+        <div class="linkedin-user-info">
+          <img src="assets/pp.JPG" alt={siteConfig.name} class="linkedin-user-avatar" />
+          <div>
+            <div class="linkedin-name-row">
+              <h3>{siteConfig.name}</h3>
+              <i class="fab fa-linkedin-in linkedin-badge-icon"></i>
+            </div>
+            <p class="linkedin-headline">{siteConfig.role} @ TU/e Supercomputing Center</p>
+            <p class="linkedin-loc"><i class="fas fa-location-dot"></i> {siteConfig.location} • 500+ connections</p>
+          </div>
+        </div>
+
+        <div class="linkedin-cta-actions">
+          <a href={siteConfig.socials.linkedin} target="_blank" rel="noopener noreferrer" class="btn-linkedin-connect">
+            <i class="fab fa-linkedin"></i> Connect on LinkedIn
+          </a>
+          <a href={`${siteConfig.socials.linkedin}/recent-activity/all/`} target="_blank" rel="noopener noreferrer" class="btn-linkedin-activity">
+            View Live Feed <i class="fas fa-external-link-alt"></i>
+          </a>
+        </div>
+      </div>
+
+      <!-- Feed Grid -->
+      <div class="linkedin-posts-grid">
+        {recentPosts.map(post => (
+          <div class="linkedin-post-card">
+            <!-- Post Header -->
+            <div class="post-card-header">
+              <img src="assets/pp.JPG" alt={siteConfig.name} class="post-author-img" />
+              <div>
+                <span class="post-author-name">{siteConfig.name}</span>
+                <span class="post-meta">{post.date} • <i class="fas fa-globe-americas"></i></span>
+              </div>
+              <a href={post.postUrl} target="_blank" rel="noopener noreferrer" class="post-linkedin-icon">
+                <i class="fab fa-linkedin"></i>
+              </a>
+            </div>
+
+            <!-- Post Text -->
+            <p class="post-text">{post.content}</p>
+
+            <!-- Tags -->
+            <div class="post-tags">
+              {post.tags.map(tag => (
+                <span class="tag-pill">{tag}</span>
+              ))}
+            </div>
+
+            <!-- Media Thumbnail (if present) -->
+            {post.mediaImg && (
+              <div class="post-media-wrap">
+                <img src={post.mediaImg} alt="Post media preview" />
+              </div>
+            )}
+
+            <!-- Engagement Bar -->
+            <div class="post-engagement-bar">
+              <div class="reactions-count">
+                <span class="reaction-icons">👍 💡 ❤️</span>
+                <span>{post.likes} reactions</span>
+              </div>
+              <span class="comments-count">{post.comments} comments</span>
+            </div>
+
+            <!-- Post Action Buttons -->
+            <div class="post-action-buttons">
+              <a href={post.postUrl} target="_blank" rel="noopener noreferrer" class="post-action-btn">
+                <i class="far fa-thumbs-up"></i> Like
+              </a>
+              <a href={post.postUrl} target="_blank" rel="noopener noreferrer" class="post-action-btn">
+                <i class="far fa-comment-dots"></i> Comment
+              </a>
+              <a href={post.postUrl} target="_blank" rel="noopener noreferrer" class="post-action-btn">
+                <i class="fas fa-share-nodes"></i> Share
+              </a>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <!-- Live Embed Support Note -->
+      <div class="linkedin-footer-hint">
+        <p>
+          <i class="fas fa-bolt text-amber-400"></i> Want 100% automated live updates? Any public LinkedIn post can also be embedded directly via its native 
+          <code>&lt;iframe&gt;</code> snippet or linked via <a href="https://www.linkedin.com/in/siddharthganjoo/recent-activity/all/" target="_blank" rel="noopener noreferrer" class="text-sky-400 underline">LinkedIn Recent Activity</a>.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .linkedin-container {
+    padding: 1.5rem;
+    border-radius: 16px;
+  }
+
+  .linkedin-profile-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding-bottom: 1.25rem;
+    border-bottom: 1px solid var(--border);
+    flex-wrap: wrap;
+  }
+
+  .linkedin-user-info {
+    display: flex;
+    align-items: center;
+    gap: 0.85rem;
+  }
+
+  .linkedin-user-avatar {
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid var(--border);
+  }
+
+  .linkedin-name-row {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+  }
+
+  .linkedin-name-row h3 {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--text);
+  }
+
+  .linkedin-badge-icon {
+    color: #0a66c2;
+    font-size: 1rem;
+  }
+
+  .linkedin-headline {
+    font-size: 0.8125rem;
+    color: var(--text-secondary);
+  }
+
+  .linkedin-loc {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+  }
+
+  .linkedin-cta-actions {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+  }
+
+  .btn-linkedin-connect {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    background: #0a66c2;
+    color: #ffffff;
+    font-size: 0.8125rem;
+    font-weight: 600;
+    padding: 0.45rem 1rem;
+    border-radius: 50px;
+    transition: all 0.2s ease;
+  }
+
+  .btn-linkedin-connect:hover {
+    background: #004182;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 14px rgba(10, 102, 194, 0.35);
+  }
+
+  .btn-linkedin-activity {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    background: var(--bg);
+    color: var(--text);
+    border: 1px solid var(--border);
+    font-size: 0.8125rem;
+    font-weight: 600;
+    padding: 0.45rem 0.9rem;
+    border-radius: 50px;
+    transition: all 0.2s ease;
+  }
+
+  .btn-linkedin-activity:hover {
+    border-color: #0a66c2;
+    color: #0a66c2;
+  }
+
+  /* Post Cards Grid */
+  .linkedin-posts-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.15rem;
+    margin-top: 1.5rem;
+  }
+
+  .linkedin-post-card {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 1.15rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: transform 0.2s ease, border-color 0.2s ease;
+  }
+
+  .linkedin-post-card:hover {
+    transform: translateY(-2px);
+    border-color: #0a66c2;
+  }
+
+  .post-card-header {
+    display: flex;
+    align-items: center;
+    gap: 0.65rem;
+    margin-bottom: 0.65rem;
+  }
+
+  .post-author-img {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+
+  .post-author-name {
+    display: block;
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--text);
+    line-height: 1.2;
+  }
+
+  .post-meta {
+    font-size: 0.7rem;
+    color: var(--text-muted);
+  }
+
+  .post-linkedin-icon {
+    margin-left: auto;
+    color: #0a66c2;
+    font-size: 1.15rem;
+  }
+
+  .post-text {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    line-height: 1.5;
+    margin-bottom: 0.65rem;
+  }
+
+  .post-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.3rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .tag-pill {
+    font-size: 0.7rem;
+    color: #0a66c2;
+    font-weight: 500;
+  }
+
+  .post-media-wrap {
+    width: 100%;
+    height: 130px;
+    border-radius: 8px;
+    overflow: hidden;
+    background: var(--border);
+    margin-bottom: 0.75rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .post-media-wrap img {
+    max-height: 100%;
+    max-width: 100%;
+    object-fit: contain;
+  }
+
+  .post-engagement-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 0.725rem;
+    color: var(--text-muted);
+    padding: 0.5rem 0;
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 0.5rem;
+  }
+
+  .reaction-icons {
+    margin-right: 0.25rem;
+  }
+
+  .post-action-buttons {
+    display: flex;
+    justify-content: space-around;
+  }
+
+  .post-action-btn {
+    font-size: 0.75rem;
+    color: var(--text-secondary);
+    font-weight: 600;
+    padding: 0.35rem 0.6rem;
+    border-radius: 4px;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+    transition: background 0.15s ease, color 0.15s ease;
+  }
+
+  .post-action-btn:hover {
+    background: var(--card-bg);
+    color: #0a66c2;
+  }
+
+  .linkedin-footer-hint {
+    margin-top: 1.25rem;
+    text-align: center;
+    font-size: 0.775rem;
+    color: var(--text-muted);
+    background: var(--bg);
+    padding: 0.65rem 1rem;
+    border-radius: 8px;
+    border: 1px dashed var(--border);
+  }
+
+  @media (max-width: 768px) {
+    .linkedin-profile-bar {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    .linkedin-cta-actions {
+      width: 100%;
+    }
+  }
+</style>
