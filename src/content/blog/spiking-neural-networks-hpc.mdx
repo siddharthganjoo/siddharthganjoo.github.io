@@ -1,0 +1,25 @@
+---
+title: "Event-Driven Neuromorphic Computing on High-Performance Supercomputing Clusters"
+pubDate: 2026-08-15
+description: "How Spiking Neural Networks (SNNs) drastically reduce energy consumption while maintaining high temporal precision on TU/e supercomputing infrastructure."
+author: "Siddharth Ganjoo"
+readTime: "6 min read"
+tags: ["Spiking Neural Networks", "Spike AI", "HPC", "Neuromorphic", "PyTorch"]
+featured: true
+---
+
+# Event-Driven Neuromorphic Computing on High-Performance Clusters
+
+Traditional Artificial Neural Networks (ANNs) process continuous real-valued activations across entire dense matrices at every single layer, incurring significant energy overhead during forward and backward passes.
+
+In contrast, biological brains transmit information through discrete, sparse electrical pulses known as **spikes**. At the **TU/e Supercomputing Center**, our work on **Spike AI** centers around harnessing event-driven computation: neurons only perform mathematical operations when an action potential threshold is crossed.
+
+## Why Spiking Neural Networks (SNNs)?
+
+1. **Massive Energy Efficiency**: Up to 10×–100× lower power consumption on specialized neuromorphic silicon compared to conventional GPU architectures.
+2. **Temporal Dynamism**: Natural alignment with streaming time-series sensor data and event-based silicon retinas (Dynamic Vision Sensors).
+3. **Biological Realism**: Modeling non-linear synaptic plasticity and membrane potential decay dynamics.
+
+## HPC Simulation Pipeline
+
+Simulating millions of biologically plausible neurons on high-performance supercomputers requires distributed message-passing interfaces (MPI) and custom PyTorch CUDA kernels to efficiently schedule sparse spike trains without serialization bottlenecks.

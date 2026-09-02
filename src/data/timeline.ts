@@ -13,6 +13,7 @@ export interface TimelineItem {
   mediaImg?: string;
   mediaAlt?: string;
   skills?: string[];
+  linkedinUrl?: string;
 }
 
 export const timelineData: TimelineItem[] = [
@@ -26,7 +27,8 @@ export const timelineData: TimelineItem[] = [
     orgName: "TU/e Supercomputing Center — Spike AI",
     description: "Developing high-performance Spiking Neural Network (SNN) pipelines and neuromorphic computing architectures on TU/e supercomputing infrastructure for energy-efficient next-generation AI.",
     logoImg: "assets/logos/tue.png",
-    skills: ["Spike AI", "Neuromorphic", "HPC", "PyTorch", "Python"]
+    skills: ["Spike AI", "Neuromorphic", "HPC", "PyTorch", "Python"],
+    linkedinUrl: "https://www.linkedin.com/in/siddharthganjoo/"
   },
   {
     id: "vencomatic-junior-ds",
@@ -38,7 +40,8 @@ export const timelineData: TimelineItem[] = [
     orgName: "Vencomatic Group",
     description: "Built automated data pipelines and interactive dashboards using Python, SQL Server, and Streamlit to analyze poultry production telemetry, track KPIs, and detect sensor anomalies on Azure.",
     logoImg: "assets/logos/vencomatic.png",
-    skills: ["Python", "SQL Server", "Streamlit", "Azure", "Telemetry"]
+    skills: ["Python", "SQL Server", "Streamlit", "Azure", "Telemetry"],
+    linkedinUrl: "https://www.linkedin.com/in/siddharthganjoo/"
   },
   {
     id: "msc-graduation",
@@ -50,7 +53,8 @@ export const timelineData: TimelineItem[] = [
     orgName: "Eindhoven University of Technology (TU/e)",
     description: "Graduated from TU/e with Master's thesis on reinforcement learning for adaptive egg-sorting in collaboration with Vencomatic Group.",
     mediaImg: "assets/news/graduation.jpg",
-    mediaAlt: "MSc Graduation at TU Eindhoven"
+    mediaAlt: "MSc Graduation at TU Eindhoven",
+    linkedinUrl: "https://www.linkedin.com/in/siddharthganjoo/"
   },
   {
     id: "vencomatic-thesis",
@@ -62,7 +66,8 @@ export const timelineData: TimelineItem[] = [
     orgName: "Vencomatic Group",
     description: "Developed RL-based calibration system reducing false negatives by over 50% (~€25,000 annual savings, ~15,000 eggs saved, ~1,440kg CO₂e avoided). Integrated with knowledge graphs.",
     logoImg: "assets/logos/vencomatic.png",
-    skills: ["Reinforcement Learning", "Knowledge Graphs", "Optimization"]
+    skills: ["Reinforcement Learning", "Knowledge Graphs", "Optimization"],
+    linkedinUrl: "https://www.linkedin.com/in/siddharthganjoo/"
   },
   {
     id: "ai-summit-brainport",
@@ -74,7 +79,8 @@ export const timelineData: TimelineItem[] = [
     orgName: "Loopit.ai Showcase",
     description: "Showcased Loopit.ai's platform at the Evoluon to key stakeholders across insurance and automotive industries.",
     mediaImg: "assets/news/loopit-ai-summit.jpg",
-    mediaAlt: "AI Summit Brainport 2024"
+    mediaAlt: "AI Summit Brainport 2024",
+    linkedinUrl: "https://www.linkedin.com/in/siddharthganjoo/"
   },
   {
     id: "william-mary",
@@ -86,7 +92,8 @@ export const timelineData: TimelineItem[] = [
     orgName: "William & Mary University",
     description: "Optimized LLM prompts for code generation using CodeT5 by adapting gisting and prompt masking. Benchmarked on CodexGlue with CrystalBLEU and Pass@k.",
     logoImg: "assets/logos/wm.png",
-    skills: ["LLMs", "CodeT5", "Prompt Gisting", "NLP"]
+    skills: ["LLMs", "CodeT5", "Prompt Gisting", "NLP"],
+    linkedinUrl: "https://www.linkedin.com/in/siddharthganjoo/"
   },
   {
     id: "iese-bootcamp",
@@ -98,7 +105,8 @@ export const timelineData: TimelineItem[] = [
     orgName: "EuroTeQ & IESE Business School",
     description: "Represented TU/e in EuroTeQ cohort, accelerating Loopit.ai through mentorship, business development, and VC presentations.",
     mediaImg: "assets/news/iese-bootcamp.jpg",
-    mediaAlt: "IESE Bootcamp Barcelona"
+    mediaAlt: "IESE Bootcamp Barcelona",
+    linkedinUrl: "https://www.linkedin.com/in/siddharthganjoo/"
   },
   {
     id: "eaisi-award",
@@ -111,7 +119,8 @@ export const timelineData: TimelineItem[] = [
     orgName: "Eindhoven AI Systems Institute",
     description: "Won the €1,000 EAISI AI Incentive Award for Loopit.ai's promising automated vehicular damage detection platform.",
     mediaImg: "assets/news/eaisi-award.jpg",
-    mediaAlt: "EAISI AI Award Winner"
+    mediaAlt: "EAISI AI Award Winner",
+    linkedinUrl: "https://www.linkedin.com/in/siddharthganjoo/"
   },
   {
     id: "loopit-ai",
@@ -123,7 +132,8 @@ export const timelineData: TimelineItem[] = [
     orgName: "Loopit.ai",
     description: "Led end-to-end development of AI-driven platform automating vehicle damage detection and repair estimation. Managed 12-member team. Won €1,000 EAISI AI Incentive Award.",
     logoBadge: "LA",
-    skills: ["YOLOv8", "Computer Vision", "FastAPI", "Docker"]
+    skills: ["YOLOv8", "Computer Vision", "FastAPI", "Docker"],
+    linkedinUrl: "https://www.linkedin.com/in/siddharthganjoo/"
   },
   {
     id: "philips-innovation",
@@ -135,7 +145,8 @@ export const timelineData: TimelineItem[] = [
     orgName: "Philips",
     description: "Participated in Philips innovation initiative, collaborating on cutting-edge technology challenges in the Eindhoven ecosystem.",
     mediaImg: "assets/news/philips-innovation.jpg",
-    mediaAlt: "Philips Innovation"
+    mediaAlt: "Philips Innovation",
+    linkedinUrl: "https://www.linkedin.com/in/siddharthganjoo/"
   },
   {
     id: "eindhovens-dagblad",
@@ -147,7 +158,8 @@ export const timelineData: TimelineItem[] = [
     orgName: "Regional Dutch Press",
     description: "Cashless festival bar system developed for student community featured in the regional newspaper.",
     mediaImg: "assets/news/eindhovens-dagblad.jpg",
-    mediaAlt: "Featured in Eindhovens Dagblad"
+    mediaAlt: "Featured in Eindhovens Dagblad",
+    linkedinUrl: "https://www.linkedin.com/in/siddharthganjoo/"
   },
   {
     id: "bu-wuppertal",
@@ -159,7 +171,8 @@ export const timelineData: TimelineItem[] = [
     orgName: "Bergische Universität Wuppertal",
     description: "Developed and fine-tuned deep learning models utilizing reinforcement learning and job-shop scheduling to optimize aerospace production in the AlphaMES project.",
     logoBadge: "BU",
-    skills: ["Deep Learning", "Reinforcement Learning", "Aerospace"]
+    skills: ["Deep Learning", "Reinforcement Learning", "Aerospace"],
+    linkedinUrl: "https://www.linkedin.com/in/siddharthganjoo/"
   },
   {
     id: "ingersoll-rand",
@@ -171,7 +184,7 @@ export const timelineData: TimelineItem[] = [
     orgName: "Ingersoll Rand",
     description: "Developed Python-based dashboard with real-time telemetry data integration and modular pipelines for machine usage monitoring and automated reporting on cloud platforms.",
     logoImg: "assets/logos/ingersoll.png",
-    skills: ["Python", "Dashboards", "Telemetry"]
+    skills: ["Python", "Dashboards", "Telemetry"],
+    linkedinUrl: "https://www.linkedin.com/in/siddharthganjoo/"
   }
 ];
-

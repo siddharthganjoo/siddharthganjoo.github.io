@@ -1,0 +1,27 @@
+---
+title: "Calibrating Industrial High-Speed Sorters Using Reinforcement Learning"
+pubDate: 2025-08-01
+description: "Reducing false negative sorting errors by 50% through policy optimization and telemetry analysis at Vencomatic Group."
+author: "Siddharth Ganjoo"
+readTime: "5 min read"
+tags: ["Reinforcement Learning", "Vencomatic", "Optimization", "Telemetry", "Python"]
+featured: true
+---
+
+# Calibrating Industrial High-Speed Sorters Using Reinforcement Learning
+
+Industrial egg handling systems sort tens of thousands of units per hour. Static thresholds fail to adapt to ambient humidity, mechanical wear, and conveyor vibration drift, leading to false negatives where viable eggs are misclassified.
+
+## Reinforcement Learning Approach
+
+During my thesis at **Vencomatic Group**, we framed threshold calibration as a Markov Decision Process (MDP):
+- **State Space**: Real-time telemetry, conveyor speed, vibration metrics, and optical sensor readings.
+- **Action Space**: Continuous threshold adjustment deltas.
+- **Reward Function**: Penalizing misclassifications while avoiding calibration thrashing.
+
+## Impact & Results
+
+- **>50% Reduction** in false negative classification errors.
+- **~€25,000 Annual Savings** per packaging facility.
+- **~15,000 Eggs Saved** annually from needless disposal.
+- **~1,440 kg CO₂e Avoided** through reduced agricultural waste.

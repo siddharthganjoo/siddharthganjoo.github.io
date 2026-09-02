@@ -1,0 +1,140 @@
+---
+import { getCollection } from 'astro:content';
+
+const posts = await getCollection('blog');
+// Sort by date descending
+posts.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+---
+
+<section id="research" class="section research-section">
+  <div class="section-container">
+    <div class="section-header">
+      <span class="section-eyebrow"><i class="fas fa-feather-pointed"></i> Research &amp; Writing</span>
+      <h2 class="section-title">Technical Articles &amp; Case Studies</h2>
+      <p class="section-description">Deep dives into supercomputing algorithms, Spiking Neural Networks, and industrial machine learning</p>
+    </div>
+
+    <div class="articles-grid">
+      {posts.map(post => (
+        <article class="article-card glass-card">
+          <div class="article-meta">
+            <span class="article-date">
+              {post.data.pubDate.toLocaleDateString('en-US', { month: 'short', year: 'numeric' })}
+            </span>
+            <span class="article-read-time">
+              <i class="far fa-clock"></i> {post.data.readTime}
+            </span>
+          </div>
+
+          <h3 class="article-title">{post.data.title}</h3>
+          <p class="article-desc">{post.data.description}</p>
+
+          <div class="article-tags">
+            {post.data.tags.map(tag => (
+              <span class="article-tag">{tag}</span>
+            ))}
+          </div>
+
+          <div class="article-cta">
+            <span class="article-link-label">
+              Read Technical Summary <i class="fas fa-arrow-right"></i>
+            </span>
+          </div>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .articles-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 1.25rem;
+  }
+
+  .article-card {
+    padding: 1.35rem 1.4rem;
+    border-radius: 14px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: transform 0.2s var(--ease-smooth), border-color 0.2s;
+  }
+
+  .article-card:hover {
+    transform: translateY(-3px);
+    border-color: var(--accent);
+  }
+
+  .article-meta {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    margin-bottom: 0.5rem;
+  }
+
+  .article-date {
+    font-weight: 600;
+    color: var(--accent);
+  }
+
+  .article-title {
+    font-size: 1.15rem;
+    font-weight: 700;
+    line-height: 1.35;
+    color: var(--text);
+    margin-bottom: 0.5rem;
+  }
+
+  .article-desc {
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+    line-height: 1.55;
+    margin-bottom: 1rem;
+    flex-grow: 1;
+  }
+
+  .article-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.35rem;
+    margin-bottom: 1rem;
+  }
+
+  .article-tag {
+    font-size: 0.725rem;
+    padding: 0.15rem 0.55rem;
+    border-radius: 50px;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    color: var(--text-secondary);
+  }
+
+  .article-cta {
+    padding-top: 0.75rem;
+    border-top: 1px solid var(--border);
+  }
+
+  .article-link-label {
+    font-size: 0.8125rem;
+    font-weight: 600;
+    color: var(--accent);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    transition: gap 0.2s ease;
+  }
+
+  .article-card:hover .article-link-label {
+    gap: 0.55rem;
+  }
+
+  @media (max-width: 768px) {
+    .articles-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

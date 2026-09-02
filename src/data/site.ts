@@ -46,7 +46,9 @@ export const siteConfig: SiteConfig = {
     { label: "About", href: "#about" },
     { label: "Timeline", href: "#timeline" },
     { label: "Projects", href: "#projects" },
-    { label: "Recommendations", href: "#recommendations" }
+    { label: "GitHub", href: "#github" },
+    { label: "Research", href: "#research" },
+    { label: "Testimonials", href: "#recommendations" }
   ]
 };
 

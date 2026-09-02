@@ -67,6 +67,14 @@ import { timelineData } from '../data/timeline';
                   ))}
                 </div>
               )}
+
+              {item.linkedinUrl && (
+                <div class="timeline-footer-row">
+                  <a href={item.linkedinUrl} target="_blank" rel="noopener noreferrer" class="timeline-linkedin-btn">
+                    <i class="fab fa-linkedin"></i> View on LinkedIn <span class="arrow">→</span>
+                  </a>
+                </div>
+              )}
             </div>
           </div>
         </div>
@@ -311,6 +319,55 @@ import { timelineData } from '../data/timeline';
     background: var(--bg);
     border: 1px solid var(--border);
     color: var(--text-secondary);
+  }
+
+  .timeline-footer-row {
+    margin-top: 0.75rem;
+    display: flex;
+    align-items: center;
+  }
+
+  .timeline-linkedin-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: 0.775rem;
+    font-weight: 600;
+    color: #0a66c2;
+    background: rgba(10, 102, 194, 0.08);
+    border: 1px solid rgba(10, 102, 194, 0.2);
+    padding: 0.3rem 0.75rem;
+    border-radius: 6px;
+    transition: all 0.2s ease;
+    text-decoration: none;
+  }
+
+  .timeline-linkedin-btn:hover {
+    background: #0a66c2;
+    color: #ffffff;
+    border-color: #0a66c2;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(10, 102, 194, 0.25);
+  }
+
+  .timeline-linkedin-btn .arrow {
+    transition: transform 0.2s ease;
+  }
+
+  .timeline-linkedin-btn:hover .arrow {
+    transform: translateX(3px);
+  }
+
+  :global([data-theme="dark"]) .timeline-linkedin-btn {
+    color: #38bdf8;
+    background: rgba(56, 189, 248, 0.1);
+    border-color: rgba(56, 189, 248, 0.25);
+  }
+
+  :global([data-theme="dark"]) .timeline-linkedin-btn:hover {
+    background: #0284c7;
+    color: #ffffff;
+    border-color: #0284c7;
   }
 
   @media (max-width: 768px) {

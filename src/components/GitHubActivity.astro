@@ -1,0 +1,436 @@
+---
+import { siteConfig } from '../data/site';
+
+// Static representation of GitHub highlights & contributions
+const pinnedRepos = [
+  {
+    name: "loopit-ai-cv",
+    desc: "Automated vehicle damage localization, segmentation & repair estimation with YOLOv8.",
+    lang: "Python",
+    langColor: "#3572A5",
+    stars: 14,
+    forks: 3,
+    url: "https://github.com/siddharthganjoo"
+  },
+  {
+    name: "snn-spike-ai",
+    desc: "Energy-efficient Spiking Neural Network (SNN) simulation pipelines on HPC clusters.",
+    lang: "Python",
+    langColor: "#3572A5",
+    stars: 19,
+    forks: 5,
+    url: "https://github.com/siddharthganjoo"
+  },
+  {
+    name: "rl-sorter-calibration",
+    desc: "Reinforcement learning for adaptive calibration of industrial sorting machinery.",
+    lang: "Jupyter Notebook",
+    langColor: "#DA5B0B",
+    stars: 11,
+    forks: 2,
+    url: "https://github.com/siddharthganjoo"
+  },
+  {
+    name: "codet5-prompt-gisting",
+    desc: "Compressing LLM code generation prompts by 20-40% via prompt gisting & masking.",
+    lang: "Python",
+    langColor: "#3572A5",
+    stars: 8,
+    forks: 1,
+    url: "https://github.com/siddharthganjoo"
+  }
+];
+
+// Activity squares for contribution heatmap
+const contributionWeeks = Array.from({ length: 28 }, (_, w) => {
+  return Array.from({ length: 7 }, (_, d) => {
+    // Generate organic developer activity pattern
+    const rand = Math.sin(w * 3 + d * 7) * 10000;
+    const val = Math.floor(Math.abs(rand) % 5);
+    return val;
+  });
+});
+---
+
+<section id="github" class="section github-section">
+  <div class="section-container">
+    <div class="section-header">
+      <span class="section-eyebrow"><i class="fab fa-github"></i> Open Source</span>
+      <h2 class="section-title">GitHub Activity &amp; Repositories</h2>
+      <p class="section-description">Contributions, active research codebases, and open-source machine learning tooling</p>
+    </div>
+
+    <div class="github-dashboard glass-card">
+      <!-- Profile & Summary Bar -->
+      <div class="github-profile-bar">
+        <div class="github-user-info">
+          <div class="github-avatar-wrap">
+            <i class="fab fa-github github-icon-large"></i>
+          </div>
+          <div>
+            <div class="github-names">
+              <h3>{siteConfig.name}</h3>
+              <a href={siteConfig.socials.github} target="_blank" rel="noopener noreferrer" class="github-handle">
+                @siddharthganjoo <i class="fas fa-arrow-up-right-from-square"></i>
+              </a>
+            </div>
+            <p class="github-bio">Machine Learning Engineer • Supercomputing • PyTorch &amp; SNNs</p>
+          </div>
+        </div>
+
+        <div class="github-stats-chips">
+          <div class="stat-chip">
+            <span class="stat-num">18+</span>
+            <span class="stat-lbl">Repositories</span>
+          </div>
+          <div class="stat-chip">
+            <span class="stat-num">500+</span>
+            <span class="stat-lbl">Commits / yr</span>
+          </div>
+          <div class="stat-chip">
+            <span class="stat-num">99.9%</span>
+            <span class="stat-lbl">Python / C++</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Contribution Heatmap -->
+      <div class="heatmap-card">
+        <div class="heatmap-header">
+          <span class="heatmap-title"><i class="fas fa-calendar-days"></i> Contribution Activity</span>
+          <div class="heatmap-legend">
+            <span>Less</span>
+            <span class="legend-cell level-0"></span>
+            <span class="legend-cell level-1"></span>
+            <span class="legend-cell level-2"></span>
+            <span class="legend-cell level-3"></span>
+            <span class="legend-cell level-4"></span>
+            <span>More</span>
+          </div>
+        </div>
+
+        <div class="heatmap-grid-scroll">
+          <div class="heatmap-grid">
+            {contributionWeeks.map(week => (
+              <div class="heatmap-col">
+                {week.map(level => (
+                  <div class={`heatmap-cell level-${level}`}></div>
+                ))}
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      <!-- Pinned Repositories Grid -->
+      <div class="pinned-repos-section">
+        <h4 class="pinned-title"><i class="fas fa-thumbtack"></i> Pinned Repositories</h4>
+        <div class="pinned-grid">
+          {pinnedRepos.map(repo => (
+            <a href={repo.url} target="_blank" rel="noopener noreferrer" class="repo-card">
+              <div class="repo-header">
+                <i class="fas fa-book-bookmark repo-icon"></i>
+                <span class="repo-name">{repo.name}</span>
+                <span class="repo-badge">Public</span>
+              </div>
+              <p class="repo-desc">{repo.desc}</p>
+              <div class="repo-footer">
+                <div class="repo-lang">
+                  <span class="lang-color-dot" style={`background-color: ${repo.langColor}`}></span>
+                  <span>{repo.lang}</span>
+                </div>
+                <div class="repo-counters">
+                  <span><i class="far fa-star"></i> {repo.stars}</span>
+                  <span><i class="fas fa-code-fork"></i> {repo.forks}</span>
+                </div>
+              </div>
+            </a>
+          ))}
+        </div>
+      </div>
+
+      <!-- CTA Footer -->
+      <div class="github-dashboard-footer">
+        <a href={siteConfig.socials.github} target="_blank" rel="noopener noreferrer" class="btn btn-secondary">
+          <i class="fab fa-github"></i> View Complete GitHub Profile →
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .github-dashboard {
+    padding: 1.5rem;
+    border-radius: 16px;
+  }
+
+  .github-profile-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding-bottom: 1.25rem;
+    border-bottom: 1px solid var(--border);
+    flex-wrap: wrap;
+  }
+
+  .github-user-info {
+    display: flex;
+    align-items: center;
+    gap: 0.85rem;
+  }
+
+  .github-avatar-wrap {
+    width: 44px;
+    height: 44px;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    color: var(--text);
+  }
+
+  .github-names {
+    display: flex;
+    align-items: baseline;
+    gap: 0.5rem;
+  }
+
+  .github-names h3 {
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: var(--text);
+  }
+
+  .github-handle {
+    font-size: 0.8125rem;
+    color: var(--accent);
+    font-weight: 600;
+  }
+
+  .github-bio {
+    font-size: 0.775rem;
+    color: var(--text-secondary);
+    margin-top: 0.1rem;
+  }
+
+  .github-stats-chips {
+    display: flex;
+    gap: 0.65rem;
+  }
+
+  .stat-chip {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    padding: 0.35rem 0.75rem;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-width: 80px;
+  }
+
+  .stat-num {
+    font-size: 0.95rem;
+    font-weight: 800;
+    color: var(--text);
+  }
+
+  .stat-lbl {
+    font-size: 0.65rem;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    font-weight: 600;
+  }
+
+  /* Heatmap */
+  .heatmap-card {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 1rem 1.15rem;
+    margin-top: 1.25rem;
+  }
+
+  .heatmap-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 0.75rem;
+    font-size: 0.775rem;
+    color: var(--text-secondary);
+  }
+
+  .heatmap-title {
+    font-weight: 600;
+    color: var(--text);
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+  }
+
+  .heatmap-legend {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 0.7rem;
+    color: var(--text-muted);
+  }
+
+  .legend-cell,
+  .heatmap-cell {
+    width: 11px;
+    height: 11px;
+    border-radius: 2px;
+    transition: transform 0.1s ease;
+  }
+
+  .heatmap-cell:hover {
+    transform: scale(1.3);
+  }
+
+  .level-0 { background: rgba(148, 163, 184, 0.15); }
+  .level-1 { background: #0e4429; }
+  .level-2 { background: #006d32; }
+  .level-3 { background: #26a641; }
+  .level-4 { background: #39d353; }
+
+  :global([data-theme="light"]) .level-0 { background: #ebedf0; }
+  :global([data-theme="light"]) .level-1 { background: #9be9a8; }
+  :global([data-theme="light"]) .level-2 { background: #40c463; }
+  :global([data-theme="light"]) .level-3 { background: #30a14e; }
+  :global([data-theme="light"]) .level-4 { background: #216e39; }
+
+  .heatmap-grid-scroll {
+    overflow-x: auto;
+    padding-bottom: 4px;
+  }
+
+  .heatmap-grid {
+    display: flex;
+    gap: 4px;
+  }
+
+  .heatmap-col {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  /* Pinned Repos Grid */
+  .pinned-repos-section {
+    margin-top: 1.5rem;
+  }
+
+  .pinned-title {
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 0.75rem;
+    display: flex;
+    align-items: center;
+    gap: 0.45rem;
+  }
+
+  .pinned-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 0.85rem;
+  }
+
+  .repo-card {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: transform 0.2s ease, border-color 0.2s ease;
+  }
+
+  .repo-card:hover {
+    transform: translateY(-2px);
+    border-color: var(--accent);
+  }
+
+  .repo-header {
+    display: flex;
+    align-items: center;
+    gap: 0.45rem;
+    margin-bottom: 0.4rem;
+  }
+
+  .repo-icon {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+  }
+
+  .repo-name {
+    font-size: 0.875rem;
+    font-weight: 700;
+    color: var(--accent);
+  }
+
+  .repo-badge {
+    font-size: 0.65rem;
+    padding: 0.1rem 0.4rem;
+    border-radius: 50px;
+    border: 1px solid var(--border);
+    color: var(--text-muted);
+    margin-left: auto;
+  }
+
+  .repo-desc {
+    font-size: 0.8125rem;
+    color: var(--text-secondary);
+    line-height: 1.45;
+    margin-bottom: 0.85rem;
+  }
+
+  .repo-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 0.75rem;
+    color: var(--text-muted);
+  }
+
+  .repo-lang {
+    display: flex;
+    align-items: center;
+    gap: 0.35rem;
+  }
+
+  .lang-color-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+  }
+
+  .repo-counters {
+    display: flex;
+    gap: 0.75rem;
+  }
+
+  .github-dashboard-footer {
+    text-align: center;
+    margin-top: 1.25rem;
+  }
+
+  @media (max-width: 768px) {
+    .github-profile-bar {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    .github-stats-chips {
+      width: 100%;
+      justify-content: space-between;
+    }
+  }
+</style>
