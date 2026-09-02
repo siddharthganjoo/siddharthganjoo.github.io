@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 320" width="100%" height="100%">
+  <defs>
+    <linearGradient id="prox-bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#181308"/>
+      <stop offset="50%" stop-color="#2a1f0a"/>
+      <stop offset="100%" stop-color="#0e0a03"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="600" height="320" fill="url(#prox-bg)"/>
+
+  <!-- Radar HUD Circles -->
+  <g stroke="#f59e0b" opacity="0.2" fill="none" stroke-width="1.5">
+    <circle cx="300" cy="150" r="40"/>
+    <circle cx="300" cy="150" r="80"/>
+    <circle cx="300" cy="150" r="120"/>
+    <line x1="160" y1="150" x2="440" y2="150"/>
+    <line x1="300" y1="30" x2="300" y2="270"/>
+  </g>
+
+  <!-- Top bar -->
+  <rect x="40" y="24" width="520" height="32" rx="6" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.1)"/>
+  <circle cx="58" cy="40" r="5" fill="#f59e0b"/>
+  <text x="74" y="45" fill="#ffffff" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto" font-size="11" font-weight="600">YOLOv4-TINY // VEHICLE &amp; PEDESTRIAN PROXIMITY ALERT</text>
+  <rect x="450" y="29" width="100" height="22" rx="4" fill="rgba(245, 158, 11, 0.2)" stroke="#f59e0b" stroke-width="1"/>
+  <text x="466" y="44" fill="#fbbf24" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto" font-size="10" font-weight="700">32 FPS REALTIME</text>
+
+  <!-- Detected Object 1: Car Ahead -->
+  <g transform="translate(230, 90)">
+    <rect width="140" height="75" rx="4" fill="rgba(245, 158, 11, 0.15)" stroke="#f59e0b" stroke-width="2"/>
+    <rect x="0" y="-20" width="115" height="20" rx="3" fill="#f59e0b"/>
+    <text x="6" y="-6" fill="#000000" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto" font-size="10" font-weight="700">VEHICLE [6.4m]</text>
+    <text x="25" y="45" fill="#fef08a" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto" font-size="12" font-weight="800">⚠️ PROXIMITY WARN</text>
+  </g>
+
+  <!-- Detected Object 2: Pedestrian -->
+  <g transform="translate(100, 130)">
+    <rect width="60" height="90" rx="4" fill="rgba(16, 185, 129, 0.15)" stroke="#10b981" stroke-width="2"/>
+    <rect x="0" y="-18" width="85" height="18" rx="3" fill="#10b981"/>
+    <text x="4" y="-5" fill="#ffffff" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto" font-size="9" font-weight="700">PEDESTRIAN</text>
+  </g>
+
+  <!-- Bottom Metric Cards -->
+  <g transform="translate(40, 260)">
+    <rect width="160" height="40" rx="8" fill="rgba(255,255,255,0.05)" stroke="rgba(255,255,255,0.1)"/>
+    <text x="14" y="17" fill="#94a3b8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto" font-size="9" font-weight="600">INFERENCE SPEED</text>
+    <text x="14" y="32" fill="#fbbf24" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto" font-size="13" font-weight="800">30+ FPS EMBEDDED</text>
+
+    <rect x="220" y="0" width="160" height="40" rx="8" fill="rgba(255,255,255,0.05)" stroke="rgba(255,255,255,0.1)"/>
+    <text x="234" y="17" fill="#94a3b8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto" font-size="9" font-weight="600">MODEL ARCHITECTURE</text>
+    <text x="234" y="32" fill="#ffffff" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto" font-size="13" font-weight="800">YOLOv4-tiny + OpenCV</text>
+
+    <rect x="400" y="0" width="160" height="40" rx="8" fill="rgba(255,255,255,0.05)" stroke="rgba(255,255,255,0.1)"/>
+    <text x="414" y="17" fill="#94a3b8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto" font-size="9" font-weight="600">WARNING SYSTEM</text>
+    <text x="414" y="32" fill="#10b981" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto" font-size="13" font-weight="800">Directional Audio HUD</text>
+  </g>
+</svg>

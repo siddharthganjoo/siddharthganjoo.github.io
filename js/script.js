@@ -13,7 +13,6 @@
     const themeToggle = document.getElementById('theme-toggle');
     const prefersDark = window.matchMedia('(prefers-color-scheme: dark)');
     
-    // Check saved theme or fallback to system preference
     let savedTheme = localStorage.getItem('theme');
     if (!savedTheme) {
       savedTheme = prefersDark.matches ? 'dark' : 'light';
@@ -30,7 +29,6 @@
       });
     }
 
-    // Auto-update if system preference changes and no explicit user choice
     prefersDark.addEventListener('change', (e) => {
       if (!localStorage.getItem('theme')) {
         applyTheme(e.matches ? 'dark' : 'light');
@@ -43,7 +41,7 @@
   }
 
   // --------------------------------------------------------------------------
-  // 2. Navigation, Scroll-Spy & Header Elevation
+  // 2. Navigation, Scroll-Spy & Header Shadow
   // --------------------------------------------------------------------------
   function initNavigation() {
     const nav = document.querySelector('.nav');
@@ -52,16 +50,14 @@
     const navLinks = document.querySelectorAll('.nav-link[href^="#"]');
     const sections = document.querySelectorAll('section[id]');
 
-    // Sticky header shadow
     window.addEventListener('scroll', () => {
-      if (window.scrollY > 20) {
+      if (window.scrollY > 30) {
         nav.classList.add('scrolled');
       } else {
         nav.classList.remove('scrolled');
       }
     }, { passive: true });
 
-    // Mobile hamburger menu toggle
     if (hamburger && navMenu) {
       hamburger.addEventListener('click', () => {
         const isActive = navMenu.classList.toggle('active');
@@ -69,7 +65,6 @@
         document.body.style.overflow = isActive ? 'hidden' : '';
       });
 
-      // Close menu on link click
       document.querySelectorAll('.nav-menu a').forEach(link => {
         link.addEventListener('click', () => {
           navMenu.classList.remove('active');
@@ -78,7 +73,6 @@
         });
       });
 
-      // Close menu when clicking outside
       document.addEventListener('click', (e) => {
         if (!nav.contains(e.target) && navMenu.classList.contains('active')) {
           navMenu.classList.remove('active');
@@ -88,7 +82,7 @@
       });
     }
 
-    // Smooth Anchor Scrolling with dynamic offset
+    // Smooth Anchor Scrolling
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
       anchor.addEventListener('click', function(e) {
         const targetId = this.getAttribute('href');
@@ -97,7 +91,7 @@
         const targetEl = document.querySelector(targetId);
         if (targetEl) {
           e.preventDefault();
-          const headerOffset = 76;
+          const headerOffset = 70;
           const elementPosition = targetEl.getBoundingClientRect().top;
           const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
 
@@ -111,12 +105,6 @@
 
     // Scroll-Spy
     if ('IntersectionObserver' in window && sections.length > 0) {
-      const observerOptions = {
-        root: null,
-        rootMargin: '-20% 0px -70% 0px',
-        threshold: 0
-      };
-
       const spyObserver = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
           if (entry.isIntersecting) {
@@ -130,45 +118,70 @@
             });
           }
         });
-      }, observerOptions);
+      }, {
+        root: null,
+        rootMargin: '-20% 0px -70% 0px',
+        threshold: 0
+      });
 
       sections.forEach(sec => spyObserver.observe(sec));
     }
   }
 
   // --------------------------------------------------------------------------
-  // 3. Scroll Reveal Animations
+  // 3. Experience Carousel
   // --------------------------------------------------------------------------
-  function initScrollAnimations() {
-    const animatedElements = document.querySelectorAll(
-      '.hero-content, .hero-visual, .about-text, .about-highlights, .timeline-card, .project-card, .news-card, .rec-card, .contact-card, .fade-up'
-    );
-
-    if (!('IntersectionObserver' in window)) {
-      animatedElements.forEach(el => el.classList.add('visible'));
-      return;
-    }
-
-    const revealObserver = new IntersectionObserver((entries, observer) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-          observer.unobserve(entry.target);
-        }
+  function initCarousel() {
+    const expPrev = document.getElementById('exp-prev');
+    const expNext = document.getElementById('exp-next');
+    const expTrack = document.querySelector('.experience-track');
+    
+    if (!expPrev || !expNext || !expTrack) return;
+    
+    const scrollAmount = 520;
+    
+    expPrev.addEventListener('click', () => {
+      expTrack.scrollBy({
+        left: -scrollAmount,
+        behavior: 'smooth'
       });
-    }, {
-      threshold: 0.08,
-      rootMargin: '0px 0px -40px 0px'
     });
-
-    animatedElements.forEach(el => {
-      el.classList.add('fade-up');
-      revealObserver.observe(el);
+    
+    expNext.addEventListener('click', () => {
+      expTrack.scrollBy({
+        left: scrollAmount,
+        behavior: 'smooth'
+      });
     });
+    
+    function updateButtons() {
+      const maxScroll = expTrack.scrollWidth - expTrack.clientWidth;
+      const currentScroll = expTrack.scrollLeft;
+      
+      if (currentScroll <= 10) {
+        expPrev.style.opacity = '0.4';
+        expPrev.style.cursor = 'not-allowed';
+      } else {
+        expPrev.style.opacity = '1';
+        expPrev.style.cursor = 'pointer';
+      }
+      
+      if (currentScroll >= maxScroll - 15) {
+        expNext.style.opacity = '0.4';
+        expNext.style.cursor = 'not-allowed';
+      } else {
+        expNext.style.opacity = '1';
+        expNext.style.cursor = 'pointer';
+      }
+    }
+    
+    expTrack.addEventListener('scroll', updateButtons, { passive: true });
+    updateButtons();
+    window.addEventListener('resize', updateButtons);
   }
 
   // --------------------------------------------------------------------------
-  // 4. Image Lightbox for News & Event Photos
+  // 4. Image Lightbox for News Photos
   // --------------------------------------------------------------------------
   function initLightbox() {
     const lightbox = document.getElementById('lightbox-modal');
@@ -178,7 +191,7 @@
 
     if (!lightbox || !lightboxImg) return;
 
-    const clickableImages = document.querySelectorAll('.news-image-wrap');
+    const clickableImages = document.querySelectorAll('.timeline-image');
 
     clickableImages.forEach(wrap => {
       wrap.addEventListener('click', () => {
@@ -188,7 +201,7 @@
         lightboxImg.src = img.src;
         lightboxImg.alt = img.alt || 'Full size photo';
         if (lightboxCaption) {
-          const cardTitle = wrap.closest('.news-card')?.querySelector('.news-title');
+          const cardTitle = wrap.closest('.timeline-content')?.querySelector('h3');
           lightboxCaption.textContent = cardTitle ? cardTitle.textContent : img.alt;
         }
 
@@ -236,7 +249,6 @@
           if (navigator.clipboard && window.isSecureContext) {
             await navigator.clipboard.writeText(email);
           } else {
-            // Fallback
             const textArea = document.createElement('textarea');
             textArea.value = email;
             textArea.style.position = 'fixed';
@@ -251,7 +263,6 @@
           showToast('Email copied to clipboard!');
         } catch (err) {
           console.error('Failed to copy email:', err);
-          // Fallback to direct mailto
           window.location.href = `mailto:${email}`;
         }
       });
@@ -275,7 +286,7 @@
   function init() {
     initTheme();
     initNavigation();
-    initScrollAnimations();
+    initCarousel();
     initLightbox();
     initCopyEmail();
   }

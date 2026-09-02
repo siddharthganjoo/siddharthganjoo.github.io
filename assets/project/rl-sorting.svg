@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 320" width="100%" height="100%">
+  <defs>
+    <linearGradient id="rl-bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0c1914"/>
+      <stop offset="50%" stop-color="#0f291e"/>
+      <stop offset="100%" stop-color="#08140f"/>
+    </linearGradient>
+    <linearGradient id="rl-line" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#10b981"/>
+      <stop offset="100%" stop-color="#34d399"/>
+    </linearGradient>
+    <linearGradient id="area-grad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="rgba(16, 185, 129, 0.3)"/>
+      <stop offset="100%" stop-color="rgba(16, 185, 129, 0.0)"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="600" height="320" fill="url(#rl-bg)"/>
+
+  <!-- Grid -->
+  <g opacity="0.1" stroke="#10b981" stroke-width="1">
+    <line x1="40" y1="60" x2="560" y2="60"/>
+    <line x1="40" y1="120" x2="560" y2="120"/>
+    <line x1="40" y1="180" x2="560" y2="180"/>
+    <line x1="40" y1="240" x2="560" y2="240"/>
+    <line x1="140" y1="40" x2="140" y2="260"/>
+    <line x1="240" y1="40" x2="240" y2="260"/>
+    <line x1="340" y1="40" x2="340" y2="260"/>
+    <line x1="440" y1="40" x2="440" y2="260"/>
+  </g>
+
+  <!-- Top Status -->
+  <rect x="40" y="24" width="520" height="32" rx="6" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.1)"/>
+  <circle cx="58" cy="40" r="5" fill="#10b981"/>
+  <text x="74" y="45" fill="#ffffff" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto" font-size="11" font-weight="600">VENCOMATIC GROUP // RL AGENT CALIBRATION TELEMETRY</text>
+  <rect x="450" y="29" width="100" height="22" rx="4" fill="rgba(16, 185, 129, 0.15)" stroke="#10b981" stroke-width="1"/>
+  <text x="462" y="44" fill="#10b981" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto" font-size="10" font-weight="700">CONVERGED</text>
+
+  <!-- Area under curve -->
+  <path d="M 60 220 Q 140 215 220 180 T 380 110 T 540 85 L 540 240 L 60 240 Z" fill="url(#area-grad)"/>
+
+  <!-- Reward Line Chart -->
+  <path d="M 60 220 Q 140 215 220 180 T 380 110 T 540 85" fill="none" stroke="url(#rl-line)" stroke-width="3.5" stroke-linecap="round"/>
+
+  <!-- Baseline comparison dotted line -->
+  <line x1="60" y1="210" x2="540" y2="190" stroke="#ef4444" stroke-width="2" stroke-dasharray="4,4" opacity="0.6"/>
+  <text x="400" y="182" fill="#ef4444" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto" font-size="10" font-weight="600">Manual Baseline (Error: 14.8%)</text>
+
+  <!-- Current Target Point -->
+  <circle cx="540" cy="85" r="7" fill="#10b981" stroke="#ffffff" stroke-width="2"/>
+
+  <!-- Badges Row -->
+  <g transform="translate(40, 260)">
+    <rect width="160" height="40" rx="8" fill="rgba(255,255,255,0.05)" stroke="rgba(255,255,255,0.1)"/>
+    <text x="14" y="17" fill="#94a3b8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto" font-size="9" font-weight="600">FALSE NEGATIVES</text>
+    <text x="14" y="32" fill="#34d399" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto" font-size="13" font-weight="800">-50.4% REDUCTION</text>
+
+    <rect x="220" y="0" width="160" height="40" rx="8" fill="rgba(255,255,255,0.05)" stroke="rgba(255,255,255,0.1)"/>
+    <text x="234" y="17" fill="#94a3b8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto" font-size="9" font-weight="600">ANNUAL IMPACT</text>
+    <text x="234" y="32" fill="#ffffff" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto" font-size="13" font-weight="800">€25,000+ SAVED</text>
+
+    <rect x="400" y="0" width="160" height="40" rx="8" fill="rgba(255,255,255,0.05)" stroke="rgba(255,255,255,0.1)"/>
+    <text x="414" y="17" fill="#94a3b8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto" font-size="9" font-weight="600">CO₂e AVOIDED</text>
+    <text x="414" y="32" fill="#10b981" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto" font-size="13" font-weight="800">~1,440 kg / yr</text>
+  </g>
+</svg>
