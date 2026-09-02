@@ -1,0 +1,87 @@
+---
+import { recommendationsData } from '../data/recommendations';
+---
+
+<section id="recommendations" class="section recommendations-section">
+  <div class="section-container">
+    <div class="section-header">
+      <span class="section-eyebrow">Testimonials</span>
+      <h2 class="section-title">Recommendations</h2>
+      <p class="section-description">Endorsements from professors and industry collaborators</p>
+    </div>
+    
+    <div class="recommendations-grid">
+      {recommendationsData.map(rec => (
+        <div class="recommendation-card">
+          <img src={rec.photo} alt={rec.name} class="recommender-photo" />
+          <div class="recommendation-content">
+            <p class="recommendation-text">"{rec.quote}"</p>
+            <h4>{rec.name}</h4>
+            <p class="recommender-title">{rec.title}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .recommendations-section {
+    background: var(--card-bg);
+  }
+
+  .recommendations-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1.15rem;
+  }
+
+  .recommendation-card {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 1.35rem 1.25rem;
+    text-align: center;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+
+  .recommendation-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 28px var(--shadow);
+    border-color: var(--accent);
+  }
+
+  .recommender-photo {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin: 0 auto 0.65rem;
+    border: 2.5px solid var(--border);
+  }
+
+  .recommendation-text {
+    font-size: 0.925rem;
+    line-height: 1.55;
+    color: var(--text-secondary);
+    margin-bottom: 0.65rem;
+    font-style: italic;
+  }
+
+  .recommendation-card h4 {
+    font-size: 0.95rem;
+    margin-bottom: 0.1rem;
+    color: var(--text);
+  }
+
+  .recommender-title {
+    font-size: 0.775rem;
+    color: var(--text-secondary);
+  }
+
+  @media (max-width: 768px) {
+    .recommendations-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

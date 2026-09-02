@@ -1,0 +1,68 @@
+---
+import { siteConfig } from '../data/site';
+---
+
+<section id="contact" class="section contact-section">
+  <div class="section-container">
+    <h2 class="contact-title">Let's work together</h2>
+    <p class="contact-description">
+      Open to full-time opportunities, high-performance ML collaborations, and consulting
+    </p>
+    <div class="contact-actions">
+      <a href={`mailto:${siteConfig.email}`} class="btn btn-primary">
+        <i class="fas fa-envelope"></i> Get in touch
+      </a>
+      <button type="button" class="btn btn-secondary" data-copy-email={siteConfig.email}>
+        <i class="fas fa-copy"></i> Copy Email
+      </button>
+      <a href={siteConfig.socials.linkedin} class="btn btn-secondary" target="_blank" rel="noopener noreferrer">
+        <i class="fab fa-linkedin"></i> LinkedIn
+      </a>
+      <a href={siteConfig.socials.github} class="btn btn-secondary" target="_blank" rel="noopener noreferrer">
+        <i class="fab fa-github"></i> GitHub
+      </a>
+    </div>
+    <p class="contact-location">
+      <i class="fas fa-location-dot"></i> {siteConfig.location}
+    </p>
+  </div>
+</section>
+
+<style>
+  .contact-section {
+    text-align: center;
+    padding: 3rem 1.25rem;
+  }
+
+  .contact-title {
+    font-size: clamp(1.75rem, 3.2vw, 2.25rem);
+    font-weight: 800;
+    margin-bottom: 0.35rem;
+    letter-spacing: -0.02em;
+  }
+
+  .contact-description {
+    font-size: 1rem;
+    color: var(--text-secondary);
+    margin-bottom: 1.25rem;
+    max-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .contact-actions {
+    display: flex;
+    gap: 0.6rem;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: 1rem;
+  }
+
+  .contact-location {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+  }
+</style>

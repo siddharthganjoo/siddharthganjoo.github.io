@@ -1,0 +1,349 @@
+---
+import { timelineData } from '../data/timeline';
+---
+
+<section id="timeline" class="section timeline-section">
+  <div class="section-container-narrow">
+    <div class="section-header">
+      <span class="section-eyebrow">Journey</span>
+      <h2 class="section-title">Timeline</h2>
+      <p class="section-description">Career milestones, research achievements, and media highlights</p>
+    </div>
+
+    <!-- Category Filter Tabs -->
+    <div class="timeline-filters">
+      <button type="button" class="timeline-filter-btn active" data-filter="all">All Updates</button>
+      <button type="button" class="timeline-filter-btn" data-filter="work">Work &amp; Experience</button>
+      <button type="button" class="timeline-filter-btn" data-filter="news">News &amp; Awards</button>
+    </div>
+    
+    <div class="timeline">
+      {timelineData.map(item => (
+        <div class="timeline-item" data-category={item.category}>
+          <div class="timeline-card">
+            <div class="timeline-header">
+              <div class="timeline-meta">
+                <span class="timeline-date-badge">{item.dateBadge}</span>
+                <span class={`timeline-type-badge ${item.isAward ? 'award' : ''}`}>
+                  {item.typeBadge}
+                </span>
+              </div>
+              {item.location && <span class="location">{item.location}</span>}
+            </div>
+
+            {item.logoImg || item.logoBadge ? (
+              <div class="timeline-org-row">
+                {item.logoImg && (
+                  <div class="timeline-logo-wrap">
+                    <img src={item.logoImg} alt={item.orgName} />
+                  </div>
+                )}
+                {item.logoBadge && (
+                  <div class="timeline-logo-badge">{item.logoBadge}</div>
+                )}
+                <div>
+                  <h3 class="timeline-role-title">{item.roleTitle}</h3>
+                  <p class="timeline-org-name">{item.orgName}</p>
+                </div>
+              </div>
+            ) : (
+              <div>
+                <h3 class="timeline-role-title">{item.roleTitle}</h3>
+                <p class="timeline-org-name">{item.orgName}</p>
+              </div>
+            )}
+
+            <div class="timeline-body">
+              {item.mediaImg && (
+                <div class="timeline-media" title="Click to enlarge photo">
+                  <img src={item.mediaImg} alt={item.mediaAlt || item.roleTitle} />
+                </div>
+              )}
+              <p>{item.description}</p>
+              {item.skills && item.skills.length > 0 && (
+                <div class="timeline-skills">
+                  {item.skills.map(skill => (
+                    <span>{skill}</span>
+                  ))}
+                </div>
+              )}
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .timeline-filters {
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+  }
+
+  .timeline-filter-btn {
+    padding: 0.35rem 0.95rem;
+    border-radius: 50px;
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    color: var(--text-secondary);
+    font-size: 0.8125rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+
+  .timeline-filter-btn:hover,
+  .timeline-filter-btn.active {
+    background: var(--accent);
+    color: #ffffff;
+    border-color: var(--accent);
+  }
+
+  .timeline {
+    position: relative;
+    max-width: 760px;
+    margin: 0 auto;
+    padding-left: 2rem;
+  }
+
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 7px;
+    top: 10px;
+    bottom: 10px;
+    width: 2px;
+    background: var(--border);
+  }
+
+  .timeline-item {
+    position: relative;
+    margin-bottom: 1.25rem;
+    transition: opacity 0.25s ease, transform 0.25s ease;
+  }
+
+  .timeline-item:global(.hidden) {
+    display: none;
+  }
+
+  .timeline-item::before {
+    content: '';
+    position: absolute;
+    left: -2rem;
+    top: 16px;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: var(--bg);
+    border: 3px solid var(--accent);
+    z-index: 2;
+    transition: transform 0.2s ease;
+  }
+
+  .timeline-item:hover::before {
+    transform: scale(1.2);
+    background: var(--accent);
+  }
+
+  .timeline-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 1.25rem 1.4rem;
+    transition: transform 0.2s var(--ease-smooth), box-shadow 0.2s var(--ease-smooth), border-color 0.2s;
+  }
+
+  .timeline-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px var(--shadow);
+    border-color: var(--accent);
+  }
+
+  .timeline-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.5rem;
+    margin-bottom: 0.65rem;
+    flex-wrap: wrap;
+  }
+
+  .timeline-meta {
+    display: flex;
+    align-items: center;
+    gap: 0.45rem;
+    flex-wrap: wrap;
+  }
+
+  .timeline-date-badge {
+    font-size: 0.775rem;
+    font-weight: 700;
+    color: var(--accent);
+    background: var(--accent-light);
+    padding: 0.2rem 0.55rem;
+    border-radius: 6px;
+  }
+
+  .timeline-type-badge {
+    font-size: 0.675rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    padding: 0.2rem 0.5rem;
+    border-radius: 6px;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    color: var(--text-secondary);
+  }
+
+  .timeline-type-badge.award {
+    background: rgba(245, 158, 11, 0.12);
+    border-color: rgba(245, 158, 11, 0.3);
+    color: #d97706;
+  }
+
+  :global([data-theme="dark"]) .timeline-type-badge.award {
+    color: #fbbf24;
+  }
+
+  .timeline-org-row {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 0.65rem;
+  }
+
+  .timeline-logo-wrap {
+    min-width: 44px;
+    height: 40px;
+    max-width: 120px;
+    background: #ffffff;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 3px 8px;
+    box-shadow: 0 1px 3px var(--shadow);
+    flex-shrink: 0;
+  }
+
+  .timeline-logo-wrap img {
+    max-height: 28px;
+    max-width: 100px;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+  }
+
+  .timeline-logo-badge {
+    width: 40px;
+    height: 40px;
+    border-radius: 8px;
+    background: linear-gradient(135deg, var(--accent) 0%, #4f46e5 100%);
+    color: #ffffff;
+    font-weight: 800;
+    font-size: 0.875rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 1px 3px var(--shadow);
+    flex-shrink: 0;
+  }
+
+  .timeline-role-title {
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: var(--text);
+    line-height: 1.25;
+  }
+
+  .timeline-org-name {
+    font-size: 0.8125rem;
+    color: var(--text-secondary);
+    font-weight: 500;
+  }
+
+  .timeline-body p {
+    font-size: 0.9rem;
+    line-height: 1.55;
+    color: var(--text-secondary);
+    margin-bottom: 0.5rem;
+  }
+
+  .timeline-media {
+    margin-top: 0.65rem;
+    margin-bottom: 0.65rem;
+    border-radius: 8px;
+    overflow: hidden;
+    max-height: 190px;
+    background: var(--border);
+    cursor: pointer;
+  }
+
+  .timeline-media img {
+    width: 100%;
+    height: 100%;
+    max-height: 190px;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+  }
+
+  .timeline-media:hover img {
+    transform: scale(1.025);
+  }
+
+  .timeline-skills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.35rem;
+    margin-top: 0.5rem;
+  }
+
+  .timeline-skills span {
+    font-size: 0.725rem;
+    padding: 0.2rem 0.55rem;
+    border-radius: 50px;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    color: var(--text-secondary);
+  }
+
+  @media (max-width: 768px) {
+    .timeline {
+      padding-left: 1.5rem;
+    }
+
+    .timeline-item::before {
+      left: -1.5rem;
+    }
+  }
+</style>
+
+<script>
+  // Filter Tabs Interaction
+  const filterBtns = document.querySelectorAll('.timeline-filter-btn');
+  const timelineItems = document.querySelectorAll('.timeline-item');
+
+  filterBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      filterBtns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+
+      const filter = btn.getAttribute('data-filter');
+
+      timelineItems.forEach(item => {
+        const category = item.getAttribute('data-category');
+        if (filter === 'all' || category === filter) {
+          item.classList.remove('hidden');
+        } else {
+          item.classList.add('hidden');
+        }
+      });
+    });
+  });
+</script>

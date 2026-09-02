@@ -1,0 +1,39 @@
+---
+---
+
+<div class="toast-notification" id="toast-notification" role="status" aria-live="polite">
+  <i class="fas fa-circle-check"></i>
+  <span class="toast-text">Email copied to clipboard!</span>
+</div>
+
+<style>
+  .toast-notification {
+    position: fixed;
+    bottom: 1.25rem;
+    right: 1.25rem;
+    z-index: 3000;
+    background: var(--text);
+    color: var(--bg);
+    padding: 0.55rem 1rem;
+    border-radius: 50px;
+    font-size: 0.775rem;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 0.45rem;
+    box-shadow: 0 6px 20px var(--shadow-lg);
+    opacity: 0;
+    transform: translateY(12px);
+    pointer-events: none;
+    transition: all 0.25s var(--ease-smooth);
+  }
+
+  .toast-notification:global(.show) {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .toast-notification i {
+    color: var(--success);
+  }
+</style>

@@ -1,0 +1,22 @@
+---
+import { siteConfig } from '../data/site';
+---
+
+<footer class="footer">
+  <p>© 2026 {siteConfig.name}. All rights reserved.</p>
+  <p>{siteConfig.role} • {siteConfig.location}</p>
+</footer>
+
+<style>
+  .footer {
+    text-align: center;
+    padding: 1.5rem 1rem;
+    border-top: 1px solid var(--border);
+    color: var(--text-secondary);
+    font-size: 0.8125rem;
+  }
+
+  .footer p {
+    margin: 0.15rem 0;
+  }
+</style>

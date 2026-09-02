@@ -1,0 +1,218 @@
+---
+---
+
+<section id="about" class="section about-section">
+  <div class="section-container">
+    <div class="section-header">
+      <span class="section-eyebrow">Introduction</span>
+      <h2 class="section-title">About Me</h2>
+      <p class="section-description">Turning complex data and supercomputing research into intelligent systems that drive real business impact</p>
+    </div>
+    
+    <div class="about-grid">
+      <div class="about-content">
+        <p>
+          I am a <strong>Machine Learning Engineer</strong> and <strong>Data Scientist</strong> with an MSc in Computer Science & Engineering from 
+          <strong>Eindhoven University of Technology (TU/e)</strong>. My expertise spans production-ready AI systems, reinforcement learning, 
+          deep learning (YOLO, CodeT5), and high-performance computing across supercomputing, agriculture, manufacturing, and automotive sectors.
+        </p>
+        
+        <p>
+          Currently at the <strong>TU/e Supercomputing Center</strong>, I contribute to <strong>Spike AI</strong>, developing high-performance Spiking Neural Network (SNN) 
+          algorithms and neuromorphic workflows on supercomputer clusters. Previously at <strong>Vencomatic Group</strong> (Nov 2025 – Jun 2026), I engineered automated data pipelines and 
+          interactive Streamlit dashboards analyzing telemetry and sensor data to optimize poultry production.
+        </p>
+        
+        <p>
+          As Co-Founder & CTO of <strong>Loopit.ai</strong>, I directed a 12-engineer team developing an automated vehicle damage detection platform 
+          powered by custom YOLOv8 models, earning the prestigious <strong>€1,000 EAISI AI Incentive Award</strong>.
+        </p>
+      </div>
+      
+      <div class="skills-showcase">
+        <div class="education-group">
+          <h3><i class="fas fa-graduation-cap"></i> Education</h3>
+          <div class="education-cards">
+            <div class="edu-card">
+              <img src="assets/logos/tue.png" alt="TU Eindhoven" class="edu-logo" />
+              <div>
+                <h4>MSc Computer Science & Engineering</h4>
+                <p>Eindhoven University of Technology (TU/e)</p>
+                <span>2023 – 2025 • GPA 7.12/10 • Netherlands</span>
+              </div>
+            </div>
+            
+            <div class="edu-card">
+              <img src="assets/logos/jmi.png" alt="Jamia Millia Islamia" class="edu-logo" />
+              <div>
+                <h4>BTech Computer Engineering</h4>
+                <p>Jamia Millia Islamia University</p>
+                <span>2019 – 2023 • Grade 8.54/10 • New Delhi, India</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="skill-group">
+          <h3><i class="fas fa-brain"></i> AI & Deep Learning</h3>
+          <div class="skill-pills">
+            <span>PyTorch</span>
+            <span>TensorFlow</span>
+            <span>YOLO</span>
+            <span>Reinforcement Learning</span>
+            <span>Spiking Neural Networks (SNN)</span>
+            <span>LLMs (CodeT5)</span>
+            <span>Scikit-learn</span>
+            <span>OpenCV</span>
+          </div>
+        </div>
+        
+        <div class="skill-group">
+          <h3><i class="fas fa-server"></i> Data & Supercomputing</h3>
+          <div class="skill-pills">
+            <span>Python</span>
+            <span>HPC Clusters</span>
+            <span>SQL Server</span>
+            <span>Azure</span>
+            <span>PostgreSQL</span>
+            <span>Streamlit</span>
+            <span>Time-Series</span>
+            <span>Knowledge Graphs</span>
+          </div>
+        </div>
+        
+        <div class="skill-group">
+          <h3><i class="fas fa-cloud"></i> DevOps & Cloud</h3>
+          <div class="skill-pills">
+            <span>Docker</span>
+            <span>Kubernetes</span>
+            <span>FastAPI</span>
+            <span>AWS</span>
+            <span>Git</span>
+            <span>CI/CD</span>
+            <span>Linux</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1.1fr 1fr;
+    gap: 2rem;
+    align-items: start;
+  }
+
+  .about-content p {
+    margin-bottom: 0.85rem;
+    font-size: 0.975rem;
+    line-height: 1.65;
+    color: var(--text-secondary);
+  }
+
+  .about-content p strong {
+    color: var(--text);
+  }
+
+  .skills-showcase {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .skill-group h3,
+  .education-group h3 {
+    font-size: 0.95rem;
+    font-weight: 700;
+    margin-bottom: 0.35rem;
+    color: var(--text);
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+  }
+
+  .skill-pills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.35rem;
+  }
+
+  .skill-pills span {
+    padding: 0.25rem 0.7rem;
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 50px;
+    font-size: 0.775rem;
+    font-weight: 500;
+    transition: all 0.2s;
+  }
+
+  .skill-pills span:hover {
+    background: var(--accent);
+    color: #ffffff;
+    border-color: var(--accent);
+    transform: translateY(-1px);
+  }
+
+  .education-cards {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .edu-card {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 0.65rem 0.85rem;
+    transition: transform 0.2s, border-color 0.2s;
+  }
+
+  .edu-card:hover {
+    transform: translateY(-1px);
+    border-color: var(--accent);
+  }
+
+  .edu-logo {
+    width: 38px;
+    height: 38px;
+    border-radius: 8px;
+    object-fit: contain;
+    background: #ffffff;
+    padding: 3px;
+    border: 1px solid var(--border);
+    flex-shrink: 0;
+  }
+
+  .edu-card h4 {
+    font-size: 0.875rem;
+    font-weight: 700;
+    color: var(--text);
+    line-height: 1.25;
+  }
+
+  .edu-card p {
+    font-size: 0.775rem;
+    color: var(--accent);
+    font-weight: 600;
+    margin-top: 0.05rem;
+  }
+
+  .edu-card span {
+    font-size: 0.7rem;
+    color: var(--text-muted);
+  }
+
+  @media (max-width: 1024px) {
+    .about-grid {
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+    }
+  }
+</style>

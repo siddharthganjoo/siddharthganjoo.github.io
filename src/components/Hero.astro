@@ -1,0 +1,253 @@
+---
+import { siteConfig } from '../data/site';
+---
+
+<section id="hero" class="hero">
+  <div class="hero-container">
+    <div class="hero-profile">
+      <img src="assets/pp.JPG" alt={siteConfig.name} class="profile-image" />
+    </div>
+    
+    <div class="hero-badge">
+      <span class="status-dot"></span>
+      <span>Available for opportunities</span>
+    </div>
+    
+    <h1 class="hero-title">{siteConfig.name}</h1>
+    <p class="hero-subtitle">{siteConfig.role}</p>
+    <p class="hero-description">
+      Building high-performance AI and neuromorphic systems at the <strong>TU/e Supercomputing Center</strong> (Spike AI), 
+      previously engineered scalable production pipelines at <strong>Vencomatic Group</strong>, and automated computer vision solutions as Co-Founder of <strong>Loopit.ai</strong>. 
+      MSc Computer Science @ <strong>TU Eindhoven</strong>.
+    </p>
+    
+    <div class="hero-stats">
+      {siteConfig.stats.map(stat => (
+        <div class="stat-item">
+          <div class="stat-value">{stat.value}</div>
+          <div class="stat-label">{stat.label}</div>
+        </div>
+      ))}
+    </div>
+    
+    <div class="hero-actions">
+      <a href={`mailto:${siteConfig.email}`} class="btn btn-primary">
+        <i class="fas fa-envelope"></i> Get in touch
+      </a>
+      <a href="#projects" class="btn btn-secondary">
+        <i class="fas fa-layer-group"></i> View work
+      </a>
+      <a href={siteConfig.resumeUrl} class="btn btn-secondary" target="_blank" rel="noopener noreferrer">
+        <i class="fas fa-file-pdf"></i> Resume
+      </a>
+    </div>
+
+    <div class="scroll-indicator">
+      <span>Scroll to explore</span>
+      <i class="fas fa-arrow-down"></i>
+    </div>
+  </div>
+</section>
+
+<style>
+  .hero {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 5rem 1.25rem 2.25rem;
+    text-align: center;
+    position: relative;
+  }
+
+  .hero-container {
+    max-width: 760px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+  }
+
+  .hero-profile {
+    margin-bottom: 0.85rem;
+    display: flex;
+    justify-content: center;
+  }
+
+  .profile-image {
+    width: 104px;
+    height: 104px;
+    border-radius: 50%;
+    object-fit: cover;
+    object-position: center 18%;
+    display: block;
+    margin: 0 auto;
+    border: 3px solid var(--border);
+    box-shadow: 0 6px 20px var(--shadow);
+    transition: transform 0.25s var(--ease-smooth), box-shadow 0.25s var(--ease-smooth);
+  }
+
+  .profile-image:hover {
+    transform: scale(1.04);
+    box-shadow: 0 8px 28px var(--shadow-glow);
+    border-color: var(--accent);
+  }
+
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    padding: 0.3rem 0.85rem;
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 50px;
+    font-size: 0.775rem;
+    font-weight: 500;
+    color: var(--text-secondary);
+    margin-bottom: 0.75rem;
+    box-shadow: 0 1px 3px var(--shadow);
+  }
+
+  .status-dot {
+    width: 6px;
+    height: 6px;
+    background: var(--success);
+    border-radius: 50%;
+    position: relative;
+  }
+
+  .status-dot::after {
+    content: '';
+    position: absolute;
+    inset: -2.5px;
+    border-radius: 50%;
+    background: var(--success);
+    opacity: 0.4;
+    animation: pulseDot 2s infinite ease-out;
+  }
+
+  @keyframes pulseDot {
+    0% { transform: scale(1); opacity: 0.5; }
+    70% { transform: scale(2.2); opacity: 0; }
+    100% { transform: scale(1); opacity: 0; }
+  }
+
+  .hero-title {
+    font-size: clamp(2.25rem, 4.5vw, 3.5rem);
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    margin-bottom: 0.25rem;
+    line-height: 1.1;
+    color: var(--text);
+  }
+
+  .hero-subtitle {
+    font-size: clamp(1.05rem, 2.2vw, 1.35rem);
+    color: var(--accent);
+    font-weight: 600;
+    letter-spacing: -0.015em;
+    margin-bottom: 0.65rem;
+  }
+
+  .hero-description {
+    font-size: 1.05rem;
+    color: var(--text-secondary);
+    max-width: 640px;
+    margin: 0 auto 1.25rem;
+    line-height: 1.6;
+  }
+
+  .hero-description strong {
+    color: var(--text);
+    font-weight: 600;
+  }
+
+  .hero-stats {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0.65rem;
+    max-width: 680px;
+    margin: 1.25rem auto;
+  }
+
+  .stat-item {
+    text-align: center;
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 0.65rem 0.5rem;
+    transition: transform 0.2s, border-color 0.2s;
+  }
+
+  .stat-item:hover {
+    transform: translateY(-2px);
+    border-color: var(--accent);
+  }
+
+  .stat-value {
+    font-size: 1.55rem;
+    font-weight: 800;
+    color: var(--accent);
+    margin-bottom: 0.1rem;
+    line-height: 1.2;
+  }
+
+  .stat-label {
+    font-size: 0.725rem;
+    color: var(--text-secondary);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+  }
+
+  .hero-actions {
+    display: flex;
+    gap: 0.65rem;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: 0.75rem;
+  }
+
+  .scroll-indicator {
+    margin-top: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.25rem;
+    color: var(--text-muted);
+    font-size: 0.75rem;
+  }
+
+  @keyframes bounceArrow {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(4px); }
+  }
+
+  .scroll-indicator i {
+    animation: bounceArrow 2s ease-in-out infinite;
+  }
+
+  @media (max-width: 768px) {
+    .hero {
+      padding: 4rem 1rem 2rem;
+    }
+    
+    .hero-stats {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 0.5rem;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .hero-stats {
+      grid-template-columns: 1fr;
+    }
+    
+    .hero-title {
+      font-size: 2rem;
+    }
+    
+    .hero-subtitle {
+      font-size: 1.05rem;
+    }
+  }
+</style>
