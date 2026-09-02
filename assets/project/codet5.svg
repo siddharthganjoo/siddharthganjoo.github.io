@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 320" width="100%" height="100%">
+  <defs>
+    <linearGradient id="code-bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0f172a"/>
+      <stop offset="50%" stop-color="#1e293b"/>
+      <stop offset="100%" stop-color="#090d16"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="600" height="320" fill="url(#code-bg)"/>
+
+  <!-- Code Editor Window -->
+  <rect x="40" y="24" width="520" height="216" rx="10" fill="#0b1120" stroke="rgba(255,255,255,0.1)" stroke-width="1"/>
+  
+  <!-- Window Controls -->
+  <circle cx="60" cy="42" r="5" fill="#ef4444"/>
+  <circle cx="76" cy="42" r="5" fill="#f59e0b"/>
+  <circle cx="92" cy="42" r="5" fill="#10b981"/>
+  <text x="114" y="46" fill="#64748b" font-family="monospace" font-size="11">prompt_gist_optimizer.py — CodeT5 Evaluation</text>
+
+  <!-- Code lines -->
+  <g font-family="monospace" font-size="12" font-weight="500">
+    <text x="60" y="80" fill="#f43f5e">def <tspan fill="#38bdf8">compress_prompt</tspan><tspan fill="#ffffff">(context, target_gist_ratio=0.3):</tspan></text>
+    <text x="80" y="105" fill="#64748b"># William &amp; Mary CodeT5 Gisting Pipeline</text>
+    <text x="80" y="130" fill="#e2e8f0">tokens = tokenizer(context, return_tensors=<tspan fill="#a855f7">"pt"</tspan>)</text>
+    <text x="80" y="155" fill="#e2e8f0">gisted_tokens = codet5_model.gist(tokens, mask_ratio=<tspan fill="#f59e0b">0.35</tspan>)</text>
+    <text x="80" y="180" fill="#f43f5e">return <tspan fill="#38bdf8">evaluate_benchmark</tspan><tspan fill="#ffffff">(gisted_tokens, metric=</tspan><tspan fill="#a855f7">"Pass@k"</tspan><tspan fill="#ffffff">)</tspan></text>
+    <text x="60" y="215" fill="#10b981"># Result: 35% Token Savings | Pass@1: 68.4% (Preserved)</text>
+  </g>
+
+  <!-- Bottom Metric Cards -->
+  <g transform="translate(40, 260)">
+    <rect width="160" height="40" rx="8" fill="rgba(255,255,255,0.05)" stroke="rgba(255,255,255,0.1)"/>
+    <text x="14" y="17" fill="#94a3b8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto" font-size="9" font-weight="600">TOKEN COMPRESSION</text>
+    <text x="14" y="32" fill="#38bdf8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto" font-size="13" font-weight="800">20% – 40% REDUCTION</text>
+
+    <rect x="220" y="0" width="160" height="40" rx="8" fill="rgba(255,255,255,0.05)" stroke="rgba(255,255,255,0.1)"/>
+    <text x="234" y="17" fill="#94a3b8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto" font-size="9" font-weight="600">BENCHMARK DATASET</text>
+    <text x="234" y="32" fill="#ffffff" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto" font-size="13" font-weight="800">CodexGlue (Java, Py)</text>
+
+    <rect x="400" y="0" width="160" height="40" rx="8" fill="rgba(255,255,255,0.05)" stroke="rgba(255,255,255,0.1)"/>
+    <text x="414" y="17" fill="#94a3b8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto" font-size="9" font-weight="600">EVALUATION METRICS</text>
+    <text x="414" y="32" fill="#a855f7" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto" font-size="13" font-weight="800">CrystalBLEU / Pass@k</text>
+  </g>
+</svg>
+
