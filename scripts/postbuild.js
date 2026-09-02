@@ -7,6 +7,10 @@ if (fs.existsSync('dist/index.html')) {
   html = html.replace(/\/website\/assets\//g, './assets/');
   html = html.replace(/src="assets\//g, 'src="./assets/');
   html = html.replace(/href="assets\//g, 'href="./assets/');
+  html = html.replace(/href="\/_astro\//g, 'href="./_astro/');
+  html = html.replace(/src="\/_astro\//g, 'src="./_astro/');
+  html = html.replace(/href="\/assets\//g, 'href="./assets/');
+  html = html.replace(/src="\/assets\//g, 'src="./assets/');
   fs.writeFileSync('dist/index.html', html);
   fs.copyFileSync('dist/index.html', 'index.html');
 }
