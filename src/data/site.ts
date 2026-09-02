@@ -26,7 +26,7 @@ export const siteConfig: SiteConfig = {
   name: "Siddharth Ganjoo",
   initials: "SG",
   role: "Machine Learning Engineer & Data Scientist",
-  description: "Building high-performance AI and neuromorphic systems at the TU/e Supercomputing Center (Spike AI), previously engineered scalable production pipelines at Vencomatic Group, and automated computer vision solutions as Co-Founder of Loopit.ai. MSc Computer Science @ TU Eindhoven.",
+  description: "Machine Learning Engineer on the Spike-A supercomputer within the AI Supercomputing Initiative Brabant (AI-SIB) at TU Eindhoven (TU/e). Specializing in distributed high-performance computing, deep learning, and scalable production AI pipelines.",
   location: "Eindhoven, Netherlands",
   url: "https://siddharthganjoo.github.io/",
   resumeUrl: "assets/CV_SiddharthGanjoo.pdf",

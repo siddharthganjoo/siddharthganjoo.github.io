@@ -20,14 +20,14 @@ export const timelineData: TimelineItem[] = [
   {
     id: "tue-supercomputing",
     category: "work",
-    typeBadge: "Work",
+    typeBadge: "Supercomputing",
     dateBadge: "Aug 2026 – Present",
     location: "Eindhoven, Netherlands",
-    roleTitle: "Machine Learning Engineer",
-    orgName: "TU/e Supercomputing Center — Spike AI",
-    description: "Developing high-performance Spiking Neural Network (SNN) pipelines and neuromorphic computing architectures on TU/e supercomputing infrastructure for energy-efficient next-generation AI.",
-    logoImg: "assets/logos/tue.png",
-    skills: ["Spike AI", "Neuromorphic", "HPC", "PyTorch", "Python"],
+    roleTitle: "Machine Learning Engineer — Spike-A",
+    orgName: "AI-SIB (AI Supercomputing Initiative Brabant) // TU/e",
+    description: "Accelerating and scaling high-performance AI workloads on TU/e's Spike-A supercomputer as part of the regional AI-SIB initiative (TU/e, Tilburg University, Province of North Brabant, BOM). Supporting research and industry teams in deploying distributed deep learning models, code optimization, and transitions to European supercomputing infrastructure.",
+    logoImg: "assets/logos/aisib.svg",
+    skills: ["Spike-A Supercomputer", "AI-SIB", "Distributed Training", "PyTorch", "HPC", "CUDA"],
     linkedinUrl: "https://www.linkedin.com/in/siddharthganjoo/"
   },
   {
@@ -131,7 +131,7 @@ export const timelineData: TimelineItem[] = [
     roleTitle: "Co-Founder & CTO",
     orgName: "Loopit.ai",
     description: "Led end-to-end development of AI-driven platform automating vehicle damage detection and repair estimation. Managed 12-member team. Won €1,000 EAISI AI Incentive Award.",
-    logoBadge: "LA",
+    logoImg: "assets/logos/loopit.svg",
     skills: ["YOLOv8", "Computer Vision", "FastAPI", "Docker"],
     linkedinUrl: "https://www.linkedin.com/in/siddharthganjoo/"
   },
@@ -170,7 +170,7 @@ export const timelineData: TimelineItem[] = [
     roleTitle: "Research Intern",
     orgName: "Bergische Universität Wuppertal",
     description: "Developed and fine-tuned deep learning models utilizing reinforcement learning and job-shop scheduling to optimize aerospace production in the AlphaMES project.",
-    logoBadge: "BU",
+    logoImg: "assets/logos/bu.svg",
     skills: ["Deep Learning", "Reinforcement Learning", "Aerospace"],
     linkedinUrl: "https://www.linkedin.com/in/siddharthganjoo/"
   },

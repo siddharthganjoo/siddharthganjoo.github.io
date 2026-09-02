@@ -1,26 +1,24 @@
 ---
-title: "Event-Driven Neuromorphic Computing on High-Performance Supercomputing Clusters"
+title: "Scaling Distributed AI Workloads on the Spike-A Supercomputer (AI-SIB)"
 pubDate: 2026-08-15
-description: "How Spiking Neural Networks (SNNs) drastically reduce energy consumption while maintaining high temporal precision on TU/e supercomputing infrastructure."
+description: "How the AI Supercomputing Initiative Brabant (AI-SIB) and TU/e's Spike-A supercomputer enable scalable multi-GPU model training and code optimization."
 author: "Siddharth Ganjoo"
 readTime: "6 min read"
-tags: ["Spiking Neural Networks", "Spike AI", "HPC", "Neuromorphic", "PyTorch"]
+tags: ["Spike-A", "AI-SIB", "Supercomputing", "Distributed Training", "PyTorch", "CUDA"]
 featured: true
 ---
 
-# Event-Driven Neuromorphic Computing on High-Performance Clusters
+# Scaling Distributed AI Workloads on the Spike-A Supercomputer (AI-SIB)
 
-Traditional Artificial Neural Networks (ANNs) process continuous real-valued activations across entire dense matrices at every single layer, incurring significant energy overhead during forward and backward passes.
+Training and deploying state-of-the-art deep learning architectures requires compute capabilities far exceeding local workstations. The **AI Supercomputing Initiative Brabant (AI-SIB)**—a strategic collaboration between **TU Eindhoven (TU/e)**, **Tilburg University**, the **Province of North Brabant**, and **BOM**—democratizes access to high-performance computing power across the region.
 
-In contrast, biological brains transmit information through discrete, sparse electrical pulses known as **spikes**. At the **TU/e Supercomputing Center**, our work on **Spike AI** centers around harnessing event-driven computation: neurons only perform mathematical operations when an action potential threshold is crossed.
+## The Spike-A Supercomputer Architecture
 
-## Why Spiking Neural Networks (SNNs)?
+At the heart of AI-SIB sits TU/e's **Spike-A supercomputer**. As a Machine Learning Engineer on Spike-A, my work focuses on:
+- **Multi-Node Distributed Training**: Leveraging PyTorch Distributed Data Parallel (DDP) and Fully Sharded Data Parallel (FSDP) to train massive models without memory bottlenecks.
+- **Compute Optimization**: Profiling CUDA kernels and optimizing data ingestion pipelines using Slurm batch scheduling to maximize GPU utilization.
+- **Bridging Regional Innovation**: Assisting companies, researchers, and public institutions in scaling their AI workloads from local prototypes to production-grade supercomputing jobs.
 
-1. **Massive Energy Efficiency**: Up to 10×–100× lower power consumption on specialized neuromorphic silicon compared to conventional GPU architectures.
-2. **Temporal Dynamism**: Natural alignment with streaming time-series sensor data and event-based silicon retinas (Dynamic Vision Sensors).
-3. **Biological Realism**: Modeling non-linear synaptic plasticity and membrane potential decay dynamics.
+## Strategic Path to EuroHPC
 
-## HPC Simulation Pipeline
-
-Simulating millions of biologically plausible neurons on high-performance supercomputers requires distributed message-passing interfaces (MPI) and custom PyTorch CUDA kernels to efficiently schedule sparse spike trains without serialization bottlenecks.
-
+AI-SIB acts as the vital gateway connecting regional engineering teams with European supercomputing ecosystems, including **EuroHPC** and **AI Factory NL**, ensuring Brabant remains at the cutting edge of applied artificial intelligence.

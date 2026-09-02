@@ -35,12 +35,16 @@ export const projectsData: ProjectItem[] = [
     impact: ["€25K savings", "15K eggs saved/yr"]
   },
   {
-    id: "spike-ai",
-    title: "Spike AI - Neuromorphic Acceleration",
-    tag: "Supercomputing AI",
-    description: "Energy-efficient Spiking Neural Network (SNN) development and deployment framework at the TU/e Supercomputing Center.",
+    id: "spike-a-supercomputing",
+    title: "Spike-A AI Supercomputing Workloads",
+    tag: "AI-SIB // Supercomputing",
+    description: "High-performance AI model acceleration, distributed training pipelines, and multi-GPU cluster scaling on TU/e's Spike-A supercomputer as part of the regional AI-SIB initiative.",
     image: "assets/project/spike-ai.svg",
-    impact: ["⚡ Ultra-low power", "💻 HPC Clusters"]
+    impact: ["💻 Spike-A Cluster", "⚡ Distributed AI", "🌐 AI-SIB Brabant"],
+    links: [
+      { label: "AI-SIB Initiative →", url: "https://www.tue.nl" },
+      { label: "GitHub →", url: "https://github.com/siddharthganjoo" }
+    ]
   },
   {
     id: "codet5",

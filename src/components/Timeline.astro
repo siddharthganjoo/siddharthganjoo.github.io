@@ -226,23 +226,28 @@ import { timelineData } from '../data/timeline';
   }
 
   .timeline-logo-wrap {
-    min-width: 44px;
-    height: 40px;
-    max-width: 120px;
+    min-width: 46px;
+    height: 44px;
     background: #ffffff;
     border: 1px solid var(--border);
-    border-radius: 8px;
+    border-radius: 10px;
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 3px 8px;
-    box-shadow: 0 1px 3px var(--shadow);
+    padding: 4px 10px;
+    box-shadow: 0 2px 6px var(--shadow);
     flex-shrink: 0;
+    transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .timeline-card:hover .timeline-logo-wrap {
+    border-color: var(--accent);
+    transform: scale(1.04);
   }
 
   .timeline-logo-wrap img {
-    max-height: 28px;
-    max-width: 100px;
+    max-height: 32px;
+    max-width: 110px;
     width: auto;
     height: auto;
     object-fit: contain;

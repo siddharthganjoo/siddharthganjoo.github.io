@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 150 50" width="150" height="50">
+  <defs>
+    <linearGradient id="loopit-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#3b82f6" />
+      <stop offset="100%" stop-color="#06b6d4" />
+    </linearGradient>
+  </defs>
+  <!-- Loop Icon -->
+  <circle cx="24" cy="25" r="16" fill="url(#loopit-grad)" />
+  <path d="M17 25c0-3.5 2.5-6 6-6 4.5 0 8 7 8 7s-3.5 6-8 6c-3.5 0-6-2.5-6-7z" fill="none" stroke="#ffffff" stroke-width="2.2" stroke-linecap="round" />
+  <circle cx="23" cy="25" r="2.2" fill="#ffffff" />
+  <!-- Text -->
+  <text x="48" y="27" font-family="-apple-system, BlinkMacSystemFont, 'Inter', sans-serif" font-weight="800" font-size="15" fill="#0f172a" letter-spacing="-0.03em">Loopit<tspan fill="#3b82f6">.ai</tspan></text>
+  <text x="49" y="38" font-family="-apple-system, BlinkMacSystemFont, 'Inter', sans-serif" font-weight="600" font-size="7.5" fill="#64748b" letter-spacing="0.06em">COMPUTER VISION</text>
+</svg>
