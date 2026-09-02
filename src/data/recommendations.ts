@@ -36,3 +36,4 @@ export const recommendationsData: RecommendationItem[] = [
     quote: "Siddharth's dedication to quality and innovation is exceptional."
   }
 ];
+

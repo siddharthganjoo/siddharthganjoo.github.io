@@ -4,45 +4,48 @@
 <section id="about" class="section about-section">
   <div class="section-container">
     <div class="section-header">
-      <span class="section-eyebrow">Introduction</span>
-      <h2 class="section-title">About Me</h2>
-      <p class="section-description">Turning complex data and supercomputing research into intelligent systems that drive real business impact</p>
+      <span class="section-eyebrow"><i class="fas fa-sparkles"></i> Background</span>
+      <h2 class="section-title">About Me &amp; Tech Stack</h2>
+      <p class="section-description">Turning complex supercomputing research and multi-modal AI into high-performance production systems</p>
     </div>
     
     <div class="about-grid">
+      <!-- Bio & Education Column -->
       <div class="about-content">
-        <p>
-          I am a <strong>Machine Learning Engineer</strong> and <strong>Data Scientist</strong> with an MSc in Computer Science & Engineering from 
-          <strong>Eindhoven University of Technology (TU/e)</strong>. My expertise spans production-ready AI systems, reinforcement learning, 
-          deep learning (YOLO, CodeT5), and high-performance computing across supercomputing, agriculture, manufacturing, and automotive sectors.
-        </p>
-        
-        <p>
-          Currently at the <strong>TU/e Supercomputing Center</strong>, I contribute to <strong>Spike AI</strong>, developing high-performance Spiking Neural Network (SNN) 
-          algorithms and neuromorphic workflows on supercomputer clusters. Previously at <strong>Vencomatic Group</strong> (Nov 2025 – Jun 2026), I engineered automated data pipelines and 
-          interactive Streamlit dashboards analyzing telemetry and sensor data to optimize poultry production.
-        </p>
-        
-        <p>
-          As Co-Founder & CTO of <strong>Loopit.ai</strong>, I directed a 12-engineer team developing an automated vehicle damage detection platform 
-          powered by custom YOLOv8 models, earning the prestigious <strong>€1,000 EAISI AI Incentive Award</strong>.
-        </p>
-      </div>
-      
-      <div class="skills-showcase">
-        <div class="education-group">
-          <h3><i class="fas fa-graduation-cap"></i> Education</h3>
+        <div class="bio-card glass-card">
+          <h3 class="bio-heading"><i class="fas fa-terminal text-sky-500"></i> Engineering Philosophy</h3>
+          <p>
+            I am a <strong>Machine Learning Engineer</strong> and <strong>Data Scientist</strong> with an MSc in Computer Science &amp; Engineering from 
+            <strong>Eindhoven University of Technology (TU/e)</strong>. My focus is at the intersection of production-ready AI systems, reinforcement learning, 
+            deep learning (YOLOv8, CodeT5), and high-performance computing.
+          </p>
+          
+          <p>
+            Currently at the <strong>TU/e Supercomputing Center</strong>, I contribute to <strong>Spike AI</strong>, developing high-performance Spiking Neural Network (SNN) 
+            algorithms and neuromorphic workflows on supercomputer clusters. Previously at <strong>Vencomatic Group</strong> (Nov 2025 – Jun 2026), I engineered automated data pipelines and 
+            interactive Streamlit dashboards analyzing poultry production telemetry.
+          </p>
+          
+          <p>
+            As Co-Founder &amp; CTO of <strong>Loopit.ai</strong>, I directed a 12-engineer team developing an automated vehicle damage detection platform 
+            powered by custom YOLOv8 models, earning the prestigious <strong>€1,000 EAISI AI Incentive Award</strong>.
+          </p>
+        </div>
+
+        <!-- Education Cards -->
+        <div class="education-group mt-4">
+          <h3 class="group-title"><i class="fas fa-graduation-cap"></i> Academic Credentials</h3>
           <div class="education-cards">
-            <div class="edu-card">
+            <div class="edu-card glass-card">
               <img src="assets/logos/tue.png" alt="TU Eindhoven" class="edu-logo" />
               <div>
-                <h4>MSc Computer Science & Engineering</h4>
+                <h4>MSc Computer Science &amp; Engineering</h4>
                 <p>Eindhoven University of Technology (TU/e)</p>
                 <span>2023 – 2025 • GPA 7.12/10 • Netherlands</span>
               </div>
             </div>
             
-            <div class="edu-card">
+            <div class="edu-card glass-card">
               <img src="assets/logos/jmi.png" alt="Jamia Millia Islamia" class="edu-logo" />
               <div>
                 <h4>BTech Computer Engineering</h4>
@@ -52,26 +55,65 @@
             </div>
           </div>
         </div>
+      </div>
+      
+      <!-- Tech Stack Bento Grid -->
+      <div class="bento-skills-grid">
+        <!-- Bento 1: Supercomputing & SNN -->
+        <div class="bento-box glass-card featured-box">
+          <div class="bento-header">
+            <div class="bento-icon-badge purple">
+              <i class="fas fa-microchip"></i>
+            </div>
+            <div>
+              <h4>Supercomputing &amp; Neuromorphic</h4>
+              <span class="bento-sub">TU/e HPC Cluster &amp; Spike AI</span>
+            </div>
+          </div>
+          <div class="skill-pills">
+            <span>Spiking Neural Nets (SNN)</span>
+            <span>Spike AI</span>
+            <span>HPC Clusters</span>
+            <span>Event-Driven AI</span>
+            <span>Neuromorphic Chips</span>
+          </div>
+        </div>
 
-        <div class="skill-group">
-          <h3><i class="fas fa-brain"></i> AI & Deep Learning</h3>
+        <!-- Bento 2: AI & Deep Learning -->
+        <div class="bento-box glass-card">
+          <div class="bento-header">
+            <div class="bento-icon-badge blue">
+              <i class="fas fa-brain"></i>
+            </div>
+            <div>
+              <h4>AI &amp; Deep Learning</h4>
+              <span class="bento-sub">Models, Vision &amp; LLMs</span>
+            </div>
+          </div>
           <div class="skill-pills">
             <span>PyTorch</span>
             <span>TensorFlow</span>
-            <span>YOLO</span>
+            <span>YOLOv8</span>
             <span>Reinforcement Learning</span>
-            <span>Spiking Neural Networks (SNN)</span>
-            <span>LLMs (CodeT5)</span>
+            <span>CodeT5</span>
             <span>Scikit-learn</span>
             <span>OpenCV</span>
           </div>
         </div>
         
-        <div class="skill-group">
-          <h3><i class="fas fa-server"></i> Data & Supercomputing</h3>
+        <!-- Bento 3: Data & Pipelines -->
+        <div class="bento-box glass-card">
+          <div class="bento-header">
+            <div class="bento-icon-badge emerald">
+              <i class="fas fa-database"></i>
+            </div>
+            <div>
+              <h4>Data &amp; Telemetry</h4>
+              <span class="bento-sub">Production Pipelines</span>
+            </div>
+          </div>
           <div class="skill-pills">
             <span>Python</span>
-            <span>HPC Clusters</span>
             <span>SQL Server</span>
             <span>Azure</span>
             <span>PostgreSQL</span>
@@ -81,8 +123,17 @@
           </div>
         </div>
         
-        <div class="skill-group">
-          <h3><i class="fas fa-cloud"></i> DevOps & Cloud</h3>
+        <!-- Bento 4: DevOps & Edge -->
+        <div class="bento-box glass-card">
+          <div class="bento-header">
+            <div class="bento-icon-badge amber">
+              <i class="fas fa-server"></i>
+            </div>
+            <div>
+              <h4>DevOps &amp; Edge Deployment</h4>
+              <span class="bento-sub">Cloud &amp; Embedded</span>
+            </div>
+          </div>
           <div class="skill-pills">
             <span>Docker</span>
             <span>Kubernetes</span>
@@ -91,6 +142,7 @@
             <span>Git</span>
             <span>CI/CD</span>
             <span>Linux</span>
+            <span>Edge AI</span>
           </div>
         </div>
       </div>
@@ -101,60 +153,48 @@
 <style>
   .about-grid {
     display: grid;
-    grid-template-columns: 1.1fr 1fr;
-    gap: 2rem;
+    grid-template-columns: 1.05fr 1fr;
+    gap: 1.5rem;
     align-items: start;
   }
 
+  .bio-card {
+    padding: 1.25rem 1.4rem;
+    border-radius: 14px;
+  }
+
+  .bio-heading {
+    font-size: 1.05rem;
+    font-weight: 700;
+    margin-bottom: 0.65rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
   .about-content p {
-    margin-bottom: 0.85rem;
-    font-size: 0.975rem;
+    margin-bottom: 0.75rem;
+    font-size: 0.9375rem;
     line-height: 1.65;
     color: var(--text-secondary);
+  }
+
+  .about-content p:last-of-type {
+    margin-bottom: 0;
   }
 
   .about-content p strong {
     color: var(--text);
   }
 
-  .skills-showcase {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-  }
-
-  .skill-group h3,
-  .education-group h3 {
+  .group-title {
     font-size: 0.95rem;
     font-weight: 700;
-    margin-bottom: 0.35rem;
+    margin-bottom: 0.5rem;
     color: var(--text);
     display: flex;
     align-items: center;
     gap: 0.4rem;
-  }
-
-  .skill-pills {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.35rem;
-  }
-
-  .skill-pills span {
-    padding: 0.25rem 0.7rem;
-    background: var(--card-bg);
-    border: 1px solid var(--border);
-    border-radius: 50px;
-    font-size: 0.775rem;
-    font-weight: 500;
-    transition: all 0.2s;
-  }
-
-  .skill-pills span:hover {
-    background: var(--accent);
-    color: #ffffff;
-    border-color: var(--accent);
-    transform: translateY(-1px);
   }
 
   .education-cards {
@@ -167,16 +207,8 @@
     display: flex;
     align-items: center;
     gap: 0.75rem;
-    background: var(--card-bg);
-    border: 1px solid var(--border);
-    border-radius: 10px;
     padding: 0.65rem 0.85rem;
-    transition: transform 0.2s, border-color 0.2s;
-  }
-
-  .edu-card:hover {
-    transform: translateY(-1px);
-    border-color: var(--accent);
+    border-radius: 10px;
   }
 
   .edu-logo {
@@ -207,6 +239,101 @@
   .edu-card span {
     font-size: 0.7rem;
     color: var(--text-muted);
+  }
+
+  /* Bento Grid */
+  .bento-skills-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0.85rem;
+  }
+
+  .bento-box {
+    padding: 1rem 1.15rem;
+    border-radius: 12px;
+  }
+
+  .bento-box.featured-box {
+    border-color: rgba(168, 85, 247, 0.4);
+    background: linear-gradient(135deg, var(--card-bg) 0%, rgba(168, 85, 247, 0.04) 100%);
+  }
+
+  .bento-header {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .bento-icon-badge {
+    width: 34px;
+    height: 34px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.9rem;
+    flex-shrink: 0;
+  }
+
+  .bento-icon-badge.purple {
+    background: rgba(168, 85, 247, 0.15);
+    color: #a855f7;
+    border: 1px solid rgba(168, 85, 247, 0.3);
+  }
+
+  .bento-icon-badge.blue {
+    background: rgba(56, 189, 248, 0.15);
+    color: #38bdf8;
+    border: 1px solid rgba(56, 189, 248, 0.3);
+  }
+
+  .bento-icon-badge.emerald {
+    background: rgba(16, 185, 129, 0.15);
+    color: #10b981;
+    border: 1px solid rgba(16, 185, 129, 0.3);
+  }
+
+  .bento-icon-badge.amber {
+    background: rgba(245, 158, 11, 0.15);
+    color: #f59e0b;
+    border: 1px solid rgba(245, 158, 11, 0.3);
+  }
+
+  .bento-header h4 {
+    font-size: 0.925rem;
+    font-weight: 700;
+    color: var(--text);
+    line-height: 1.2;
+  }
+
+  .bento-sub {
+    font-size: 0.725rem;
+    color: var(--text-muted);
+  }
+
+  .skill-pills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.35rem;
+  }
+
+  .skill-pills span {
+    padding: 0.25rem 0.65rem;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 50px;
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: var(--text);
+    transition: all 0.2s;
+  }
+
+  .skill-pills span:hover {
+    background: var(--accent);
+    color: #ffffff;
+    border-color: var(--accent);
+    transform: translateY(-1px);
   }
 
   @media (max-width: 1024px) {

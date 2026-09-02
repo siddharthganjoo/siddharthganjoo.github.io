@@ -6,8 +6,14 @@ import { siteConfig } from '../data/site';
   <div class="nav-container">
     <a href="#hero" class="nav-logo">
       <span class="logo-badge">{siteConfig.initials}</span>
-      <span>{siteConfig.name}</span>
+      <span class="nav-logo-text">{siteConfig.name}</span>
     </a>
+
+    <!-- Live Status & Clock Pill -->
+    <div class="nav-status-pill">
+      <span class="status-pulsing-dot"></span>
+      <span id="nav-time-display">Eindhoven, NL</span>
+    </div>
     
     <ul class="nav-menu">
       {siteConfig.navLinks.map(link => (
@@ -15,11 +21,21 @@ import { siteConfig } from '../data/site';
           <a href={link.href} class="nav-link">{link.label}</a>
         </li>
       ))}
+
+      <!-- Command Palette Trigger Button -->
+      <li class="nav-item">
+        <button type="button" class="nav-cmd-trigger" data-trigger-cmd aria-label="Open command palette (Cmd+K)">
+          <i class="fas fa-search"></i>
+          <span class="cmd-kbd-label">⌘K</span>
+        </button>
+      </li>
+
       <li class="nav-item">
         <a href={siteConfig.resumeUrl} class="nav-link nav-cta" target="_blank" rel="noopener noreferrer">
           <i class="fas fa-file-pdf"></i> Resume
         </a>
       </li>
+
       <li class="nav-item">
         <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme">
           <i class="fas fa-sun theme-icon sun"></i>
@@ -43,7 +59,7 @@ import { siteConfig } from '../data/site';
     left: 0;
     right: 0;
     z-index: 1000;
-    background: rgba(255, 255, 255, 0.9);
+    background: rgba(255, 255, 255, 0.85);
     backdrop-filter: blur(16px);
     -webkit-backdrop-filter: blur(16px);
     border-bottom: 1px solid var(--border);
@@ -51,7 +67,7 @@ import { siteConfig } from '../data/site';
   }
 
   :global([data-theme="dark"]) .nav {
-    background: rgba(9, 13, 22, 0.9);
+    background: rgba(7, 9, 14, 0.85);
   }
 
   .nav.scrolled {
@@ -66,6 +82,7 @@ import { siteConfig } from '../data/site';
     display: flex;
     align-items: center;
     justify-content: space-between;
+    gap: 1rem;
   }
 
   .nav-logo {
@@ -76,6 +93,7 @@ import { siteConfig } from '../data/site';
     align-items: center;
     gap: 0.45rem;
     letter-spacing: -0.02em;
+    flex-shrink: 0;
   }
 
   .logo-badge {
@@ -84,7 +102,7 @@ import { siteConfig } from '../data/site';
     justify-content: center;
     width: 30px;
     height: 30px;
-    background: linear-gradient(135deg, var(--accent) 0%, #4f46e5 100%);
+    background: var(--accent-gradient);
     color: #ffffff;
     border-radius: 8px;
     font-weight: 800;
@@ -92,10 +110,37 @@ import { siteConfig } from '../data/site';
     box-shadow: 0 1px 4px var(--shadow);
   }
 
+  .nav-status-pill {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 50px;
+    padding: 0.25rem 0.65rem;
+    font-size: 0.725rem;
+    color: var(--text-secondary);
+    font-weight: 500;
+  }
+
+  .status-pulsing-dot {
+    width: 6px;
+    height: 6px;
+    background: #10b981;
+    border-radius: 50%;
+    box-shadow: 0 0 8px #10b981;
+    animation: pulse 2s infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.4; transform: scale(0.85); }
+  }
+
   .nav-menu {
     display: flex;
     align-items: center;
-    gap: 1.5rem;
+    gap: 1.25rem;
     list-style: none;
   }
 
@@ -132,6 +177,34 @@ import { siteConfig } from '../data/site';
   .nav-link:hover::after,
   .nav-link.active::after {
     width: 100%;
+  }
+
+  .nav-cmd-trigger {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.25rem 0.6rem;
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    color: var(--text-muted);
+    font-size: 0.75rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+
+  .nav-cmd-trigger:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+  }
+
+  .cmd-kbd-label {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 3px;
+    padding: 0.05rem 0.3rem;
+    font-size: 0.65rem;
+    font-weight: 700;
   }
 
   .nav-cta {
@@ -222,6 +295,12 @@ import { siteConfig } from '../data/site';
     transform: rotate(-45deg) translate(4px, -4px);
   }
 
+  @media (max-width: 900px) {
+    .nav-status-pill {
+      display: none;
+    }
+  }
+
   @media (max-width: 768px) {
     .nav-menu {
       position: fixed;
@@ -249,6 +328,23 @@ import { siteConfig } from '../data/site';
 </style>
 
 <script>
+  // Live Clock for Eindhoven Time
+  function updateEindhovenClock() {
+    const el = document.getElementById('nav-time-display');
+    if (!el) return;
+    const now = new Date();
+    const options: Intl.DateTimeFormatOptions = {
+      timeZone: 'Europe/Amsterdam',
+      hour: '2-digit',
+      minute: '2-digit',
+      hour12: false
+    };
+    const timeStr = now.toLocaleTimeString('en-GB', options);
+    el.textContent = `Eindhoven, NL • ${timeStr} CET`;
+  }
+  updateEindhovenClock();
+  setInterval(updateEindhovenClock, 30000);
+
   // Theme Switcher
   const themeToggle = document.getElementById('theme-toggle');
   if (themeToggle) {

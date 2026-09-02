@@ -174,3 +174,4 @@ export const timelineData: TimelineItem[] = [
     skills: ["Python", "Dashboards", "Telemetry"]
   }
 ];
+

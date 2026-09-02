@@ -1,0 +1,320 @@
+---
+---
+
+<div class="terminal-widget-wrap">
+  <div class="terminal-window">
+    <!-- Window Header -->
+    <div class="terminal-header">
+      <div class="terminal-buttons">
+        <span class="btn-dot close"></span>
+        <span class="btn-dot min"></span>
+        <span class="btn-dot max"></span>
+      </div>
+      <div class="terminal-title">
+        <i class="fas fa-terminal"></i> siddharth@tue-supercomputer: ~ (zsh)
+      </div>
+      <div class="terminal-status-badge">
+        <span class="live-dot"></span> HPC LIVE
+      </div>
+    </div>
+
+    <!-- Quick Run Chips -->
+    <div class="terminal-chips">
+      <span class="chip-label">Quick Run:</span>
+      <button type="button" class="term-chip" data-cmd="cat bio.txt">cat bio.txt</button>
+      <button type="button" class="term-chip" data-cmd="spike-ai">spike-ai</button>
+      <button type="button" class="term-chip" data-cmd="skills">skills</button>
+      <button type="button" class="term-chip" data-cmd="projects">projects</button>
+      <button type="button" class="term-chip" data-cmd="contact">contact</button>
+      <button type="button" class="term-chip" data-cmd="clear">clear</button>
+    </div>
+
+    <!-- Terminal Body / Output -->
+    <div class="terminal-body" id="terminal-body">
+      <div class="term-line output welcome">
+        <span class="term-accent">Welcome to Siddharth Ganjoo's Interactive Terminal v2.4</span><br />
+        Type <span class="term-cmd-highlight">help</span> to view available commands, or click any quick-run chip above.
+      </div>
+    </div>
+
+    <!-- Interactive Input Line -->
+    <div class="terminal-prompt-line">
+      <span class="term-prompt">siddharth@cluster:~$</span>
+      <input type="text" id="terminal-input" class="terminal-input" placeholder="type a command (e.g. 'help', 'skills', 'spike-ai')..." autocomplete="off" spellcheck="false" />
+    </div>
+  </div>
+</div>
+
+<style>
+  .terminal-widget-wrap {
+    max-width: 760px;
+    margin: 1.5rem auto 0;
+    width: 100%;
+    text-align: left;
+  }
+
+  .terminal-window {
+    background: #090d16;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 12px;
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.5);
+    overflow: hidden;
+    font-family: 'JetBrains Mono', Menlo, Monaco, 'Courier New', monospace;
+  }
+
+  .terminal-header {
+    background: #111726;
+    padding: 0.6rem 0.9rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  .terminal-buttons {
+    display: flex;
+    gap: 6px;
+  }
+
+  .btn-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+  }
+
+  .btn-dot.close { background: #ef4444; }
+  .btn-dot.min { background: #f59e0b; }
+  .btn-dot.max { background: #10b981; }
+
+  .terminal-title {
+    font-size: 0.75rem;
+    color: #94a3b8;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+  }
+
+  .terminal-status-badge {
+    font-size: 0.65rem;
+    color: #34d399;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    gap: 0.35rem;
+    background: rgba(16, 185, 129, 0.12);
+    padding: 0.15rem 0.45rem;
+    border-radius: 4px;
+    border: 1px solid rgba(16, 185, 129, 0.25);
+  }
+
+  .live-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #10b981;
+  }
+
+  .terminal-chips {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.5rem 0.9rem;
+    background: #0d1322;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    flex-wrap: wrap;
+  }
+
+  .chip-label {
+    font-size: 0.7rem;
+    color: #64748b;
+  }
+
+  .term-chip {
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: #38bdf8;
+    font-size: 0.7rem;
+    padding: 0.15rem 0.5rem;
+    border-radius: 4px;
+    cursor: pointer;
+    font-family: inherit;
+    transition: all 0.15s ease;
+  }
+
+  .term-chip:hover {
+    background: rgba(56, 189, 248, 0.2);
+    border-color: #38bdf8;
+  }
+
+  .terminal-body {
+    padding: 0.85rem 1rem;
+    max-height: 220px;
+    overflow-y: auto;
+    font-size: 0.8125rem;
+    color: #cbd5e1;
+    line-height: 1.5;
+  }
+
+  .terminal-body::-webkit-scrollbar {
+    width: 6px;
+  }
+  .terminal-body::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 3px;
+  }
+
+  :global(.term-cmd-echo) {
+    color: #f8fafc;
+    margin-bottom: 0.35rem;
+  }
+
+  :global(.term-prompt-green) {
+    color: #34d399;
+  }
+
+  :global(.term-accent) {
+    color: #38bdf8;
+    font-weight: 600;
+  }
+
+  :global(.term-cmd-highlight) {
+    color: #fbbf24;
+    background: rgba(245, 158, 11, 0.12);
+    padding: 0.1rem 0.3rem;
+    border-radius: 3px;
+  }
+
+  :global(.term-output) {
+    margin-bottom: 0.75rem;
+    color: #cbd5e1;
+    padding-left: 0.5rem;
+    border-left: 2px solid rgba(56, 189, 248, 0.3);
+  }
+
+  .terminal-prompt-line {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.6rem 1rem;
+    background: #0d1322;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  .term-prompt {
+    color: #34d399;
+    font-size: 0.8125rem;
+    white-space: nowrap;
+  }
+
+  .terminal-input {
+    flex: 1;
+    background: transparent;
+    border: none;
+    outline: none;
+    color: #ffffff;
+    font-family: inherit;
+    font-size: 0.8125rem;
+  }
+
+  .terminal-input::placeholder {
+    color: #475569;
+    font-style: italic;
+  }
+</style>
+
+<script>
+  const termBody = document.getElementById('terminal-body');
+  const termInput = document.getElementById('terminal-input') as HTMLInputElement | null;
+  const chips = document.querySelectorAll('.term-chip');
+
+  const commands: Record<string, string> = {
+    'help': `Available commands:
+• <span class="term-accent">cat bio.txt</span>  : View summary biography
+• <span class="term-accent">spike-ai</span>     : Inspect TU/e neuromorphic computing project
+• <span class="term-accent">skills</span>       : List core tech stack & frameworks
+• <span class="term-accent">projects</span>     : Show recent production & research projects
+• <span class="term-accent">education</span>    : View academic credentials (TU/e, JMI)
+• <span class="term-accent">contact</span>      : Display contact channels
+• <span class="term-accent">clear</span>        : Clear the terminal screen`,
+
+    'cat bio.txt': `Siddharth Ganjoo — Machine Learning Engineer & Data Scientist
+MSc Computer Science & Engineering @ TU Eindhoven (TU/e)
+Currently building Spiking Neural Network (SNN) pipelines at the TU/e Supercomputing Center.
+Previously engineered telemetry pipelines at Vencomatic Group (ended June 2026).
+Co-Founder & CTO @ Loopit.ai (Automated vehicle damage inspection, €1,000 EAISI Award).`,
+
+    'spike-ai': `[TU/e SUPERCOMPUTING CENTER // SPIKE AI]
+Status        : Active Research & Development
+Focus Area    : Neuromorphic Computing & Spiking Neural Networks (SNNs)
+Hardware      : TU/e High-Performance Supercomputing Cluster
+Paradigm      : Energy-Efficient Event-Driven Neural Simulation
+Key Frameworks: PyTorch, Spiking Neural Nets, Distributed HPC`,
+
+    'skills': `Core Engineering Stack:
+• AI & Deep Learning : PyTorch, TensorFlow, YOLOv8, CodeT5, OpenCV, Reinforcement Learning
+• Data & HPC         : Python, SQL Server, Streamlit, PostgreSQL, Azure, Knowledge Graphs
+• DevOps & Edge      : Docker, Kubernetes, Linux, FastAPI, CI/CD, Git, Embedded Edge AI`,
+
+    'projects': `Selected Projects:
+1. Loopit.ai              : YOLOv8 vehicle damage localization & repair estimator (EAISI Award)
+2. RL Egg Sorting         : Vencomatic calibration system (50% error reduction, €25K savings)
+3. Spike AI Neuromorphic  : HPC energy-efficient Spiking Neural Network pipelines
+4. CodeT5 Prompt Gisting  : William & Mary prompt token compression (20-40% savings)
+5. Vehicle Proximity HUD  : Edge YOLOv4-tiny collision avoidance radar (30+ FPS)`,
+
+    'education': `Academic Background:
+• MSc Computer Science & Engineering — Eindhoven University of Technology (TU/e), 2023–2025
+• BTech Computer Engineering — Jamia Millia Islamia University, 2019–2023 (Grade: 8.54/10)`,
+
+    'contact': `Get in touch:
+• Email    : sganjoo2000@gmail.com
+• LinkedIn : linkedin.com/in/siddharthganjoo
+• GitHub   : github.com/siddharthganjoo
+• Location : Eindhoven, Netherlands`
+  };
+
+  function executeCommand(cmd: string) {
+    if (!termBody) return;
+    const cleanCmd = cmd.trim().toLowerCase();
+
+    // Echo command
+    const echoLine = document.createElement('div');
+    echoLine.className = 'term-cmd-echo';
+    echoLine.innerHTML = `<span class="term-prompt-green">siddharth@cluster:~$</span> ${cmd}`;
+    termBody.appendChild(echoLine);
+
+    if (cleanCmd === 'clear') {
+      termBody.innerHTML = '';
+      return;
+    }
+
+    const outputDiv = document.createElement('div');
+    outputDiv.className = 'term-output';
+
+    if (commands[cleanCmd]) {
+      outputDiv.innerHTML = commands[cleanCmd].replace(/\n/g, '<br />');
+    } else if (cleanCmd === '') {
+      outputDiv.innerHTML = '';
+    } else {
+      outputDiv.innerHTML = `command not found: <span style="color:#ef4444">${cmd}</span>. Type <span class="term-cmd-highlight">help</span> for a list of available commands.`;
+    }
+
+    termBody.appendChild(outputDiv);
+    termBody.scrollTop = termBody.scrollHeight;
+  }
+
+  termInput?.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter') {
+      const val = termInput.value;
+      termInput.value = '';
+      executeCommand(val);
+    }
+  });
+
+  chips.forEach(chip => {
+    chip.addEventListener('click', () => {
+      const cmd = chip.getAttribute('data-cmd');
+      if (cmd) executeCommand(cmd);
+    });
+  });
+</script>

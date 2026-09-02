@@ -1,5 +1,6 @@
 ---
 import { siteConfig } from '../data/site';
+import Terminal from './Terminal.astro';
 ---
 
 <section id="hero" class="hero">
@@ -10,21 +11,23 @@ import { siteConfig } from '../data/site';
     
     <div class="hero-badge">
       <span class="status-dot"></span>
-      <span>Available for opportunities</span>
+      <span>Machine Learning Engineer @ TU/e Supercomputing Center</span>
     </div>
     
-    <h1 class="hero-title">{siteConfig.name}</h1>
+    <h1 class="hero-title">
+      Hi, I'm <span class="gradient-text">{siteConfig.name}</span>
+    </h1>
     <p class="hero-subtitle">{siteConfig.role}</p>
     <p class="hero-description">
-      Building high-performance AI and neuromorphic systems at the <strong>TU/e Supercomputing Center</strong> (Spike AI), 
-      previously engineered scalable production pipelines at <strong>Vencomatic Group</strong>, and automated computer vision solutions as Co-Founder of <strong>Loopit.ai</strong>. 
+      Developing high-performance Spiking Neural Networks at the <strong>TU/e Supercomputing Center (Spike AI)</strong>, 
+      previously engineered scalable telemetry pipelines at <strong>Vencomatic Group</strong>, and automated computer vision solutions as Co-Founder &amp; CTO of <strong>Loopit.ai</strong>. 
       MSc Computer Science @ <strong>TU Eindhoven</strong>.
     </p>
     
     <div class="hero-stats">
       {siteConfig.stats.map(stat => (
-        <div class="stat-item">
-          <div class="stat-value">{stat.value}</div>
+        <div class="stat-item glass-card">
+          <div class="stat-value gradient-text">{stat.value}</div>
           <div class="stat-label">{stat.label}</div>
         </div>
       ))}
@@ -40,12 +43,13 @@ import { siteConfig } from '../data/site';
       <a href={siteConfig.resumeUrl} class="btn btn-secondary" target="_blank" rel="noopener noreferrer">
         <i class="fas fa-file-pdf"></i> Resume
       </a>
+      <button type="button" class="btn btn-secondary" data-trigger-cmd>
+        <i class="fas fa-terminal"></i> Command Menu
+      </button>
     </div>
 
-    <div class="scroll-indicator">
-      <span>Scroll to explore</span>
-      <i class="fas fa-arrow-down"></i>
-    </div>
+    <!-- Interactive Terminal Console Widget -->
+    <Terminal />
   </div>
 </section>
 
@@ -61,7 +65,7 @@ import { siteConfig } from '../data/site';
   }
 
   .hero-container {
-    max-width: 760px;
+    max-width: 780px;
     margin: 0 auto;
     position: relative;
     z-index: 1;
@@ -82,13 +86,13 @@ import { siteConfig } from '../data/site';
     display: block;
     margin: 0 auto;
     border: 3px solid var(--border);
-    box-shadow: 0 6px 20px var(--shadow);
-    transition: transform 0.25s var(--ease-smooth), box-shadow 0.25s var(--ease-smooth);
+    box-shadow: 0 6px 24px var(--shadow);
+    transition: transform 0.25s var(--ease-smooth), box-shadow 0.25s var(--ease-smooth), border-color 0.2s;
   }
 
   .profile-image:hover {
-    transform: scale(1.04);
-    box-shadow: 0 8px 28px var(--shadow-glow);
+    transform: scale(1.05);
+    box-shadow: 0 8px 32px var(--shadow-glow);
     border-color: var(--accent);
   }
 
@@ -96,7 +100,7 @@ import { siteConfig } from '../data/site';
     display: inline-flex;
     align-items: center;
     gap: 0.45rem;
-    padding: 0.3rem 0.85rem;
+    padding: 0.35rem 0.95rem;
     background: var(--card-bg);
     border: 1px solid var(--border);
     border-radius: 50px;
@@ -113,6 +117,7 @@ import { siteConfig } from '../data/site';
     background: var(--success);
     border-radius: 50%;
     position: relative;
+    box-shadow: 0 0 6px var(--success);
   }
 
   .status-dot::after {
@@ -151,7 +156,7 @@ import { siteConfig } from '../data/site';
   .hero-description {
     font-size: 1.05rem;
     color: var(--text-secondary);
-    max-width: 640px;
+    max-width: 660px;
     margin: 0 auto 1.25rem;
     line-height: 1.6;
   }
@@ -165,16 +170,14 @@ import { siteConfig } from '../data/site';
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 0.65rem;
-    max-width: 680px;
+    max-width: 720px;
     margin: 1.25rem auto;
   }
 
   .stat-item {
     text-align: center;
-    background: var(--card-bg);
-    border: 1px solid var(--border);
-    border-radius: 10px;
-    padding: 0.65rem 0.5rem;
+    border-radius: 12px;
+    padding: 0.75rem 0.5rem;
     transition: transform 0.2s, border-color 0.2s;
   }
 
@@ -186,7 +189,6 @@ import { siteConfig } from '../data/site';
   .stat-value {
     font-size: 1.55rem;
     font-weight: 800;
-    color: var(--accent);
     margin-bottom: 0.1rem;
     line-height: 1.2;
   }
@@ -204,26 +206,7 @@ import { siteConfig } from '../data/site';
     gap: 0.65rem;
     justify-content: center;
     flex-wrap: wrap;
-    margin-bottom: 0.75rem;
-  }
-
-  .scroll-indicator {
-    margin-top: 1rem;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 0.25rem;
-    color: var(--text-muted);
-    font-size: 0.75rem;
-  }
-
-  @keyframes bounceArrow {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(4px); }
-  }
-
-  .scroll-indicator i {
-    animation: bounceArrow 2s ease-in-out infinite;
+    margin-bottom: 0.5rem;
   }
 
   @media (max-width: 768px) {
