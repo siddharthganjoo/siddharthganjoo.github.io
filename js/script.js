@@ -91,7 +91,7 @@
         const targetEl = document.querySelector(targetId);
         if (targetEl) {
           e.preventDefault();
-          const headerOffset = 70;
+          const headerOffset = 64;
           const elementPosition = targetEl.getBoundingClientRect().top;
           const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
 
@@ -138,7 +138,7 @@
     
     if (!expPrev || !expNext || !expTrack) return;
     
-    const scrollAmount = 520;
+    const scrollAmount = 410;
     
     expPrev.addEventListener('click', () => {
       expTrack.scrollBy({
