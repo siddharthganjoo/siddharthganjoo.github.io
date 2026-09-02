@@ -48,11 +48,11 @@
       </a>
 
       <div class="cmd-group-title">Quick Actions</div>
-      <button type="button" class="cmd-item" data-action="copy-email">
-        <i class="fas fa-copy"></i>
-        <span>Copy Email (sganjoo2000@gmail.com)</span>
-        <span class="cmd-shortcut">Copy</span>
-      </button>
+      <a href="#contact" class="cmd-item" data-action="navigate">
+        <i class="fas fa-paper-plane"></i>
+        <span>Send a Message (Contact Form)</span>
+        <span class="cmd-shortcut">Form</span>
+      </a>
       <button type="button" class="cmd-item" data-action="toggle-theme">
         <i class="fas fa-circle-half-stroke"></i>
         <span>Toggle Dark / Light Theme</span>
@@ -310,16 +310,7 @@
   items.forEach(item => {
     item.addEventListener('click', (e) => {
       const action = item.getAttribute('data-action');
-      if (action === 'copy-email') {
-        e.preventDefault();
-        navigator.clipboard.writeText('sganjoo2000@gmail.com');
-        const toast = document.getElementById('toast-notification');
-        if (toast) {
-          toast.classList.add('show');
-          setTimeout(() => toast.classList.remove('show'), 3000);
-        }
-        closePalette();
-      } else if (action === 'toggle-theme') {
+      if (action === 'toggle-theme') {
         e.preventDefault();
         const current = document.documentElement.getAttribute('data-theme') || 'light';
         const next = current === 'dark' ? 'light' : 'dark';

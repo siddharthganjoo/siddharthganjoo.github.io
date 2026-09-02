@@ -4,7 +4,6 @@ export interface SiteConfig {
   initials: string;
   role: string;
   description: string;
-  email: string;
   location: string;
   url: string;
   resumeUrl: string;
@@ -28,7 +27,6 @@ export const siteConfig: SiteConfig = {
   initials: "SG",
   role: "Machine Learning Engineer & Data Scientist",
   description: "Building high-performance AI and neuromorphic systems at the TU/e Supercomputing Center (Spike AI), previously engineered scalable production pipelines at Vencomatic Group, and automated computer vision solutions as Co-Founder of Loopit.ai. MSc Computer Science @ TU Eindhoven.",
-  email: "sganjoo2000@gmail.com",
   location: "Eindhoven, Netherlands",
   url: "https://siddharthganjoo.github.io/",
   resumeUrl: "assets/CV_SiddharthGanjoo.pdf",

@@ -155,38 +155,6 @@ const {
         }
       });
     });
-
-    // Copy Email Toast Helper
-    document.querySelectorAll('[data-copy-email]').forEach(btn => {
-      btn.addEventListener('click', async (e) => {
-        e.preventDefault();
-        const email = btn.getAttribute('data-copy-email') || 'sganjoo2000@gmail.com';
-
-        try {
-          if (navigator.clipboard && window.isSecureContext) {
-            await navigator.clipboard.writeText(email);
-          } else {
-            const textArea = document.createElement('textarea');
-            textArea.value = email;
-            textArea.style.position = 'fixed';
-            textArea.style.left = '-999999px';
-            document.body.appendChild(textArea);
-            textArea.focus();
-            textArea.select();
-            document.execCommand('copy');
-            textArea.remove();
-          }
-
-          const toast = document.getElementById('toast-notification');
-          if (toast) {
-            toast.classList.add('show');
-            setTimeout(() => toast.classList.remove('show'), 3000);
-          }
-        } catch (err) {
-          window.location.href = `mailto:${email}`;
-        }
-      });
-    });
   </script>
 </body>
 </html>
