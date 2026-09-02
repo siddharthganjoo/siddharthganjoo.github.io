@@ -51,7 +51,7 @@
     const sections = document.querySelectorAll('section[id]');
 
     window.addEventListener('scroll', () => {
-      if (window.scrollY > 30) {
+      if (window.scrollY > 20) {
         nav.classList.add('scrolled');
       } else {
         nav.classList.remove('scrolled');
@@ -129,59 +129,35 @@
   }
 
   // --------------------------------------------------------------------------
-  // 3. Experience Carousel
+  // 3. Unified Timeline Filtering
   // --------------------------------------------------------------------------
-  function initCarousel() {
-    const expPrev = document.getElementById('exp-prev');
-    const expNext = document.getElementById('exp-next');
-    const expTrack = document.querySelector('.experience-track');
-    
-    if (!expPrev || !expNext || !expTrack) return;
-    
-    const scrollAmount = 410;
-    
-    expPrev.addEventListener('click', () => {
-      expTrack.scrollBy({
-        left: -scrollAmount,
-        behavior: 'smooth'
+  function initTimelineFilters() {
+    const filterBtns = document.querySelectorAll('.timeline-filter-btn');
+    const timelineItems = document.querySelectorAll('.timeline-item');
+
+    if (!filterBtns.length || !timelineItems.length) return;
+
+    filterBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        filterBtns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+
+        const filter = btn.getAttribute('data-filter');
+
+        timelineItems.forEach(item => {
+          const category = item.getAttribute('data-category');
+          if (filter === 'all' || category === filter) {
+            item.classList.remove('hidden');
+          } else {
+            item.classList.add('hidden');
+          }
+        });
       });
     });
-    
-    expNext.addEventListener('click', () => {
-      expTrack.scrollBy({
-        left: scrollAmount,
-        behavior: 'smooth'
-      });
-    });
-    
-    function updateButtons() {
-      const maxScroll = expTrack.scrollWidth - expTrack.clientWidth;
-      const currentScroll = expTrack.scrollLeft;
-      
-      if (currentScroll <= 10) {
-        expPrev.style.opacity = '0.4';
-        expPrev.style.cursor = 'not-allowed';
-      } else {
-        expPrev.style.opacity = '1';
-        expPrev.style.cursor = 'pointer';
-      }
-      
-      if (currentScroll >= maxScroll - 15) {
-        expNext.style.opacity = '0.4';
-        expNext.style.cursor = 'not-allowed';
-      } else {
-        expNext.style.opacity = '1';
-        expNext.style.cursor = 'pointer';
-      }
-    }
-    
-    expTrack.addEventListener('scroll', updateButtons, { passive: true });
-    updateButtons();
-    window.addEventListener('resize', updateButtons);
   }
 
   // --------------------------------------------------------------------------
-  // 4. Image Lightbox for News Photos
+  // 4. Image Lightbox for News & Event Photos
   // --------------------------------------------------------------------------
   function initLightbox() {
     const lightbox = document.getElementById('lightbox-modal');
@@ -191,7 +167,7 @@
 
     if (!lightbox || !lightboxImg) return;
 
-    const clickableImages = document.querySelectorAll('.timeline-image');
+    const clickableImages = document.querySelectorAll('.timeline-media');
 
     clickableImages.forEach(wrap => {
       wrap.addEventListener('click', () => {
@@ -201,7 +177,7 @@
         lightboxImg.src = img.src;
         lightboxImg.alt = img.alt || 'Full size photo';
         if (lightboxCaption) {
-          const cardTitle = wrap.closest('.timeline-content')?.querySelector('h3');
+          const cardTitle = wrap.closest('.timeline-card')?.querySelector('.timeline-role-title');
           lightboxCaption.textContent = cardTitle ? cardTitle.textContent : img.alt;
         }
 
@@ -286,7 +262,7 @@
   function init() {
     initTheme();
     initNavigation();
-    initCarousel();
+    initTimelineFilters();
     initLightbox();
     initCopyEmail();
   }
