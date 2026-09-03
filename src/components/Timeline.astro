@@ -12,14 +12,20 @@ import { timelineData } from '../data/timeline';
 
     <!-- Category Filter Tabs -->
     <div class="timeline-filters">
-      <button type="button" class="timeline-filter-btn active" data-filter="all">All Updates</button>
-      <button type="button" class="timeline-filter-btn" data-filter="work">Work &amp; Experience</button>
-      <button type="button" class="timeline-filter-btn" data-filter="news">News &amp; Awards</button>
+      <button type="button" class="timeline-filter-btn active" data-filter="all">
+        All Updates <span class="filter-count">({timelineData.length})</span>
+      </button>
+      <button type="button" class="timeline-filter-btn" data-filter="work">
+        Work &amp; Research <span class="filter-count">({timelineData.filter(i => i.category === 'work').length})</span>
+      </button>
+      <button type="button" class="timeline-filter-btn" data-filter="news">
+        News &amp; Awards <span class="filter-count">({timelineData.filter(i => i.category === 'news').length})</span>
+      </button>
     </div>
     
-    <div class="timeline">
-      {timelineData.map(item => (
-        <div class="timeline-item" data-category={item.category}>
+    <div class="timeline" id="timeline-list">
+      {timelineData.map((item, index) => (
+        <div class="timeline-item" data-category={item.category} data-index={index}>
           <div class="timeline-card">
             <div class="timeline-header">
               <div class="timeline-meta">
@@ -57,6 +63,7 @@ import { timelineData } from '../data/timeline';
               {item.mediaImg && (
                 <div class="timeline-media" title="Click to enlarge photo">
                   <img src={item.mediaImg} alt={item.mediaAlt || item.roleTitle} />
+                  <span class="media-zoom-pill"><i class="fas fa-magnifying-glass-plus"></i> Enlarge</span>
                 </div>
               )}
               <p>{item.description}</p>
@@ -79,6 +86,14 @@ import { timelineData } from '../data/timeline';
           </div>
         </div>
       ))}
+    </div>
+
+    <!-- Progressive Disclosure Expander -->
+    <div class="timeline-expand-wrap">
+      <button type="button" class="btn btn-secondary timeline-expand-btn" id="timeline-toggle-expand">
+        <span class="expand-text"><i class="fas fa-angles-down"></i> View Full Journey ({timelineData.length} Milestones)</span>
+        <span class="collapse-text"><i class="fas fa-angles-up"></i> Show Recent Highlights</span>
+      </button>
     </div>
   </div>
 </section>
@@ -363,6 +378,76 @@ import { timelineData } from '../data/timeline';
     transform: translateX(3px);
   }
 
+  .filter-count {
+    opacity: 0.75;
+    font-size: 0.75rem;
+    font-weight: 500;
+  }
+
+  .timeline-media {
+    position: relative;
+    margin-top: 0.65rem;
+    margin-bottom: 0.65rem;
+    border-radius: 8px;
+    overflow: hidden;
+    max-height: 160px;
+    background: var(--border);
+    cursor: pointer;
+  }
+
+  .media-zoom-pill {
+    position: absolute;
+    bottom: 8px;
+    right: 8px;
+    background: rgba(0, 0, 0, 0.75);
+    color: #ffffff;
+    font-size: 0.65rem;
+    font-weight: 600;
+    padding: 0.15rem 0.45rem;
+    border-radius: 4px;
+    backdrop-filter: blur(4px);
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+    opacity: 0;
+    transition: opacity 0.2s ease;
+  }
+
+  .timeline-media:hover .media-zoom-pill {
+    opacity: 1;
+  }
+
+  .timeline-expand-wrap {
+    text-align: center;
+    margin-top: 1.75rem;
+  }
+
+  .timeline-expand-btn {
+    padding: 0.65rem 1.75rem;
+    border-radius: 50px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    cursor: pointer;
+  }
+
+  .timeline-expand-btn .collapse-text {
+    display: none;
+  }
+
+  .timeline-expand-btn.is-expanded .expand-text {
+    display: none;
+  }
+
+  .timeline-expand-btn.is-expanded .collapse-text {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+  }
+
+  .timeline-item.hidden-by-limit {
+    display: none !important;
+  }
+
   :global([data-theme="dark"]) .timeline-linkedin-btn {
     color: #38bdf8;
     background: rgba(56, 189, 248, 0.1);
@@ -387,26 +472,65 @@ import { timelineData } from '../data/timeline';
 </style>
 
 <script>
-  // Filter Tabs Interaction
+  // Filter Tabs & Progressive Disclosure Interaction
   const filterBtns = document.querySelectorAll('.timeline-filter-btn');
   const timelineItems = document.querySelectorAll('.timeline-item');
+  const toggleExpandBtn = document.getElementById('timeline-toggle-expand');
+
+  let isExpanded = false;
+  let currentFilter = 'all';
+  const INITIAL_LIMIT = 4;
+
+  function updateTimelineVisibility() {
+    let matchCount = 0;
+    timelineItems.forEach((item) => {
+      const category = item.getAttribute('data-category');
+      const matchesFilter = (currentFilter === 'all' || category === currentFilter);
+
+      if (!matchesFilter) {
+        item.classList.add('hidden');
+        item.classList.remove('hidden-by-limit');
+      } else {
+        item.classList.remove('hidden');
+        matchCount++;
+        // If not expanded, only show first INITIAL_LIMIT items
+        if (!isExpanded && matchCount > INITIAL_LIMIT) {
+          item.classList.add('hidden-by-limit');
+        } else {
+          item.classList.remove('hidden-by-limit');
+        }
+      }
+    });
+
+    if (toggleExpandBtn) {
+      if (matchCount <= INITIAL_LIMIT) {
+        toggleExpandBtn.style.display = 'none';
+      } else {
+        toggleExpandBtn.style.display = 'inline-flex';
+        toggleExpandBtn.classList.toggle('is-expanded', isExpanded);
+      }
+    }
+  }
 
   filterBtns.forEach(btn => {
     btn.addEventListener('click', () => {
       filterBtns.forEach(b => b.classList.remove('active'));
       btn.classList.add('active');
-
-      const filter = btn.getAttribute('data-filter');
-
-      timelineItems.forEach(item => {
-        const category = item.getAttribute('data-category');
-        if (filter === 'all' || category === filter) {
-          item.classList.remove('hidden');
-        } else {
-          item.classList.add('hidden');
-        }
-      });
+      currentFilter = btn.getAttribute('data-filter') || 'all';
+      updateTimelineVisibility();
     });
   });
+
+  toggleExpandBtn?.addEventListener('click', () => {
+    isExpanded = !isExpanded;
+    updateTimelineVisibility();
+    if (!isExpanded) {
+      const timelineSection = document.getElementById('timeline');
+      timelineSection?.scrollIntoView({ behavior: 'smooth' });
+    }
+  });
+
+  // Initial apply
+  updateTimelineVisibility();
 </script>
 

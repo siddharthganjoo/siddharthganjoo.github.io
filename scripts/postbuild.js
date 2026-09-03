@@ -3,14 +3,12 @@ import fs from 'node:fs';
 // 1. Convert paths to universal relative paths in dist/index.html
 if (fs.existsSync('dist/index.html')) {
   let html = fs.readFileSync('dist/index.html', 'utf8');
-  html = html.replace(/\/website\/_astro\//g, './_astro/');
-  html = html.replace(/\/website\/assets\//g, './assets/');
-  html = html.replace(/src="assets\//g, 'src="./assets/');
-  html = html.replace(/href="assets\//g, 'href="./assets/');
-  html = html.replace(/href="\/_astro\//g, 'href="./_astro/');
-  html = html.replace(/src="\/_astro\//g, 'src="./_astro/');
-  html = html.replace(/href="\/assets\//g, 'href="./assets/');
-  html = html.replace(/src="\/assets\//g, 'src="./assets/');
+  html = html.replace(/src="(?:\/website)?assets\//g, 'src="./assets/');
+  html = html.replace(/href="(?:\/website)?assets\//g, 'href="./assets/');
+  html = html.replace(/href="(?:\/website)?\/_astro\//g, 'href="./_astro/');
+  html = html.replace(/src="(?:\/website)?\/_astro\//g, 'src="./_astro/');
+  html = html.replace(/href="(?:\/website)?\/assets\//g, 'href="./assets/');
+  html = html.replace(/src="(?:\/website)?\/assets\//g, 'src="./assets/');
   fs.writeFileSync('dist/index.html', html);
   fs.copyFileSync('dist/index.html', 'index.html');
 }

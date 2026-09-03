@@ -1,0 +1,1077 @@
+---
+// InteractiveLab.astro — Neuromorphic SNN & Spike-A Supercomputer Simulation Lab
+---
+
+<section id="lab" class="section lab-section">
+  <div class="section-container">
+    <div class="section-header">
+      <span class="section-eyebrow"><i class="fas fa-microchip"></i> Interactive Lab</span>
+      <h2 class="section-title">Spike-A &amp; Neuromorphic AI Simulator</h2>
+      <p class="section-description">
+        Experience real-time Spiking Neural Network (SNN) dynamics, event-driven synaptic firing, and high-performance compute efficiency benchmarks modeled after our research at TU/e.
+      </p>
+    </div>
+
+    <!-- Interactive Simulator Cockpit Card -->
+    <div class="lab-card glass-card">
+      <!-- Top Preset Bar -->
+      <div class="lab-presets-bar">
+        <span class="preset-label"><i class="fas fa-sliders"></i> Architecture Presets:</span>
+        <div class="preset-buttons">
+          <button type="button" class="preset-btn active" data-preset="spike-a">
+            <i class="fas fa-server"></i> Spike-A HPC Cluster
+          </button>
+          <button type="button" class="preset-btn" data-preset="loopit">
+            <i class="fas fa-car-crash"></i> Loopit YOLOv8 CV
+          </button>
+          <button type="button" class="preset-btn" data-preset="vencomatic">
+            <i class="fas fa-robot"></i> Vencomatic RL Sorter
+          </button>
+          <button type="button" class="preset-btn" data-preset="codet5">
+            <i class="fas fa-code"></i> CodeT5 Prompt Gisting
+          </button>
+        </div>
+      </div>
+
+      <!-- Main Visualizer Grid -->
+      <div class="lab-main-grid">
+        <!-- Canvas Visualizer Column -->
+        <div class="canvas-container">
+          <div class="canvas-header">
+            <div class="canvas-title">
+              <span class="pulse-indicator"></span>
+              <span id="network-title-display">Neuromorphic SNN Firing Graph</span>
+            </div>
+            <div class="canvas-actions">
+              <button type="button" id="btn-fire-impulse" class="canvas-action-btn primary" title="Inject a burst of spike impulses into the network">
+                <i class="fas fa-bolt"></i> Inject Spike Impulse
+              </button>
+              <button type="button" id="btn-reset-sim" class="canvas-action-btn" title="Reset network state">
+                <i class="fas fa-rotate-right"></i>
+              </button>
+            </div>
+          </div>
+
+          <div class="canvas-viewport" id="canvas-viewport">
+            <canvas id="snn-canvas" width="600" height="340"></canvas>
+            <div class="canvas-overlay-hint">
+              <i class="fas fa-hand-pointer"></i> Click anywhere on the network to propagate spikes
+            </div>
+          </div>
+        </div>
+
+        <!-- Telemetry & Controls Column -->
+        <div class="controls-container">
+          <!-- Live Telemetry Meters -->
+          <div class="telemetry-grid">
+            <div class="telemetry-box">
+              <span class="telemetry-label">Energy / Synapse</span>
+              <div class="telemetry-value-row">
+                <span id="telemetry-energy" class="telemetry-value highlight">1.8 pJ</span>
+                <span id="telemetry-savings" class="telemetry-badge">-96% vs DNN</span>
+              </div>
+              <span class="telemetry-sub">Ultra-low neuromorphic power</span>
+            </div>
+
+            <div class="telemetry-box">
+              <span class="telemetry-label">Inference Latency</span>
+              <div class="telemetry-value-row">
+                <span id="telemetry-latency" class="telemetry-value">1.24 ms</span>
+              </div>
+              <span class="telemetry-sub">Event-driven asynchronous compute</span>
+            </div>
+
+            <div class="telemetry-box">
+              <span class="telemetry-label">Synaptic Event Rate</span>
+              <div class="telemetry-value-row">
+                <span id="telemetry-throughput" class="telemetry-value">3,420 ev/s</span>
+              </div>
+              <span class="telemetry-sub">Distributed GPU execution</span>
+            </div>
+
+            <div class="telemetry-box">
+              <span class="telemetry-label">Total Fired Spikes</span>
+              <div class="telemetry-value-row">
+                <span id="telemetry-spikes-total" class="telemetry-value accent">0</span>
+              </div>
+              <span class="telemetry-sub">Live synaptic pulse accumulator</span>
+            </div>
+          </div>
+
+          <!-- Parameter Sliders -->
+          <div class="sliders-card">
+            <div class="control-row">
+              <div class="control-label-wrap">
+                <label for="slider-freq">Stimulus Input Frequency</label>
+                <span id="slider-freq-val" class="slider-pill">45 Hz</span>
+              </div>
+              <input type="range" id="slider-freq" min="10" max="100" value="45" class="lab-range" />
+            </div>
+
+            <div class="control-row">
+              <div class="control-label-wrap">
+                <label for="slider-threshold">Membrane Threshold (Vth)</label>
+                <span id="slider-threshold-val" class="slider-pill">25 mV</span>
+              </div>
+              <input type="range" id="slider-threshold" min="10" max="50" value="25" class="lab-range" />
+            </div>
+
+            <!-- Compute Mode Switcher -->
+            <div class="control-row mode-switch-row">
+              <span class="mode-label">Execution Pipeline:</span>
+              <div class="mode-switch-group">
+                <button type="button" id="btn-mode-snn" class="mode-btn active">
+                  <i class="fas fa-brain"></i> Neuromorphic SNN
+                </button>
+                <button type="button" id="btn-mode-dense" class="mode-btn">
+                  <i class="fas fa-microchip"></i> Dense Dense-DNN
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Footer Info Bar -->
+      <div class="lab-info-footer">
+        <div class="lab-info-item">
+          <i class="fas fa-circle-info text-sky-400"></i>
+          <span>
+            <strong>Scientific Context:</strong> Spiking Neural Networks (SNNs) process sparse temporal pulses rather than continuous activations, drastically slashing compute power on specialized neuromorphic silicon and TU/e's Spike-A cluster.
+          </span>
+        </div>
+        <a href="#projects" class="lab-view-work-link">
+          Explore Production Work <i class="fas fa-arrow-right"></i>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .lab-section {
+    padding-top: 2.25rem;
+    padding-bottom: 2.25rem;
+    content-visibility: auto;
+    contain-intrinsic-size: auto none auto 600px;
+  }
+
+  .lab-card {
+    padding: 1.5rem;
+    border-radius: 16px;
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    box-shadow: 0 10px 30px var(--shadow);
+  }
+
+  /* Preset Header */
+  .lab-presets-bar {
+    display: flex;
+    align-items: center;
+    gap: 0.85rem;
+    padding-bottom: 1.15rem;
+    border-bottom: 1px solid var(--border);
+    flex-wrap: wrap;
+  }
+
+  .preset-label {
+    font-size: 0.8125rem;
+    font-weight: 700;
+    color: var(--text-secondary);
+    display: flex;
+    align-items: center;
+    gap: 0.35rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .preset-buttons {
+    display: flex;
+    gap: 0.45rem;
+    flex-wrap: wrap;
+  }
+
+  .preset-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.35rem 0.85rem;
+    border-radius: 50px;
+    border: 1px solid var(--border);
+    background: var(--bg);
+    color: var(--text-secondary);
+    font-size: 0.775rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+
+  .preset-btn:hover {
+    border-color: var(--accent);
+    color: var(--text);
+  }
+
+  .preset-btn.active {
+    background: var(--accent-light);
+    border-color: var(--accent);
+    color: var(--accent);
+    box-shadow: 0 0 12px var(--shadow-glow);
+  }
+
+  /* Main Grid */
+  .lab-main-grid {
+    display: grid;
+    grid-template-columns: 1.15fr 0.95fr;
+    gap: 1.25rem;
+    margin-top: 1.25rem;
+  }
+
+  /* Canvas Visualizer Column */
+  .canvas-container {
+    display: flex;
+    flex-direction: column;
+    background: #060911;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    overflow: hidden;
+  }
+
+  .canvas-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.65rem 0.95rem;
+    background: #0d1322;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  .canvas-title {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.775rem;
+    font-weight: 600;
+    color: #cbd5e1;
+    font-family: 'JetBrains Mono', monospace;
+  }
+
+  .pulse-indicator {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: #38bdf8;
+    box-shadow: 0 0 8px #38bdf8;
+    animation: labPulse 1.8s infinite;
+  }
+
+  @keyframes labPulse {
+    0%, 100% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(0.7); opacity: 0.4; }
+  }
+
+  .canvas-actions {
+    display: flex;
+    gap: 0.45rem;
+  }
+
+  .canvas-action-btn {
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    color: #e2e8f0;
+    border-radius: 6px;
+    font-size: 0.725rem;
+    font-weight: 600;
+    padding: 0.25rem 0.65rem;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    transition: all 0.15s ease;
+  }
+
+  .canvas-action-btn:hover {
+    background: rgba(255, 255, 255, 0.18);
+    border-color: #38bdf8;
+    color: #ffffff;
+  }
+
+  .canvas-action-btn.primary {
+    background: #0284c7;
+    border-color: #38bdf8;
+    color: #ffffff;
+  }
+
+  .canvas-action-btn.primary:hover {
+    background: #0369a1;
+    box-shadow: 0 0 12px rgba(56, 189, 248, 0.4);
+  }
+
+  .canvas-viewport {
+    position: relative;
+    width: 100%;
+    height: 310px;
+    background: radial-gradient(circle at center, #0e172a 0%, #060911 85%);
+    cursor: crosshair;
+  }
+
+  #snn-canvas {
+    width: 100%;
+    height: 100%;
+    display: block;
+  }
+
+  .canvas-overlay-hint {
+    position: absolute;
+    bottom: 8px;
+    right: 12px;
+    font-size: 0.675rem;
+    color: rgba(255, 255, 255, 0.4);
+    font-family: 'JetBrains Mono', monospace;
+    pointer-events: none;
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+  }
+
+  /* Controls & Telemetry Column */
+  .controls-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .telemetry-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.75rem;
+  }
+
+  .telemetry-box {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 0.75rem 0.85rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: border-color 0.2s;
+  }
+
+  .telemetry-box:hover {
+    border-color: var(--accent);
+  }
+
+  .telemetry-label {
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: var(--text-muted);
+    margin-bottom: 0.25rem;
+  }
+
+  .telemetry-value-row {
+    display: flex;
+    align-items: baseline;
+    gap: 0.45rem;
+    flex-wrap: wrap;
+    margin-bottom: 0.15rem;
+  }
+
+  .telemetry-value {
+    font-size: 1.25rem;
+    font-weight: 800;
+    font-family: 'JetBrains Mono', monospace;
+    color: var(--text);
+  }
+
+  .telemetry-value.highlight {
+    color: #10b981;
+  }
+
+  .telemetry-value.accent {
+    color: var(--accent);
+  }
+
+  .telemetry-badge {
+    background: rgba(16, 185, 129, 0.15);
+    border: 1px solid rgba(16, 185, 129, 0.3);
+    color: #10b981;
+    font-size: 0.65rem;
+    font-weight: 700;
+    padding: 0.1rem 0.4rem;
+    border-radius: 4px;
+    letter-spacing: 0.02em;
+  }
+
+  .telemetry-sub {
+    font-size: 0.675rem;
+    color: var(--text-secondary);
+  }
+
+  /* Sliders Card */
+  .sliders-card {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 0.95rem 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.85rem;
+  }
+
+  .control-row {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+  }
+
+  .control-label-wrap {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.775rem;
+    font-weight: 600;
+    color: var(--text);
+  }
+
+  .slider-pill {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.725rem;
+    color: var(--accent);
+    background: var(--accent-light);
+    border: 1px solid var(--border);
+    padding: 0.1rem 0.45rem;
+    border-radius: 4px;
+    font-weight: 700;
+  }
+
+  .lab-range {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 100%;
+    height: 6px;
+    border-radius: 3px;
+    background: var(--border);
+    outline: none;
+    transition: opacity 0.2s;
+  }
+
+  .lab-range::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: var(--accent);
+    cursor: pointer;
+    box-shadow: 0 0 6px var(--shadow-glow);
+    transition: transform 0.15s ease;
+  }
+
+  .lab-range::-webkit-slider-thumb:hover {
+    transform: scale(1.2);
+  }
+
+  /* Mode Switcher */
+  .mode-switch-row {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 0.5rem;
+    border-top: 1px solid var(--border);
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .mode-label {
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--text-secondary);
+  }
+
+  .mode-switch-group {
+    display: flex;
+    gap: 0.35rem;
+  }
+
+  .mode-btn {
+    padding: 0.3rem 0.65rem;
+    border-radius: 6px;
+    border: 1px solid var(--border);
+    background: var(--card-bg);
+    color: var(--text-secondary);
+    font-size: 0.725rem;
+    font-weight: 600;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+    transition: all 0.2s ease;
+  }
+
+  .mode-btn:hover {
+    border-color: var(--accent);
+    color: var(--text);
+  }
+
+  .mode-btn.active {
+    background: var(--accent-light);
+    border-color: var(--accent);
+    color: var(--accent);
+  }
+
+  /* Info Footer */
+  .lab-info-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 1.25rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--border);
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .lab-info-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.5rem;
+    font-size: 0.8125rem;
+    color: var(--text-secondary);
+    max-width: 760px;
+    line-height: 1.45;
+  }
+
+  .lab-info-item strong {
+    color: var(--text);
+  }
+
+  .lab-view-work-link {
+    font-size: 0.8125rem;
+    font-weight: 700;
+    color: var(--accent);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    white-space: nowrap;
+    transition: gap 0.2s ease;
+  }
+
+  .lab-view-work-link:hover {
+    gap: 0.55rem;
+  }
+
+  @media (max-width: 900px) {
+    .lab-main-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .canvas-viewport {
+      height: 260px;
+    }
+  }
+
+  @media (max-width: 600px) {
+    .lab-card {
+      padding: 1rem;
+    }
+
+    .telemetry-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .canvas-viewport {
+      height: 230px;
+    }
+  }
+</style>
+
+<script>
+  // Neuromorphic SNN & Spike-A Simulator Engine
+  const canvas = document.getElementById('snn-canvas') as HTMLCanvasElement | null;
+  if (!canvas) throw new Error('Canvas not found');
+  const ctx = canvas.getContext('2d');
+  const viewport = document.getElementById('canvas-viewport');
+
+  // Sliders & UI elements
+  const sliderFreq = document.getElementById('slider-freq') as HTMLInputElement | null;
+  const sliderFreqVal = document.getElementById('slider-freq-val');
+  const sliderThresh = document.getElementById('slider-threshold') as HTMLInputElement | null;
+  const sliderThreshVal = document.getElementById('slider-threshold-val');
+  const btnFire = document.getElementById('btn-fire-impulse');
+  const btnReset = document.getElementById('btn-reset-sim');
+  const btnModeSnn = document.getElementById('btn-mode-snn');
+  const btnModeDense = document.getElementById('btn-mode-dense');
+  const presetBtns = document.querySelectorAll('.preset-btn');
+  const networkTitle = document.getElementById('network-title-display');
+
+  // Telemetry outputs
+  const telEnergy = document.getElementById('telemetry-energy');
+  const telSavings = document.getElementById('telemetry-savings');
+  const telLatency = document.getElementById('telemetry-latency');
+  const telThroughput = document.getElementById('telemetry-throughput');
+  const telSpikes = document.getElementById('telemetry-spikes-total');
+
+  let totalSpikesFired = 0;
+  let isDenseMode = false;
+  let animationFrameId: number | null = null;
+  let isSimRunning = true;
+
+  // SNN Node structure
+  interface SNNNode {
+    x: number;
+    y: number;
+    layer: number;
+    potential: number;
+    threshold: number;
+    leakRate: number;
+    isSpiking: boolean;
+    spikeFlash: number;
+    radius: number;
+    color: string;
+    label: string;
+  }
+
+  interface SpikePulse {
+    fromX: number;
+    fromY: number;
+    toX: number;
+    toY: number;
+    progress: number;
+    speed: number;
+    color: string;
+    toNodeIndex: number;
+  }
+
+  let nodes: SNNNode[] = [];
+  let connections: { from: number; to: number; weight: number }[] = [];
+  let pulses: SpikePulse[] = [];
+
+  // Architecture Presets Data
+  const architecturePresets: Record<string, {
+    title: string;
+    layers: number[];
+    labels: string[];
+    freq: number;
+    threshold: number;
+    energyPj: number;
+    latencyMs: number;
+    throughput: number;
+  }> = {
+    'spike-a': {
+      title: 'Spike-A Cluster // Distributed Multi-GPU SNN',
+      layers: [3, 5, 5, 2],
+      labels: ['In-0', 'In-1', 'In-2', 'H1', 'H2', 'H3', 'H4', 'H5', 'H6', 'H7', 'H8', 'H9', 'H10', 'Out-A', 'Out-B'],
+      freq: 55,
+      threshold: 24,
+      energyPj: 1.8,
+      latencyMs: 1.24,
+      throughput: 3420
+    },
+    'loopit': {
+      title: 'Loopit.ai // YOLOv8 Damage Segmentation SNN',
+      layers: [4, 6, 4, 3],
+      labels: ['Cam-L', 'Cam-C', 'Cam-R', 'Depth', 'Feat1', 'Feat2', 'Feat3', 'Feat4', 'Feat5', 'Feat6', 'BBox', 'Mask', 'Conf', 'Damage', 'Part', 'Severity'],
+      freq: 40,
+      threshold: 28,
+      energyPj: 2.4,
+      latencyMs: 3.12,
+      throughput: 1840
+    },
+    'vencomatic': {
+      title: 'Vencomatic // RL Adaptive Sensor Calibration SNN',
+      layers: [3, 4, 4, 2],
+      labels: ['Weight', 'Color', 'Crack', 'Q-1', 'Q-2', 'Q-3', 'Q-4', 'Act-1', 'Act-2', 'Act-3', 'Act-4', 'Keep', 'Eject'],
+      freq: 35,
+      threshold: 22,
+      energyPj: 1.4,
+      latencyMs: 0.95,
+      throughput: 4100
+    },
+    'codet5': {
+      title: 'William & Mary // CodeT5 Gisting Token Compressor',
+      layers: [4, 5, 3, 2],
+      labels: ['Tok-1', 'Tok-2', 'Tok-3', 'Tok-4', 'Gist-1', 'Gist-2', 'Gist-3', 'Gist-4', 'Gist-5', 'Attn-1', 'Attn-2', 'Attn-3', 'Pass@1', 'BLEU'],
+      freq: 65,
+      threshold: 30,
+      energyPj: 2.8,
+      latencyMs: 4.80,
+      throughput: 2150
+    }
+  };
+
+  let currentPreset = 'spike-a';
+
+  // Responsive Canvas Setup
+  function resizeCanvas() {
+    if (!canvas || !viewport) return;
+    const rect = viewport.getBoundingClientRect();
+    const dpr = window.devicePixelRatio || 1;
+    canvas.width = rect.width * dpr;
+    canvas.height = rect.height * dpr;
+    ctx?.scale(dpr, dpr);
+    buildNetwork(currentPreset);
+  }
+
+  // Construct Network Graph
+  function buildNetwork(presetKey: string) {
+    const preset = architecturePresets[presetKey] || architecturePresets['spike-a'];
+    nodes = [];
+    connections = [];
+    pulses = [];
+
+    const rect = viewport?.getBoundingClientRect() || { width: 600, height: 320 };
+    const w = rect.width;
+    const h = rect.height;
+
+    const layers = preset.layers;
+    const layerCount = layers.length;
+    const xStep = (w - 120) / (layerCount - 1);
+
+    let nodeIndex = 0;
+    const layerNodeIndices: number[][] = [];
+
+    layers.forEach((count, lIdx) => {
+      const currentLayerIndices: number[] = [];
+      const x = 60 + lIdx * xStep;
+      const yStep = (h - 70) / (count + 1);
+
+      for (let i = 0; i < count; i++) {
+        const y = 35 + (i + 1) * yStep;
+        nodes.push({
+          x,
+          y,
+          layer: lIdx,
+          potential: Math.random() * 8,
+          threshold: preset.threshold,
+          leakRate: 0.94,
+          isSpiking: false,
+          spikeFlash: 0,
+          radius: lIdx === 0 || lIdx === layerCount - 1 ? 9 : 8,
+          color: lIdx === 0 ? '#38bdf8' : lIdx === layerCount - 1 ? '#34d399' : '#818cf8',
+          label: preset.labels[nodeIndex] || `N${nodeIndex}`
+        });
+        currentLayerIndices.push(nodeIndex);
+        nodeIndex++;
+      }
+      layerNodeIndices.push(currentLayerIndices);
+    });
+
+    // Create Forward Synaptic Connections
+    for (let l = 0; l < layerNodeIndices.length - 1; l++) {
+      const fromLayer = layerNodeIndices[l];
+      const toLayer = layerNodeIndices[l + 1];
+
+      fromLayer.forEach(fromIdx => {
+        toLayer.forEach(toIdx => {
+          // Semi-sparse connectivity
+          if (Math.random() > 0.15) {
+            connections.push({
+              from: fromIdx,
+              to: toIdx,
+              weight: 0.35 + Math.random() * 0.65
+            });
+          }
+        });
+      });
+    }
+  }
+
+  // Fire Spikes across Synapses
+  function emitSpikeFromNode(fromIdx: number) {
+    const fromNode = nodes[fromIdx];
+    if (!fromNode) return;
+
+    fromNode.spikeFlash = 1.0;
+    totalSpikesFired++;
+    if (telSpikes) telSpikes.textContent = totalSpikesFired.toLocaleString();
+
+    // Find outgoing connections
+    connections.forEach(conn => {
+      if (conn.from === fromIdx) {
+        const toNode = nodes[conn.to];
+        if (toNode) {
+          pulses.push({
+            fromX: fromNode.x,
+            fromY: fromNode.y,
+            toX: toNode.x,
+            toY: toNode.y,
+            progress: 0,
+            speed: 0.04 + Math.random() * 0.03,
+            color: fromNode.color,
+            toNodeIndex: conn.to
+          });
+        }
+      }
+    });
+  }
+
+  // Inject manual spike burst
+  function injectBurst() {
+    // Fire all input layer nodes
+    nodes.forEach((node, idx) => {
+      if (node.layer === 0) {
+        emitSpikeFromNode(idx);
+      }
+    });
+  }
+
+  // Canvas Click: inject spike from nearest node
+  viewport?.addEventListener('click', (e) => {
+    const rect = viewport.getBoundingClientRect();
+    const clickX = e.clientX - rect.left;
+    const clickY = e.clientY - rect.top;
+
+    let nearestIdx = -1;
+    let minDist = Infinity;
+
+    nodes.forEach((node, idx) => {
+      const dist = Math.hypot(node.x - clickX, node.y - clickY);
+      if (dist < minDist) {
+        minDist = dist;
+        nearestIdx = idx;
+      }
+    });
+
+    if (nearestIdx !== -1) {
+      emitSpikeFromNode(nearestIdx);
+    }
+  });
+
+  // Main Render & Simulation Loop
+  function tick() {
+    if (!ctx || !canvas || !viewport) return;
+    const rect = viewport.getBoundingClientRect();
+    const w = rect.width;
+    const h = rect.height;
+
+    ctx.clearRect(0, 0, w, h);
+
+    const freq = sliderFreq ? parseInt(sliderFreq.value, 10) : 45;
+    const thresholdVal = sliderThresh ? parseInt(sliderThresh.value, 10) : 25;
+
+    // Stochastic background input generation based on frequency
+    if (Math.random() < freq / 1200) {
+      const inputIndices = nodes.map((n, i) => (n.layer === 0 ? i : -1)).filter(i => i !== -1);
+      if (inputIndices.length > 0) {
+        const randInput = inputIndices[Math.floor(Math.random() * inputIndices.length)];
+        emitSpikeFromNode(randInput);
+      }
+    }
+
+    // 1. Draw Synaptic Connections
+    connections.forEach(conn => {
+      const fromNode = nodes[conn.from];
+      const toNode = nodes[conn.to];
+      if (!fromNode || !toNode) return;
+
+      ctx.beginPath();
+      ctx.moveTo(fromNode.x, fromNode.y);
+      ctx.lineTo(toNode.x, toNode.y);
+      ctx.lineWidth = 1;
+      ctx.strokeStyle = isDenseMode 
+        ? 'rgba(255, 255, 255, 0.12)' 
+        : `rgba(129, 140, 248, ${0.08 + conn.weight * 0.12})`;
+      ctx.stroke();
+    });
+
+    // 2. Animate and Draw Spike Pulses
+    for (let i = pulses.length - 1; i >= 0; i--) {
+      const p = pulses[i];
+      p.progress += p.speed;
+
+      const curX = p.fromX + (p.toX - p.fromX) * p.progress;
+      const curY = p.fromY + (p.toY - p.fromY) * p.progress;
+
+      // Draw glowing particle
+      ctx.beginPath();
+      ctx.arc(curX, curY, 3, 0, Math.PI * 2);
+      ctx.fillStyle = isDenseMode ? '#fbbf24' : p.color;
+      ctx.shadowColor = p.color;
+      ctx.shadowBlur = 8;
+      ctx.fill();
+      ctx.shadowBlur = 0;
+
+      // Upon reaching destination node
+      if (p.progress >= 1) {
+        const targetNode = nodes[p.toNodeIndex];
+        if (targetNode) {
+          targetNode.potential += isDenseMode ? 12 : 7;
+          if (targetNode.potential >= thresholdVal) {
+            targetNode.potential = 0; // Reset
+            emitSpikeFromNode(p.toNodeIndex);
+          }
+        }
+        pulses.splice(i, 1);
+      }
+    }
+
+    // 3. Draw Nodes and Membrane Potentials
+    nodes.forEach(node => {
+      // Leak potential
+      node.potential *= node.leakRate;
+
+      // Decay spike flash
+      if (node.spikeFlash > 0) {
+        node.spikeFlash -= 0.05;
+        if (node.spikeFlash < 0) node.spikeFlash = 0;
+      }
+
+      // Outer glow when firing
+      if (node.spikeFlash > 0) {
+        ctx.beginPath();
+        ctx.arc(node.x, node.y, node.radius + 6 * node.spikeFlash, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(56, 189, 248, ${0.4 * node.spikeFlash})`;
+        ctx.fill();
+      }
+
+      // Node Body
+      ctx.beginPath();
+      ctx.arc(node.x, node.y, node.radius, 0, Math.PI * 2);
+      ctx.fillStyle = node.spikeFlash > 0.2 ? '#ffffff' : node.color;
+      ctx.strokeStyle = '#060911';
+      ctx.lineWidth = 2;
+      ctx.fill();
+      ctx.stroke();
+
+      // Node Micro Label
+      ctx.font = '9px "JetBrains Mono", monospace';
+      ctx.fillStyle = 'rgba(203, 213, 225, 0.7)';
+      ctx.textAlign = 'center';
+      ctx.fillText(node.label, node.x, node.y - node.radius - 4);
+    });
+
+    if (isSimRunning) {
+      animationFrameId = requestAnimationFrame(tick);
+    }
+  }
+
+  // Update Telemetry Display
+  function updateTelemetry() {
+    const preset = architecturePresets[currentPreset];
+    if (!preset) return;
+
+    if (isDenseMode) {
+      if (telEnergy) telEnergy.textContent = `${(preset.energyPj * 24).toFixed(1)} pJ`;
+      if (telSavings) {
+        telSavings.textContent = 'Baseline 100%';
+        telSavings.style.background = 'rgba(239, 68, 68, 0.15)';
+        telSavings.style.color = '#ef4444';
+        telSavings.style.borderColor = 'rgba(239, 68, 68, 0.3)';
+      }
+      if (telLatency) telLatency.textContent = `${(preset.latencyMs * 4.2).toFixed(2)} ms`;
+      if (telThroughput) telThroughput.textContent = `${Math.floor(preset.throughput * 0.45).toLocaleString()} ev/s`;
+    } else {
+      if (telEnergy) telEnergy.textContent = `${preset.energyPj.toFixed(1)} pJ`;
+      if (telSavings) {
+        telSavings.textContent = '-96% vs DNN';
+        telSavings.style.background = 'rgba(16, 185, 129, 0.15)';
+        telSavings.style.color = '#10b981';
+        telSavings.style.borderColor = 'rgba(16, 185, 129, 0.3)';
+      }
+      if (telLatency) telLatency.textContent = `${preset.latencyMs.toFixed(2)} ms`;
+      if (telThroughput) telThroughput.textContent = `${preset.throughput.toLocaleString()} ev/s`;
+    }
+  }
+
+  // Event Listeners for Controls
+  sliderFreq?.addEventListener('input', () => {
+    if (sliderFreqVal) sliderFreqVal.textContent = `${sliderFreq.value} Hz`;
+  });
+
+  sliderThresh?.addEventListener('input', () => {
+    if (sliderThreshVal) sliderThreshVal.textContent = `${sliderThresh.value} mV`;
+    const val = parseInt(sliderThresh.value, 10);
+    nodes.forEach(n => n.threshold = val);
+  });
+
+  btnFire?.addEventListener('click', injectBurst);
+
+  btnReset?.addEventListener('click', () => {
+    totalSpikesFired = 0;
+    if (telSpikes) telSpikes.textContent = '0';
+    buildNetwork(currentPreset);
+  });
+
+  btnModeSnn?.addEventListener('click', () => {
+    isDenseMode = false;
+    btnModeSnn.classList.add('active');
+    btnModeDense?.classList.remove('active');
+    updateTelemetry();
+  });
+
+  btnModeDense?.addEventListener('click', () => {
+    isDenseMode = true;
+    btnModeDense.classList.add('active');
+    btnModeSnn?.classList.remove('active');
+    updateTelemetry();
+  });
+
+  presetBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      presetBtns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const presetKey = btn.getAttribute('data-preset') || 'spike-a';
+      currentPreset = presetKey;
+      const preset = architecturePresets[presetKey];
+      if (preset && networkTitle) {
+        networkTitle.textContent = preset.title;
+        if (sliderFreq) {
+          sliderFreq.value = preset.freq.toString();
+          if (sliderFreqVal) sliderFreqVal.textContent = `${preset.freq} Hz`;
+        }
+        if (sliderThresh) {
+          sliderThresh.value = preset.threshold.toString();
+          if (sliderThreshVal) sliderThreshVal.textContent = `${preset.threshold} mV`;
+        }
+      }
+      buildNetwork(presetKey);
+      updateTelemetry();
+      injectBurst();
+    });
+  });
+
+  // Modern Web Guidance: Pause simulation loop when off-screen to conserve CPU/battery
+  const labSection = document.getElementById('lab');
+  if (labSection) {
+    // Check if content-visibility event supported
+    labSection.addEventListener('contentvisibilityautostatechange', ((e: any) => {
+      if (e.skipped) {
+        isSimRunning = false;
+        if (animationFrameId) cancelAnimationFrame(animationFrameId);
+      } else {
+        if (!isSimRunning) {
+          isSimRunning = true;
+          tick();
+        }
+      }
+    }) as EventListener);
+
+    // Fallback IntersectionObserver for full compatibility
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          if (!isSimRunning) {
+            isSimRunning = true;
+            tick();
+          }
+        } else {
+          isSimRunning = false;
+          if (animationFrameId) cancelAnimationFrame(animationFrameId);
+        }
+      });
+    }, { rootMargin: '100px' });
+    observer.observe(labSection);
+  }
+
+  // Initialize
+  window.addEventListener('resize', resizeCanvas, { passive: true });
+  setTimeout(() => {
+    resizeCanvas();
+    updateTelemetry();
+    tick();
+    // Fire initial welcoming burst
+    setTimeout(injectBurst, 400);
+  }, 100);
+</script>

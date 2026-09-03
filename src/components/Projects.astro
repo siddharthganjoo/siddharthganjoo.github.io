@@ -10,10 +10,29 @@ import { siteConfig } from '../data/site';
       <h2 class="section-title">Selected Projects</h2>
       <p class="section-description">Research and commercial machine learning systems driving measurable impact</p>
     </div>
+
+    <!-- Category Filter Tabs -->
+    <div class="projects-filters">
+      <button type="button" class="project-filter-btn active" data-cat="all">
+        All Work ({projectsData.length})
+      </button>
+      <button type="button" class="project-filter-btn" data-cat="hpc">
+        <i class="fas fa-server"></i> Supercomputing
+      </button>
+      <button type="button" class="project-filter-btn" data-cat="cv">
+        <i class="fas fa-eye"></i> Computer Vision
+      </button>
+      <button type="button" class="project-filter-btn" data-cat="rl">
+        <i class="fas fa-chart-line"></i> Reinforcement Learning
+      </button>
+      <button type="button" class="project-filter-btn" data-cat="nlp">
+        <i class="fas fa-brain"></i> LLMs &amp; NLP
+      </button>
+    </div>
     
     <div class="projects-grid">
       {projectsData.map(project => (
-        <div class={`project-card ${project.isFeatured ? 'featured' : ''}`}>
+        <div class={`project-card ${project.isFeatured ? 'featured' : ''}`} data-category={project.category}>
           <div class="project-image">
             <img src={project.image} alt={project.title} />
           </div>
@@ -189,6 +208,45 @@ import { siteConfig } from '../data/site';
     margin-top: 1.5rem;
   }
 
+  .projects-filters {
+    display: flex;
+    justify-content: center;
+    gap: 0.45rem;
+    margin-bottom: 1.5rem;
+    flex-wrap: wrap;
+  }
+
+  .project-filter-btn {
+    padding: 0.35rem 0.85rem;
+    border-radius: 50px;
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    color: var(--text-secondary);
+    font-size: 0.775rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+  }
+
+  .project-filter-btn:hover {
+    border-color: var(--accent);
+    color: var(--text);
+  }
+
+  .project-filter-btn.active {
+    background: var(--accent-light);
+    border-color: var(--accent);
+    color: var(--accent);
+    box-shadow: 0 0 10px var(--shadow-glow);
+  }
+
+  .project-card.is-hidden {
+    display: none !important;
+  }
+
   @media (max-width: 1024px) {
     .project-card.featured {
       grid-column: span 1;
@@ -208,4 +266,28 @@ import { siteConfig } from '../data/site';
     }
   }
 </style>
+
+<script>
+  // Project Category Filter Handler
+  const projectFilters = document.querySelectorAll('.project-filter-btn');
+  const projectCards = document.querySelectorAll('.project-card');
+
+  projectFilters.forEach(btn => {
+    btn.addEventListener('click', () => {
+      projectFilters.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+
+      const cat = btn.getAttribute('data-cat');
+
+      projectCards.forEach(card => {
+        const itemCat = card.getAttribute('data-category');
+        if (cat === 'all' || itemCat === cat) {
+          card.classList.remove('is-hidden');
+        } else {
+          card.classList.add('is-hidden');
+        }
+      });
+    });
+  });
+</script>
 

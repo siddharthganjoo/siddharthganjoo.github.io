@@ -82,8 +82,8 @@ const {
           "name": "Jamia Millia Islamia"
         }
       ],
-      "url": "https://siddharthganjoo.github.io/website/",
-      "image": "https://siddharthganjoo.github.io/website/assets/pp.JPG",
+      "url": "https://siddharthganjoo.github.io/",
+      "image": "https://siddharthganjoo.github.io/assets/pp.JPG",
       "sameAs": [
         "https://www.linkedin.com/in/siddharthganjoo/",
         "https://github.com/siddharthganjoo"
@@ -124,6 +124,11 @@ const {
   <Toast />
   <CommandPalette />
 
+  <!-- Floating Back to Top Button -->
+  <button id="back-to-top" class="back-to-top-btn" aria-label="Scroll back to top">
+    <i class="fas fa-arrow-up"></i>
+  </button>
+
   <!-- Global Interaction Scripts -->
   <script>
     // Ambient Cursor Glow Follower
@@ -134,6 +139,25 @@ const {
         glow.style.top = `${e.clientY}px`;
       }, { passive: true });
     }
+
+    // Back to Top Button Logic
+    const backToTopBtn = document.getElementById('back-to-top');
+    window.addEventListener('scroll', () => {
+      if (backToTopBtn) {
+        if (window.scrollY > 350) {
+          backToTopBtn.classList.add('visible');
+        } else {
+          backToTopBtn.classList.remove('visible');
+        }
+      }
+    }, { passive: true });
+
+    backToTopBtn?.addEventListener('click', () => {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    });
 
     // Smooth Anchor Scrolling
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
