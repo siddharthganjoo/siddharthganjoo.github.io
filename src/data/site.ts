@@ -26,7 +26,7 @@ export const siteConfig: SiteConfig = {
   name: "Siddharth Ganjoo",
   initials: "SG",
   role: "Machine Learning Engineer & Data Scientist",
-  description: "Machine Learning Engineer on the Spike-A supercomputer within the AI Supercomputing Initiative Brabant (AI-SIB) at TU Eindhoven (TU/e). Specializing in distributed high-performance computing, deep learning, and scalable production AI pipelines.",
+  description: "Machine Learning Engineer on the Spike-A supercomputer at Supercomputing Brabant (AI-SIB) at TU Eindhoven (TU/e). Specializing in distributed high-performance computing, deep learning, and scalable production AI pipelines.",
   location: "Eindhoven, Netherlands",
   url: "https://siddharthganjoo.github.io/",
   resumeUrl: "assets/CV_SiddharthGanjoo.pdf",

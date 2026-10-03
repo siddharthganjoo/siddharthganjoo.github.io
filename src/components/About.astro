@@ -21,15 +21,39 @@
           </p>
           
           <p>
-            Currently within the <strong>AI Supercomputing Initiative Brabant (AI-SIB)</strong> at <strong>TU Eindhoven</strong>, I engineer solutions on the 
-            <strong>Spike-A supercomputer</strong>, scaling high-performance AI infrastructure, distributed deep learning models, and compute optimization 
-            for organizations and researchers across the Brabant innovation ecosystem. Previously at <strong>Vencomatic Group</strong> (Nov 2025 – Jun 2026), I engineered automated data pipelines and 
-            interactive Streamlit dashboards analyzing telemetry.
+            Currently at <strong>Supercomputing Brabant</strong> (AI Supercomputing Initiative Brabant - AI-SIB) at <strong>TU Eindhoven</strong>, 
+            I engineer solutions on the <strong>Spike-A supercomputer</strong>, scaling high-performance AI infrastructure, distributed deep learning models, 
+            and compute optimization for organizations and researchers across the Brabant innovation ecosystem. We democratize supercomputing—connecting 
+            researchers and regional industry partners with high-throughput multi-GPU capabilities.
           </p>
           
           <p>
-            As Co-Founder &amp; CTO of <strong>Loopit.ai</strong>, I directed a 12-engineer team developing an automated vehicle damage detection platform 
+            Previously at <strong>Vencomatic Group</strong> (Nov 2025 – Jun 2026), I engineered automated data pipelines and 
+            interactive Streamlit dashboards analyzing telemetry. As Co-Founder &amp; CTO of <strong>Loopit.ai</strong>, I directed a 12-engineer team developing an automated vehicle damage detection platform 
             powered by custom YOLOv8 models, earning the prestigious <strong>€1,000 EAISI AI Incentive Award</strong>.
+          </p>
+        </div>
+
+        <!-- Supercomputing Brabant Team & Event Spotlight -->
+        <div class="team-spotlight-card glass-card mt-3">
+          <div class="team-spotlight-header">
+            <span class="spotlight-badge"><i class="fas fa-server"></i> Current Role</span>
+            <span class="spotlight-tag">TU Eindhoven</span>
+          </div>
+          <h4 class="team-spotlight-title">Supercomputing Brabant // Meet the Team</h4>
+          <div class="timeline-media team-spotlight-media" title="Click to enlarge photo">
+            <img 
+              src="assets/news/supercomputing-brabant-team.jpg" 
+              alt="Meet the Team: Supercomputing Brabant at TU Eindhoven launch event" 
+              loading="lazy" 
+              decoding="async" 
+              width="600" 
+              height="350" 
+            />
+            <span class="media-zoom-pill"><i class="fas fa-magnifying-glass-plus"></i> Enlarge Photo</span>
+          </div>
+          <p class="team-spotlight-desc">
+            With colleagues representing <strong>Supercomputing Brabant</strong> at our regional event at TU Eindhoven. We operate the <strong>Spike-A supercomputer</strong>, supporting research groups and high-tech industry across Brabant with distributed deep learning, multi-GPU optimization, and sovereign European compute.
           </p>
         </div>
 
@@ -67,16 +91,17 @@
               <i class="fas fa-server"></i>
             </div>
             <div>
-              <h4>AI Supercomputing &amp; Spike-A</h4>
-              <span class="bento-sub">AI-SIB Initiative // TU/e &amp; Brabant</span>
+              <h4>Supercomputing Brabant &amp; Spike-A</h4>
+              <span class="bento-sub">Regional High-Tech AI Compute // TU/e &amp; Brabant</span>
             </div>
           </div>
           <div class="skill-pills">
-            <span>Spike-A Supercomputer</span>
-            <span>AI-SIB</span>
+            <span>Supercomputing Brabant</span>
+            <span>Spike-A Cluster</span>
             <span>Distributed Deep Learning</span>
-            <span>HPC Clusters</span>
+            <span>GPU Orchestration</span>
             <span>CUDA &amp; Slurm</span>
+            <span>PyTorch Distributed</span>
           </div>
         </div>
 
@@ -171,6 +196,83 @@
     display: flex;
     align-items: center;
     gap: 0.5rem;
+  }
+
+  /* Supercomputing Brabant Team Spotlight Card */
+  .team-spotlight-card {
+    padding: 1.15rem 1.25rem;
+    border-radius: 14px;
+    border: 1px solid rgba(139, 92, 246, 0.25);
+    background: var(--card-bg);
+    margin-top: 1rem;
+    box-shadow: 0 8px 24px var(--shadow);
+  }
+
+  .team-spotlight-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 0.5rem;
+  }
+
+  .spotlight-badge {
+    font-size: 0.725rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: #a855f7;
+    background: rgba(168, 85, 247, 0.12);
+    border: 1px solid rgba(168, 85, 247, 0.25);
+    padding: 0.2rem 0.55rem;
+    border-radius: 50px;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+  }
+
+  .spotlight-tag {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    font-weight: 500;
+  }
+
+  .team-spotlight-title {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 0.65rem;
+  }
+
+  .team-spotlight-media {
+    position: relative;
+    border-radius: 10px;
+    overflow: hidden;
+    cursor: pointer;
+    border: 1px solid var(--border);
+    max-height: 220px;
+    background: var(--bg);
+  }
+
+  .team-spotlight-media img {
+    width: 100%;
+    height: 100%;
+    max-height: 220px;
+    object-fit: cover;
+    object-position: center 25%;
+    display: block;
+    transition: transform 0.35s ease;
+  }
+
+  .team-spotlight-media:hover img {
+    transform: scale(1.03);
+  }
+
+  .team-spotlight-desc {
+    font-size: 0.835rem;
+    color: var(--text-secondary);
+    line-height: 1.55;
+    margin-top: 0.65rem;
+    margin-bottom: 0;
   }
 
   .about-content p {

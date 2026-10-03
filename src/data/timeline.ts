@@ -18,16 +18,33 @@ export interface TimelineItem {
 
 export const timelineData: TimelineItem[] = [
   {
+    id: "supercomputing-brabant-event",
+    category: "news",
+    typeBadge: "Event & Outreach",
+    dateBadge: "Oct 2026",
+    location: "Eindhoven, Netherlands",
+    roleTitle: "Meet the Team: Supercomputing Brabant Event",
+    orgName: "Supercomputing Brabant // TU Eindhoven",
+    description: "Represented Supercomputing Brabant at our regional ecosystem event. Connected with AI founders, researchers, and tech industry leaders to showcase the Spike-A supercomputer cluster, demonstrate scalable GPU workloads, and initiate collaborative supercomputing projects across the Brainport innovation corridor.",
+    logoImg: "assets/logos/aisib.svg",
+    mediaImg: "assets/news/supercomputing-brabant-team.jpg",
+    mediaAlt: "Meet the Team: Supercomputing Brabant at TU Eindhoven event",
+    skills: ["Supercomputing Brabant", "Spike-A Cluster", "AI Outreach", "High-Tech Ecosystem", "TU Eindhoven"],
+    linkedinUrl: "https://www.linkedin.com/in/siddharthganjoo/"
+  },
+  {
     id: "tue-supercomputing",
     category: "work",
     typeBadge: "Supercomputing",
     dateBadge: "Aug 2026 – Present",
     location: "Eindhoven, Netherlands",
     roleTitle: "Machine Learning Engineer — Spike-A",
-    orgName: "AI-SIB (AI Supercomputing Initiative Brabant) // TU/e",
-    description: "Accelerating and scaling high-performance AI workloads on TU/e's Spike-A supercomputer as part of the regional AI-SIB initiative (TU/e, Tilburg University, Province of North Brabant, BOM). Supporting research and industry teams in deploying distributed deep learning models, code optimization, and transitions to European supercomputing infrastructure.",
+    orgName: "Supercomputing Brabant (AI-SIB) // TU/e",
+    description: "Accelerating and scaling high-performance AI workloads on TU/e's Spike-A supercomputer as part of the regional Supercomputing Brabant initiative (TU/e, Tilburg University, Province of North Brabant, BOM). Supporting research and industry teams in deploying distributed deep learning models, multi-GPU optimization, and transitioning to sovereign European supercomputing infrastructure.",
     logoImg: "assets/logos/aisib.svg",
-    skills: ["Spike-A Supercomputer", "AI-SIB", "Distributed Training", "PyTorch", "HPC", "CUDA"],
+    mediaImg: "assets/news/supercomputing-brabant-team.jpg",
+    mediaAlt: "Supercomputing Brabant Team at TU Eindhoven",
+    skills: ["Supercomputing Brabant", "Spike-A Supercomputer", "Distributed Training", "PyTorch", "HPC", "CUDA", "SLURM"],
     linkedinUrl: "https://www.linkedin.com/in/siddharthganjoo/"
   },
   {
