@@ -96,8 +96,10 @@
         lightboxImg.src = img.src;
         lightboxImg.alt = img.alt || 'Full size photo';
         if (lightboxCaption) {
-          const cardTitle = wrap.closest('.timeline-card')?.querySelector('.timeline-role-title');
-          lightboxCaption.textContent = cardTitle ? cardTitle.textContent : img.alt;
+          const cardTitle = wrap.closest('.timeline-card')?.querySelector('.timeline-role-title')?.textContent 
+            || wrap.closest('.spotlight-card')?.querySelector('.spotlight-title')?.textContent 
+            || img.alt;
+          lightboxCaption.textContent = cardTitle;
         }
 
         lightbox.classList.add('active');

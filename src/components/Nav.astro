@@ -15,26 +15,12 @@ const isHome = pathname === '/' || pathname.endsWith('/index.html') || pathname 
       <span class="nav-logo-text">{siteConfig.name}</span>
     </a>
 
-    <!-- Live Status & Clock Pill -->
-    <div class="nav-status-pill">
-      <span class="status-pulsing-dot"></span>
-      <span id="nav-time-display">Eindhoven, NL</span>
-    </div>
-    
     <ul class="nav-menu">
       {siteConfig.navLinks.map(link => (
         <li class="nav-item">
           <a href={isHome ? link.href : `./index.html${link.href}`} class="nav-link">{link.label}</a>
         </li>
       ))}
-
-      <!-- Command Palette Trigger Button -->
-      <li class="nav-item">
-        <button type="button" class="nav-cmd-trigger" data-trigger-cmd aria-label="Open command palette (Cmd+K)">
-          <i class="fas fa-search"></i>
-          <span class="cmd-kbd-label">⌘K</span>
-        </button>
-      </li>
 
       <li class="nav-item">
         <a href={siteConfig.resumeUrl} class="nav-link nav-cta" target="_blank" rel="noopener noreferrer">
@@ -345,23 +331,6 @@ const isHome = pathname === '/' || pathname.endsWith('/index.html') || pathname 
 </style>
 
 <script>
-  // Live Clock for Eindhoven Time
-  function updateEindhovenClock() {
-    const el = document.getElementById('nav-time-display');
-    if (!el) return;
-    const now = new Date();
-    const options: Intl.DateTimeFormatOptions = {
-      timeZone: 'Europe/Amsterdam',
-      hour: '2-digit',
-      minute: '2-digit',
-      hour12: false
-    };
-    const timeStr = now.toLocaleTimeString('en-GB', options);
-    el.textContent = `Eindhoven, NL • ${timeStr} CET`;
-  }
-  updateEindhovenClock();
-  setInterval(updateEindhovenClock, 30000);
-
   // Theme Switcher
   const themeToggle = document.getElementById('theme-toggle');
   if (themeToggle) {

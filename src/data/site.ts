@@ -42,11 +42,10 @@ export const siteConfig: SiteConfig = {
   ],
   navLinks: [
     { label: "About", href: "#about" },
-    { label: "Lab", href: "#lab" },
+    { label: "Experience", href: "#experience" },
     { label: "Projects", href: "#projects" },
-    { label: "Timeline", href: "#timeline" },
-    { label: "GitHub", href: "#github" },
-    { label: "Research", href: "#research" }
+    { label: "Lab", href: "#lab" },
+    { label: "Contact", href: "#contact" }
   ]
 };
 

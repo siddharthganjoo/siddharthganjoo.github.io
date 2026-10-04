@@ -42,8 +42,6 @@ export const timelineData: TimelineItem[] = [
     orgName: "Supercomputing Brabant (AI-SIB) // TU/e",
     description: "Accelerating and scaling high-performance AI workloads on TU/e's Spike-A supercomputer as part of the regional Supercomputing Brabant initiative (TU/e, Tilburg University, Province of North Brabant, BOM). Supporting research and industry teams in deploying distributed deep learning models, multi-GPU optimization, and transitioning to sovereign European supercomputing infrastructure.",
     logoImg: "assets/logos/aisib.svg",
-    mediaImg: "assets/news/supercomputing-brabant-team.jpg",
-    mediaAlt: "Supercomputing Brabant Team at TU Eindhoven",
     skills: ["Supercomputing Brabant", "Spike-A Supercomputer", "Distributed Training", "PyTorch", "HPC", "CUDA", "SLURM"],
     linkedinUrl: "https://www.linkedin.com/in/siddharthganjoo/"
   },

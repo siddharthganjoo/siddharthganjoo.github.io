@@ -2,12 +2,12 @@
 import { timelineData } from '../data/timeline';
 ---
 
-<section id="timeline" class="section timeline-section">
+<section id="experience" class="section timeline-section">
   <div class="section-container-narrow">
     <div class="section-header">
-      <span class="section-eyebrow">Journey</span>
-      <h2 class="section-title">Timeline</h2>
-      <p class="section-description">Career milestones, research achievements, and media highlights</p>
+      <span class="section-eyebrow">Career &amp; Milestones</span>
+      <h2 class="section-title">Experience</h2>
+      <p class="section-description">Engineering appointments, research posts, and startup milestones</p>
     </div>
 
     <!-- Category Filter Tabs -->
@@ -525,7 +525,7 @@ import { timelineData } from '../data/timeline';
     isExpanded = !isExpanded;
     updateTimelineVisibility();
     if (!isExpanded) {
-      const timelineSection = document.getElementById('timeline');
+      const timelineSection = document.getElementById('experience');
       timelineSection?.scrollIntoView({ behavior: 'smooth' });
     }
   });

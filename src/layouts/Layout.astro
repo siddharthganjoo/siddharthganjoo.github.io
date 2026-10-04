@@ -128,9 +128,6 @@ const {
   </script>
 </head>
 <body>
-  <!-- Ambient Cursor Glow Spotlight -->
-  <div class="ambient-glow" id="ambient-glow"></div>
-
   <Nav />
   <main>
     <slot />
@@ -149,15 +146,6 @@ const {
 
   <!-- Global Interaction Scripts -->
   <script>
-    // Ambient Cursor Glow Follower
-    const glow = document.getElementById('ambient-glow');
-    if (glow && window.matchMedia('(min-width: 768px)').matches) {
-      window.addEventListener('pointermove', (e) => {
-        glow.style.left = `${e.clientX}px`;
-        glow.style.top = `${e.clientY}px`;
-      }, { passive: true });
-    }
-
     // Back to Top Button Logic
     const backToTopBtn = document.getElementById('back-to-top');
     window.addEventListener('scroll', () => {

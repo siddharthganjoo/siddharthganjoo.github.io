@@ -95,21 +95,6 @@ a {
   transition: color 0.2s ease, opacity 0.2s ease;
 }
 
-/* Ambient Radial Glow Spotlight that follows cursor */
-.ambient-glow {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 600px;
-  height: 600px;
-  background: radial-gradient(circle, var(--accent-glow, rgba(56, 189, 248, 0.08)) 0%, transparent 70%);
-  pointer-events: none;
-  z-index: 0;
-  transform: translate(-50%, -50%);
-  transition: opacity 0.3s ease;
-  opacity: 0.6;
-}
-
 /* Gradient Text Utility */
 .gradient-text {
   background: var(--accent-gradient);
@@ -284,46 +269,6 @@ button,
 .nav-hamburger,
 .social-pill {
   min-height: 44px;
-}
-
-/* Pre-Footer Call to Action */
-.pre-footer-cta {
-  padding: 3rem 1.25rem 2rem;
-  background: var(--bg-secondary);
-  border-top: 1px solid var(--border);
-  text-align: center;
-}
-
-.pre-footer-card {
-  max-width: 760px;
-  margin: 0 auto;
-  padding: 2.25rem 2rem;
-  border-radius: 16px;
-  background: var(--card-bg);
-  border: 1px solid var(--border);
-  box-shadow: 0 8px 30px var(--shadow);
-}
-
-.pre-footer-title {
-  font-size: clamp(1.5rem, 2.8vw, 2rem);
-  font-weight: 800;
-  margin-bottom: 0.5rem;
-  color: var(--text);
-}
-
-.pre-footer-desc {
-  font-size: 0.975rem;
-  color: var(--text-secondary);
-  max-width: 540px;
-  margin: 0 auto 1.5rem;
-  line-height: 1.6;
-}
-
-.pre-footer-actions {
-  display: flex;
-  justify-content: center;
-  gap: 0.75rem;
-  flex-wrap: wrap;
 }
 
 /* Legal Documents Layout (Privacy, Terms) */
