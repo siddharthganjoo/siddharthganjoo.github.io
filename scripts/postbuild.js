@@ -25,9 +25,12 @@ if (fs.existsSync('dist/robots.txt')) {
   fs.copyFileSync('dist/robots.txt', 'robots.txt');
 }
 
-// 3. Sync _astro bundle
-if (fs.existsSync('dist/_astro')) {
-  fs.cpSync('dist/_astro', '_astro', { recursive: true });
+// 3. Sync _astro bundle, static assets and article pages
+for (const dir of ['_astro', 'assets', 'blog']) {
+  if (fs.existsSync(`dist/${dir}`)) {
+    fs.rmSync(dir, { recursive: true, force: true });
+    fs.cpSync(`dist/${dir}`, dir, { recursive: true });
+  }
 }
 
 console.log('✅ Postbuild complete: universal relative paths, sitemaps & root deployment verified');

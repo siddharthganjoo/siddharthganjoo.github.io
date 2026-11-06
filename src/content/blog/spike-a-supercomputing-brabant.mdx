@@ -1,0 +1,26 @@
+---
+title: "Scaling AI Workloads on Spike-A at Supercomputing Brabant"
+pubDate: 2026-08-15
+description: "How Supercomputing Brabant and Spike-A, the NVIDIA DGX B300 extension of TU/e's SPIKE cluster, help companies in the region take AI from prototype to production."
+author: "Siddharth Ganjoo"
+readTime: "6 min read"
+tags: ["Spike-A", "Supercomputing Brabant", "NVIDIA B300", "Distributed Training", "PyTorch", "CUDA"]
+featured: true
+---
+
+Training and deploying state-of-the-art deep learning models takes far more compute than a local workstation can offer. **Supercomputing Brabant**, a partnership between **BOM (Brabantse Ontwikkelings Maatschappij)**, **Tilburg University**, **TU Eindhoven (TU/e)**, **Provincie Noord-Brabant** and **JADS**, gives companies and institutions in the region access to that compute, together with the expertise to use it.
+
+## Spike-A: SPIKE, extended for industry
+
+The TU/e Supercomputing Center runs **Spike-1**, TU/e's AI supercomputer. **Spike-A** is its extension for Supercomputing Brabant, built on **NVIDIA DGX B300** systems and dedicated to bringing AI capacity closer to industry. As a Machine Learning Engineer on Spike-A, my work focuses on:
+
+- **Multi-node distributed training**: using PyTorch Distributed Data Parallel (DDP) and Fully Sharded Data Parallel (FSDP) to train large models without running into memory limits.
+- **Compute optimisation**: profiling GPU workloads and tuning data pipelines and Slurm batch jobs to keep the GPUs busy.
+- **Making new hardware usable**: TensorFlow, for example, didn't run out of the box on the B300. We put together a [working build](https://github.com/HPC-TUE/tensorflow-b300) and shared it.
+- **Supporting regional teams**: helping companies, researchers and public institutions scale their AI workloads from local prototypes to production-grade supercomputing jobs.
+
+## Compute alone is not enough
+
+Supercomputing Brabant launched in September 2026 at JADS in 's-Hertogenbosch. For many organisations, the barrier isn't only access to hardware; it's knowing where to start. That's why the initiative pairs large-scale compute with expert support and a regional community, so that promising AI ideas don't get stuck at the prototype stage.
+
+Have a workload that needs real compute power and engineering support? [Get in touch](/#contact).

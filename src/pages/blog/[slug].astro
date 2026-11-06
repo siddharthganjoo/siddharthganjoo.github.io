@@ -1,0 +1,152 @@
+---
+import { getCollection, render } from 'astro:content';
+import Layout from '../../layouts/Layout.astro';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('blog');
+  return posts.map(post => ({ params: { slug: post.slug }, props: { post } }));
+}
+
+const { post } = Astro.props;
+const { Content } = await render(post);
+---
+
+<Layout title={`${post.data.title} · Siddharth Ganjoo`} description={post.data.description} type="article">
+  <article class="post">
+    <header class="post-head">
+      <a href="/#writing" class="post-back">‹ All writing</a>
+      <p class="post-meta">
+        <time datetime={post.data.pubDate.toISOString()}>
+          {post.data.pubDate.toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' })}
+        </time>
+        <span aria-hidden="true">·</span>
+        <span>{post.data.readTime}</span>
+      </p>
+      <h1 class="post-title">{post.data.title}</h1>
+      <p class="post-lede">{post.data.description}</p>
+      <ul class="post-tags" aria-label="Tags">
+        {post.data.tags.map(tag => <li class="chip">{tag}</li>)}
+      </ul>
+    </header>
+
+    <div class="prose">
+      <Content />
+    </div>
+
+    <footer class="post-foot">
+      <p>Written by {post.data.author}</p>
+      <a href="/#contact" class="btn btn-primary">Get in touch</a>
+    </footer>
+  </article>
+</Layout>
+
+<style>
+  .post {
+    max-width: 692px;
+    margin: 0 auto;
+    padding: 64px var(--gutter) 112px;
+  }
+
+  .post-back {
+    display: inline-block;
+    font-size: 15px;
+    margin-bottom: 40px;
+  }
+
+  .post-meta {
+    display: flex;
+    gap: 8px;
+    font-size: 15px;
+    color: var(--text-tertiary);
+    margin-bottom: 12px;
+  }
+
+  .post-title {
+    font-size: clamp(36px, 5.5vw, 56px);
+    line-height: 1.07;
+    font-weight: 700;
+    letter-spacing: -0.04em;
+  }
+
+  .post-lede {
+    margin-top: 20px;
+    font-size: clamp(19px, 2vw, 24px);
+    line-height: 1.4;
+    color: var(--text-secondary);
+    letter-spacing: -0.02em;
+  }
+
+  .post-tags {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 24px;
+    padding-bottom: 40px;
+    border-bottom: 1px solid var(--hairline);
+  }
+
+  .post-tags .chip {
+    background: var(--fill);
+  }
+
+  .prose {
+    margin-top: 40px;
+    font-size: 19px;
+    line-height: 1.58;
+    color: var(--text);
+  }
+
+  .prose :global(h2) {
+    font-size: 28px;
+    line-height: 1.2;
+    letter-spacing: -0.03em;
+    margin: 48px 0 16px;
+  }
+
+  .prose :global(h3) {
+    font-size: 22px;
+    letter-spacing: -0.02em;
+    margin: 36px 0 12px;
+  }
+
+  .prose :global(p),
+  .prose :global(ul),
+  .prose :global(ol) {
+    margin-bottom: 20px;
+  }
+
+  .prose :global(ul),
+  .prose :global(ol) {
+    padding-left: 1.3em;
+  }
+
+  .prose :global(li) {
+    margin-bottom: 8px;
+  }
+
+  .prose :global(strong) {
+    font-weight: 600;
+  }
+
+  .prose :global(code) {
+    font-family: var(--font-mono);
+    font-size: 0.88em;
+    background: var(--fill);
+    padding: 0.1em 0.35em;
+    border-radius: 6px;
+  }
+
+  .post-foot {
+    margin-top: 64px;
+    padding-top: 32px;
+    border-top: 1px solid var(--hairline);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    flex-wrap: wrap;
+    color: var(--text-secondary);
+    font-size: 17px;
+  }
+</style>

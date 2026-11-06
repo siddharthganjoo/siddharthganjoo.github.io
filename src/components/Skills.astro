@@ -1,0 +1,126 @@
+---
+import { toolGroups } from '../data/skills';
+---
+
+<section id="skills" class="section">
+  <div class="container">
+    <div class="section-head center reveal">
+      <span class="eyebrow">Toolkit</span>
+      <h2 class="headline">What I work with.</h2>
+      <p class="subhead">From the GPU node up to the dashboard.</p>
+    </div>
+
+    <div class="groups">
+      {toolGroups.map(group => (
+        <div class="group reveal">
+          <h3 class="group-title">{group.title}</h3>
+          <ul class="tools">
+            {group.tools.map(tool => (
+              <li class="tool card">
+                {tool.icon
+                  ? <span class="tool-logo" style={`--logo: url(/assets/tech/${tool.icon}.svg)`} aria-hidden="true"></span>
+                  : <i class={`fas ${tool.fa} tool-glyph`} aria-hidden="true"></i>}
+                <span class="tool-name">{tool.name}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .groups {
+    display: flex;
+    flex-direction: column;
+    gap: 48px;
+  }
+
+  .group-title {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text-tertiary);
+    margin-bottom: 16px;
+  }
+
+  .tools {
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 12px;
+  }
+
+  .tool {
+    border-radius: var(--radius-md);
+    padding: 28px 12px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 14px;
+    text-align: center;
+    transition: transform 0.4s var(--ease);
+  }
+
+  .tool:hover {
+    transform: translateY(-3px);
+  }
+
+  /* Monochrome logos are drawn with a mask so they follow the theme's text color */
+  .tool-logo {
+    width: 44px;
+    height: 44px;
+    background-color: var(--text);
+    -webkit-mask: var(--logo) center / contain no-repeat;
+    mask: var(--logo) center / contain no-repeat;
+  }
+
+  .tool-glyph {
+    width: 44px;
+    height: 44px;
+    font-size: 34px;
+    line-height: 44px;
+    color: var(--text);
+  }
+
+  .tool-name {
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 1.3;
+    color: var(--text-secondary);
+  }
+
+  @media (max-width: 1024px) {
+    .tools {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  @media (max-width: 480px) {
+    .tools {
+      gap: 8px;
+    }
+
+    .tool {
+      padding: 20px 8px 16px;
+    }
+
+    .tool-logo,
+    .tool-glyph {
+      width: 36px;
+      height: 36px;
+      font-size: 28px;
+      line-height: 36px;
+    }
+
+    .tool-name {
+      font-size: 13px;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .tool:hover {
+      transform: none;
+    }
+  }
+</style>

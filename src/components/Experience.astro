@@ -1,0 +1,157 @@
+---
+import { timelineData } from '../data/timeline';
+
+const roles = timelineData.filter(item => item.category === 'work');
+---
+
+<section id="experience" class="section">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">Experience</span>
+      <h2 class="headline">Where I’ve worked.</h2>
+    </div>
+
+    <ol class="roles card reveal">
+      {roles.map(role => (
+        <li class="role">
+          <div class="role-logo">
+            {role.logoImg
+              ? <img src={role.logoImg} alt="" loading="lazy" />
+              : <span class="role-badge">{role.logoBadge}</span>}
+          </div>
+          <div class="role-main">
+            <div class="role-top">
+              <h3 class="role-title">{role.roleTitle}</h3>
+              <span class="role-date">{role.dateBadge}</span>
+            </div>
+            <p class="role-org">
+              {role.orgName}{role.location && <span class="role-loc"> · {role.location}</span>}
+            </p>
+            <p class="role-desc">{role.description}</p>
+            {role.skills && role.skills.length > 0 && (
+              <p class="role-skills">{role.skills.join(' · ')}</p>
+            )}
+          </div>
+        </li>
+      ))}
+    </ol>
+  </div>
+</section>
+
+<style>
+  .roles {
+    list-style: none;
+    padding: 8px 40px;
+  }
+
+  .role {
+    display: grid;
+    grid-template-columns: 112px 1fr;
+    gap: 24px;
+    padding: 32px 0;
+  }
+
+  .role + .role {
+    border-top: 1px solid var(--hairline);
+  }
+
+  .role-logo {
+    width: 112px;
+    height: 72px;
+    border-radius: 14px;
+    background: #ffffff;
+    border: 1px solid var(--hairline);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    padding: 10px 12px;
+  }
+
+  .role-logo:has(.role-badge) {
+    background: var(--text);
+    border-color: transparent;
+  }
+
+  .role-badge {
+    color: var(--bg);
+    font-size: 26px;
+    font-weight: 700;
+    letter-spacing: -0.03em;
+  }
+
+  .role-logo img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+
+  .role-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 8px 16px;
+    flex-wrap: wrap;
+  }
+
+  .role-title {
+    font-size: 21px;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    line-height: 1.25;
+  }
+
+  .role-date {
+    font-size: 15px;
+    color: var(--text-tertiary);
+    white-space: nowrap;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .role-org {
+    margin-top: 2px;
+    font-size: 17px;
+    color: var(--text-secondary);
+  }
+
+  .role-loc {
+    color: var(--text-tertiary);
+  }
+
+  .role-desc {
+    margin-top: 12px;
+    font-size: 17px;
+    line-height: 1.5;
+    color: var(--text-secondary);
+    max-width: 720px;
+  }
+
+  .role-skills {
+    margin-top: 12px;
+    font-size: 14px;
+    color: var(--text-tertiary);
+  }
+
+  @media (max-width: 734px) {
+    .roles {
+      padding: 4px 20px;
+    }
+
+    .role {
+      grid-template-columns: 1fr;
+      gap: 14px;
+      padding: 24px 0;
+    }
+
+    .role-logo {
+      width: 96px;
+      height: 60px;
+      border-radius: 12px;
+    }
+
+    .role-top {
+      flex-direction: column;
+      gap: 2px;
+    }
+  }
+</style>

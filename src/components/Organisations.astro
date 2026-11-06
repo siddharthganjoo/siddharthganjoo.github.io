@@ -1,0 +1,110 @@
+---
+import { organisationGroups } from '../data/skills';
+---
+
+<section id="organisations" class="section">
+  <div class="container">
+    <div class="section-head center reveal">
+      <span class="eyebrow">Network</span>
+      <h2 class="headline">Who I work with.</h2>
+    </div>
+
+    {organisationGroups.map(group => (
+      <div class="org-group reveal">
+        <h3 class="org-group-title">{group.title}</h3>
+        <ul class="orgs">
+          {group.orgs.map(org => {
+            const inner = org.logo
+              ? <img src={org.logo} alt={org.name} loading="lazy" />
+              : <span class="wordmark">{org.name}</span>;
+            return (
+              <li class="org">
+                {org.url
+                  ? <a href={org.url} target="_blank" rel="noopener noreferrer" class="org-tile" title={org.name}>{inner}</a>
+                  : <span class="org-tile" title={org.name}>{inner}</span>}
+              </li>
+            );
+          })}
+        </ul>
+      </div>
+    ))}
+  </div>
+</section>
+
+<style>
+  .org-group + .org-group {
+    margin-top: 48px;
+  }
+
+  .org-group-title {
+    text-align: center;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text-tertiary);
+    margin-bottom: 20px;
+  }
+
+  .orgs {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px;
+  }
+
+  .org-tile {
+    height: 120px;
+    width: 220px;
+    padding: 20px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: var(--radius-md);
+    background: var(--card);
+    color: var(--text);
+    transition: background-color 0.3s var(--ease);
+  }
+
+  a.org-tile:hover {
+    text-decoration: none;
+    background: var(--card-fill);
+  }
+
+  /* Raster logos are drawn for white backgrounds, so they sit on a white plate */
+  .org-tile:has(img) {
+    background: #ffffff;
+    box-shadow: inset 0 0 0 1px var(--hairline);
+  }
+
+  .org-tile img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+
+  .wordmark {
+    font-size: 19px;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    text-align: center;
+    line-height: 1.2;
+  }
+
+  @media (max-width: 734px) {
+    .orgs {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 8px;
+    }
+
+    .org-tile {
+      width: auto;
+      height: 96px;
+      padding: 16px;
+    }
+
+    .wordmark {
+      font-size: 15px;
+    }
+  }
+</style>
