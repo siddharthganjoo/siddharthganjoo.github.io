@@ -1,0 +1,86 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { siteConfig } from '../data/site';
+---
+
+<Layout title={`Privacy · ${siteConfig.name}`} description={`How ${siteConfig.name}'s website handles personal data.`}>
+  <article class="legal">
+    <a href="/" class="legal-back">‹ Home</a>
+    <h1 class="legal-title">Privacy</h1>
+    <p class="legal-updated">Last updated November 2026</p>
+
+    <div class="prose">
+      <h2>Who is responsible</h2>
+      <p>
+        This is the personal website of {siteConfig.name}, {siteConfig.location}. You can reach me through the
+        contact form on this site or on <a href={siteConfig.socials.linkedin} target="_blank" rel="noopener noreferrer">LinkedIn</a>.
+      </p>
+
+      <h2>What is collected</h2>
+      <ul>
+        <li><strong>Contact form.</strong> If you send a message, I receive your name, email address, subject and message.</li>
+        <li><strong>Server logs.</strong> The hosting provider (GitHub Pages) records standard technical data such as IP address, browser and time of request, for security and operations.</li>
+      </ul>
+      <p>There is no analytics, no advertising and no tracking cookies.</p>
+
+      <h2>Why, and on what legal basis</h2>
+      <p>
+        Messages are processed to read and reply to your enquiry, on the basis of legitimate interest
+        (Art. 6(1)(f) GDPR).
+      </p>
+
+      <h2>Browser storage</h2>
+      <p>
+        The site stores one value in your browser’s <code>localStorage</code>: <code>theme</code>, which
+        remembers whether you chose light or dark mode. You can clear it at any time in your browser settings.
+      </p>
+
+      <h2>Third parties</h2>
+      <ul>
+        <li><strong>GitHub Pages</strong> (GitHub, Inc.) hosts the site.</li>
+        <li><strong>Formspree</strong> (Formspree, Inc.) delivers contact form messages to my inbox.</li>
+        <li><strong>cdnjs</strong> (Cloudflare, Inc.) serves the icon font used on the site.</li>
+      </ul>
+
+      <h2>How long data is kept</h2>
+      <p>
+        Messages are kept only as long as needed for the conversation they belong to. They are never added to
+        mailing lists or shared with others.
+      </p>
+
+      <h2>Your rights</h2>
+      <p>
+        Under the GDPR you can ask to access, correct or delete your personal data, or object to its processing.
+        Send a request through the contact form or LinkedIn. You can also lodge a complaint with the Dutch Data
+        Protection Authority (Autoriteit Persoonsgegevens).
+      </p>
+    </div>
+  </article>
+</Layout>
+
+<style>
+  .legal {
+    max-width: 692px;
+    margin: 0 auto;
+    padding: 64px var(--gutter) 112px;
+  }
+
+  .legal-back {
+    display: inline-block;
+    font-size: 15px;
+    margin-bottom: 40px;
+  }
+
+  .legal-title {
+    font-size: clamp(40px, 6vw, 56px);
+    font-weight: 700;
+    letter-spacing: -0.04em;
+    line-height: 1.05;
+  }
+
+  .legal-updated {
+    margin-top: 12px;
+    font-size: 15px;
+    color: var(--text-tertiary);
+  }
+</style>

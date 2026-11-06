@@ -63,7 +63,8 @@ export const timelineData: TimelineItem[] = [
     roleTitle: "Supercomputing Brabant launches",
     orgName: "BOM, Tilburg University, TU/e and Provincie Noord-Brabant",
     description: "The official launch of Supercomputing Brabant: large-scale AI compute, expert support and a regional community, so that promising AI ideas don’t get stuck at the prototype stage.",
-    icon: "fa-rocket",
+    mediaImg: "/assets/news/supercomputing-brabant-team.jpg",
+    mediaAlt: "The Supercomputing Brabant team",
     url: "https://supercomputingbrabant.nl"
   },
   {

@@ -25,6 +25,11 @@ if (fs.existsSync('dist/robots.txt')) {
   fs.copyFileSync('dist/robots.txt', 'robots.txt');
 }
 
+// 2b. Sync the other top-level pages (404, privacy, terms)
+for (const page of fs.readdirSync('dist').filter(f => f.endsWith('.html') && f !== 'index.html')) {
+  fs.copyFileSync(`dist/${page}`, page);
+}
+
 // 3. Sync _astro bundle, static assets and article pages
 for (const dir of ['_astro', 'assets', 'blog']) {
   if (fs.existsSync(`dist/${dir}`)) {

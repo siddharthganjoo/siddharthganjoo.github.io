@@ -1,0 +1,71 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { siteConfig } from '../data/site';
+---
+
+<Layout title={`Terms · ${siteConfig.name}`} description={`Terms of use for ${siteConfig.name}'s website.`}>
+  <article class="legal">
+    <a href="/" class="legal-back">‹ Home</a>
+    <h1 class="legal-title">Terms</h1>
+    <p class="legal-updated">Last updated November 2026</p>
+
+    <div class="prose">
+      <h2>Content</h2>
+      <p>
+        The text, case studies and design of this site are by {siteConfig.name} unless stated otherwise. You’re
+        welcome to read, link to and share them for professional, recruitment and educational purposes.
+      </p>
+
+      <h2>Logos and trademarks</h2>
+      <p>
+        Logos of companies, universities and other organisations belong to their owners. They are shown only to
+        identify where I have worked, studied or collaborated, and do not imply endorsement.
+      </p>
+
+      <h2>Code</h2>
+      <p>
+        Code on <a href={siteConfig.socials.github} target="_blank" rel="noopener noreferrer">GitHub</a> is covered
+        by the license in each repository.
+      </p>
+
+      <h2>External links</h2>
+      <p>This site links to other websites. I’m not responsible for their content or privacy practices.</p>
+
+      <h2>No warranty</h2>
+      <p>
+        The site is provided as is, without warranties of any kind. To the extent permitted by law, I’m not liable
+        for any damage arising from its use.
+      </p>
+
+      <h2>Governing law</h2>
+      <p>These terms are governed by Dutch law.</p>
+    </div>
+  </article>
+</Layout>
+
+<style>
+  .legal {
+    max-width: 692px;
+    margin: 0 auto;
+    padding: 64px var(--gutter) 112px;
+  }
+
+  .legal-back {
+    display: inline-block;
+    font-size: 15px;
+    margin-bottom: 40px;
+  }
+
+  .legal-title {
+    font-size: clamp(40px, 6vw, 56px);
+    font-weight: 700;
+    letter-spacing: -0.04em;
+    line-height: 1.05;
+  }
+
+  .legal-updated {
+    margin-top: 12px;
+    font-size: 15px;
+    color: var(--text-tertiary);
+  }
+</style>

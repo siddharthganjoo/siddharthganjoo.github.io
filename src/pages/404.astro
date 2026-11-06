@@ -1,0 +1,44 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { siteConfig } from '../data/site';
+---
+
+<Layout title={`Page not found · ${siteConfig.name}`} description="This page doesn’t exist. Head back to the homepage.">
+  <section class="nf">
+    <p class="nf-code">404</p>
+    <h1 class="headline">This page couldn’t be found.</h1>
+    <p class="subhead">It may have moved, or the link might be mistyped.</p>
+    <div class="nf-actions">
+      <a href="/" class="btn btn-primary">Go to homepage</a>
+      <a href="/#projects" class="link-chevron">See my work</a>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .nf {
+    min-height: calc(100vh - var(--nav-h) - 160px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 96px var(--gutter);
+  }
+
+  .nf-code {
+    font-size: 17px;
+    font-weight: 600;
+    color: var(--text-tertiary);
+    margin-bottom: 8px;
+  }
+
+  .nf-actions {
+    margin-top: 32px;
+    display: flex;
+    gap: 28px;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+</style>
